@@ -40,6 +40,11 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>org.checkerframework</groupId>
+      <artifactId>checker-qual</artifactId>
+      <version>3.45.1-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -111,41 +116,49 @@
     </plugins>
   </build>
 
-<profiles>
-  <profile>
-    <id>CheckerFramework</id>
-    <build>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <configuration>
-            <annotationProcessorPaths>
-              <!-- https://checkerframework.org/manual/#maven -->
-              <path>
-                <groupId>org.checkerframework</groupId>
-                <artifactId>checker</artifactId>
-                <version>3.7.1</version>
-              </path>
-            </annotationProcessorPaths>
-            <annotationProcessors>
-              <!-- Add all the checkers you want to enable here -->
-              <annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
-            </annotationProcessors>
-          </configuration>
-        </plugin>
-      </plugins>
-    </build>
-    <!-- Unfortunately, checker framework needs this dependency -->
-    <dependencies>
-      <dependency>
-        <groupId>org.checkerframework</groupId>
-        <artifactId>checker</artifactId>
-        <version>3.7.1</version>
-      </dependency>
-    </dependencies>
-  </profile>
-
-</profiles>
+  <profiles>
+      <profile>
+      <id>CheckerFramework</id>
+      <!-- If you omit the activation block, run mvn with "-P checkerframework" to run checkers. -->
+      <activation>
+          <jdk>[1.8,)</jdk>
+      </activation>
+      <build>
+          <plugins>
+          <plugin>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.11.0</version>
+              <configuration>
+              <fork>true</fork> <!-- Must fork or else JVM arguments are ignored. -->
+              <annotationProcessorPaths>
+                  <path>
+                  <groupId>org.checkerframework</groupId>
+                  <artifactId>checker</artifactId>
+                  <version>3.45.1-SNAPSHOT</version>
+                  </path>
+              </annotationProcessorPaths>
+              <annotationProcessors>
+                  <!-- Add all the checkers you want to enable here -->
+                  <annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
+              </annotationProcessors>
+              <compilerArgs>
+                <arg>-AassumePure</arg>
+                <arg>-Adetailedmsgtex</arg>
+                <arg>-AshowPrefixInWarningMessages</arg>
+                <arg>-J-Xmx32G</arg>
+                <arg>-Xmaxerrs</arg>
+                <arg>10000</arg>
+                <arg>-g</arg>
+                <arg>-Ainfer=ajava</arg>
+                <arg>-Awarns</arg>
+                <arg>-AinferOutputOriginal</arg>
+                <arg>-Aajava=/tmp/WPITEMP-cache2k</arg>
+              </compilerArgs>
+              </configuration>
+          </plugin>
+          </plugins>
+      </build>
+      </profile>
+  </profiles>
 
 </project>
