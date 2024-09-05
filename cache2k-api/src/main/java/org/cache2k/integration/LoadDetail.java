@@ -44,7 +44,7 @@ public abstract class LoadDetail<V> {
   }
 
   
-  public  LoadDetail<V> getNextInChain() {
+  @Nullable public  LoadDetail<V> getNextInChain() {
     if (value instanceof LoadDetail) {
       return ((LoadDetail<V>) value);
     }

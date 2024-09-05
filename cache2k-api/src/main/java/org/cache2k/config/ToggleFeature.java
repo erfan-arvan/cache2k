@@ -73,7 +73,7 @@ public abstract class ToggleFeature implements SingleFeature {
    * Returns the feature instance, if present.
    */
   
-  public static <T extends ToggleFeature>  T extract(Cache2kBuilder<?, ?> builder,
+  @Nullable public static <T extends ToggleFeature>  T extract(Cache2kBuilder<?, ?> builder,
                                                               Class<T> featureType) {
     Iterator<Feature> it = builder.config().getFeatures().iterator();
     while (it.hasNext()) {

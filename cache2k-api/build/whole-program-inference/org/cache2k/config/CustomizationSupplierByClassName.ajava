@@ -29,6 +29,7 @@ import org.cache2k.annotation.Nullable;
  */
 public final class CustomizationSupplierByClassName<T> implements CustomizationSupplier<T>, ValidatingConfigBean {
 
+    @Nullable
     private String className;
 
     /**
@@ -51,6 +52,7 @@ public final class CustomizationSupplierByClassName<T> implements CustomizationS
         this.className = className;
     }
 
+    @Nullable
     public String getClassName() {
         return className;
     }
