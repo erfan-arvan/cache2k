@@ -29,8 +29,10 @@ import org.cache2k.annotation.Nullable;
  */
 public class Cache2kManagerConfig implements ConfigBean<Cache2kManagerConfig, Cache2kManagerConfig.Builder> {
 
+    @Nullable
     private String version = null;
 
+    @Nullable
     private String defaultManagerName = null;
 
     private boolean ignoreMissingCacheConfiguration = false;
@@ -50,6 +52,7 @@ public class Cache2kManagerConfig implements ConfigBean<Cache2kManagerConfig, Ca
         ignoreMissingCacheConfiguration = f;
     }
 
+    @Nullable
     public String getDefaultManagerName() {
         return defaultManagerName;
     }
@@ -61,6 +64,7 @@ public class Cache2kManagerConfig implements ConfigBean<Cache2kManagerConfig, Ca
         defaultManagerName = v;
     }
 
+    @Nullable
     public String getVersion() {
         return version;
     }
