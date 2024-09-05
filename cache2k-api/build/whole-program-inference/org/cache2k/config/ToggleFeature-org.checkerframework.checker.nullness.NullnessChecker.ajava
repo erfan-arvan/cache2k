@@ -21,6 +21,7 @@ package org.cache2k.config;
  */
 import org.cache2k.Cache2kBuilder;
 import java.util.Iterator;
+import javax.annotation.Nullable;
 
 /**
  * Base class for a cache feature that can be enabled or disables and

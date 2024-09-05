@@ -1,4 +1,5 @@
 package org.cache2k.integration;
+import javax.annotation.Nullable;
 
 /*
  * #%L
@@ -42,7 +43,7 @@ public abstract class LoadDetail<V> {
   }
 
   
-  public LoadDetail<V> getNextInChain() {
+  @Nullable public LoadDetail<V> getNextInChain() {
     if (value instanceof LoadDetail) {
       return ((LoadDetail<V>) value);
     }

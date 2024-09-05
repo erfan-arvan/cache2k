@@ -19,14 +19,18 @@ package org.cache2k.processor;
  * limitations under the License.
  * #L%
  */
+
 import org.cache2k.CacheException;
 
 /**
- * Used by the entry processor to abort the processing to carry out
- * some, possibly asynchronous, processing.
+ * Wrapped exception of an exception thrown during entry processing.
  *
- * @author Jens Wilke
+ * @author Jens Wilke; created: 2015-05-02
  */
-@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.KeyForSubchecker")
-public class RestartException extends CacheException {
+public class EntryProcessingException extends CacheException {
+
+  public EntryProcessingException(Throwable cause) {
+    super(cause);
+  }
+
 }

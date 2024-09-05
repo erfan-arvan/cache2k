@@ -1,5 +1,7 @@
 package org.cache2k.config;
 
+import javax.annotation.Nullable;
+
 /*
  * #%L
  * cache2k API
@@ -24,5 +26,6 @@ package org.cache2k.config;
  */
 public interface ConfigBuilder<SELF extends ConfigBuilder<SELF, T>, T extends ConfigBean<T, SELF>> {
 
+    @Nullable
     T config();
 }

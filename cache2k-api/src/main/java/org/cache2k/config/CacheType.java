@@ -23,6 +23,7 @@ package org.cache2k.config;
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import javax.annotation.Nullable;
 
 /**
  * A data structure to retain all known type information from the key and value types, including
@@ -83,7 +84,7 @@ public interface CacheType<T> {
   }
 
   /** Class type if not an array. */
-  Class<T> getType();
+  @Nullable Class<T> getType();
 
   /**
    * The type has generic type parameters and the concrete types are known.
@@ -103,7 +104,7 @@ public interface CacheType<T> {
   CacheType<?> getComponentType();
 
   /** Known type arguments, if the type is a parametrized type. */
-  CacheType<?>[] getTypeArguments();
+  @Nullable CacheType<?>[] getTypeArguments();
 
   /** Java language compatible type name */
   String getTypeName();

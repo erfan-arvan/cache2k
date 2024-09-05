@@ -1,5 +1,7 @@
 package org.cache2k.config;
 
+import javax.annotation.Nullable;
+
 /*
  * #%L
  * cache2k API

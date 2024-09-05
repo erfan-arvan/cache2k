@@ -23,6 +23,7 @@ package org.cache2k.spi;
 import org.cache2k.Cache;
 import org.cache2k.CacheManager;
 import org.cache2k.config.Cache2kConfig;
+import javax.annotation.Nullable;
 
 /**
  * Interface to the cache2k implementation. This interface is not intended for the application
@@ -70,7 +71,7 @@ public interface Cache2kCoreProvider {
   /**
    * Create a cache, apply external configuration before creating it.
    */
-  <K, V> Cache<K, V> createCache(CacheManager m, Cache2kConfig<K, V> cfg);
+  <K, V> Cache<K, V> createCache(@Nullable CacheManager m, Cache2kConfig<K, V> cfg);
 
   /**
    * Return the effective default configuration for this manager. A different default

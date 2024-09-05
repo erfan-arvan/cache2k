@@ -22,6 +22,7 @@ package org.cache2k.config;
 import org.cache2k.Cache2kBuilder;
 import java.lang.reflect.ParameterizedType;
 import java.util.Arrays;
+import javax.annotation.Nullable;
 
 /**
  * Helper class to capture generic types into a type descriptor. This is used to provide

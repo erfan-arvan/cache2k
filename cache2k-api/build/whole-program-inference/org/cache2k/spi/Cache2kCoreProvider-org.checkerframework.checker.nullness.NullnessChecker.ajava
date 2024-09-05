@@ -22,6 +22,7 @@ package org.cache2k.spi;
 import org.cache2k.Cache;
 import org.cache2k.CacheManager;
 import org.cache2k.config.Cache2kConfig;
+import javax.annotation.Nullable;
 
 /**
  * Interface to the cache2k implementation. This interface is not intended for the application

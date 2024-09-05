@@ -1,4 +1,5 @@
 package org.cache2k.config;
+import javax.annotation.Nullable;
 
 /*
  * #%L
@@ -29,7 +30,7 @@ package org.cache2k.config;
 public final class CustomizationSupplierByClassName<T>
   implements CustomizationSupplier<T>, ValidatingConfigBean {
 
-  private String className;
+  @Nullable private String className;
 
   /**
    * Default constructor for beans.
@@ -50,7 +51,7 @@ public final class CustomizationSupplierByClassName<T>
     this.className = className;
   }
 
-  public String getClassName() {
+  @Nullable public String getClassName() {
     return className;
   }
 

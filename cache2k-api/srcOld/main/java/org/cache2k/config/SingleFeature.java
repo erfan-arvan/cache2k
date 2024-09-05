@@ -1,4 +1,4 @@
-package org.cache2k.processor;
+package org.cache2k.config;
 
 /*
  * #%L
@@ -19,14 +19,13 @@ package org.cache2k.processor;
  * limitations under the License.
  * #L%
  */
-import org.cache2k.CacheException;
 
 /**
- * Used by the entry processor to abort the processing to carry out
- * some, possibly asynchronous, processing.
+ * Feature that distinct type is only present once.
+ *
+ * <p>Rationale: We could use toggle feature instead but maybe
+ * we want to add feature that don't need to be toggled.
  *
  * @author Jens Wilke
  */
-@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
-public class RestartException extends CacheException {
-}
+public interface SingleFeature extends Feature { }

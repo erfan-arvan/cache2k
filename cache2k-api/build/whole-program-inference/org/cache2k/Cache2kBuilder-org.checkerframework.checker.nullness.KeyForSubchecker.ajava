@@ -51,6 +51,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import static org.cache2k.config.Cache2kConfig.checkNull;
+import javax.annotation.Nullable;
 
 /**
  * Builder to create a {@link Cache} instance. The usage is:

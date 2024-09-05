@@ -37,6 +37,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
+import javax.annotation.Nullable;
 
 /**
  * Configuration for a cache2k cache.
@@ -1899,6 +1900,25 @@ public class Cache2kConfig<K, V> implements ConfigBean<Cache2kConfig<K, V>, Cach
     /**
      * @see Cache2kBuilder#resiliencePolicy
      */
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.asyncListenerExecutor" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.asyncListeners" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.asyncLoader" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.exceptionPropagator" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.executor" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.expireAfterWrite" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.expiryPolicy" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.features" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.lifecycleListeners" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.listeners" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.loader" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.loaderExecutor" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.name" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.refreshExecutor" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.sections" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.timerLag" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.weigher" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.writer" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.advancedLoader" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.asyncListenerExecutor" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.asyncListeners" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
