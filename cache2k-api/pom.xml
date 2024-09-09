@@ -116,7 +116,7 @@
     </plugins>
   </build>
 
-    <profiles>
+  <profiles>
       <profile>
       <id>CheckerFramework</id>
       <!-- If you omit the activation block, run mvn with "-P checkerframework" to run checkers. -->
