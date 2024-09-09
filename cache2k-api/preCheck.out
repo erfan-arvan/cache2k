@@ -62,12 +62,7 @@
 [WARNING] /Users/erfanarvan/Desktop/comparisonPaper/experiments/verify/cache2k/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[263,10] [nullness:assignment] incompatible types in assignment.
   found   : null (NullType)
   required: @Initialized @NonNull Duration
-[WARNING] WARNING: An illegal reflective access operation has occurred
-WARNING: Illegal reflective access by org.checkerframework.javacutil.Resolver (file:/Users/erfanarvan/.m2/repository/org/checkerframework/checker/3.45.1-SNAPSHOT/checker-3.45.1-SNAPSHOT.jar) to method com.sun.tools.javac.comp.Resolve.findMethod(com.sun.tools.javac.comp.Env,com.sun.tools.javac.code.Type,com.sun.tools.javac.util.Name,com.sun.tools.javac.util.List,com.sun.tools.javac.util.List,boolean,boolean)
-WARNING: Please consider reporting this to the maintainers of org.checkerframework.javacutil.Resolver
-WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
-WARNING: All illegal access operations will be denied in a future release
-/Users/erfanarvan/Desktop/comparisonPaper/experiments/verify/cache2k/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[107,30] [nullness:argument] incompatible argument for parameter keyType of Cache2kBuilder constructor.
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/experiments/verify/cache2k/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[107,30] [nullness:argument] incompatible argument for parameter keyType of Cache2kBuilder constructor.
   found   : null (NullType)
   required: @Initialized @NonNull CacheType</*RAW*/>
 [WARNING] /Users/erfanarvan/Desktop/comparisonPaper/experiments/verify/cache2k/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[107,36] [nullness:argument] incompatible argument for parameter valueType of Cache2kBuilder constructor.
@@ -215,6 +210,6 @@ WARNING: All illegal access operations will be denied in a future release
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  7.687 s
-[INFO] Finished at: 2024-09-09T03:05:25-04:00
+[INFO] Total time:  7.166 s
+[INFO] Finished at: 2024-09-09T05:16:37-04:00
 [INFO] ------------------------------------------------------------------------
