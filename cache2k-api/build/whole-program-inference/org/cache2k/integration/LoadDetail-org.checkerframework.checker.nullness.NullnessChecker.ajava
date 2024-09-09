@@ -44,7 +44,7 @@ public abstract class LoadDetail<V> {
     }
 
     @org.checkerframework.dataflow.qual.Pure
-    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable LoadDetail<V> getNextInChain() {
+    public LoadDetail<V> getNextInChain() {
         if (value instanceof LoadDetail) {
             return ((LoadDetail<V>) value);
         }

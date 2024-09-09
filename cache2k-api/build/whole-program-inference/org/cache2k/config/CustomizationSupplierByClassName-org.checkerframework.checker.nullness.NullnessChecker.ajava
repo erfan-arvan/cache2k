@@ -30,7 +30,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 @org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
 public final class CustomizationSupplierByClassName<T> implements CustomizationSupplier<T>, ValidatingConfigBean {
 
-    private @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.MonotonicNonNull String className;
+    private String className;
 
     /**
      * Default constructor for beans.
@@ -53,9 +53,8 @@ public final class CustomizationSupplierByClassName<T> implements CustomizationS
         this.className = className;
     }
 
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.className" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Pure
-    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable String getClassName() {
+    public String getClassName() {
         return className;
     }
 
@@ -65,11 +64,9 @@ public final class CustomizationSupplierByClassName<T> implements CustomizationS
         className = v;
     }
 
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.className" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "#1" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.className" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Pure
-    private @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String checkNull(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable String className) {
+    private @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String checkNull(String className) {
         if (className == null) {
             throw new IllegalArgumentException("className not set");
         }
@@ -97,7 +94,6 @@ public final class CustomizationSupplierByClassName<T> implements CustomizationS
         }
     }
 
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.className" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Pure
     public  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull boolean equals(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CustomizationSupplierByClassName<T> this, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable Object other) {
         if (this == other)
@@ -111,7 +107,6 @@ public final class CustomizationSupplierByClassName<T> implements CustomizationS
         return className.equals(that.className);
     }
 
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.className" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Pure
     public  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull int hashCode(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CustomizationSupplierByClassName<T> this) {
         if (className != null) {

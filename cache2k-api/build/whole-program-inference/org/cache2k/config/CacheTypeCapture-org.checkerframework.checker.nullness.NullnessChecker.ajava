@@ -55,12 +55,12 @@ public class CacheTypeCapture<T> implements CacheType<T> {
     }
 
     @org.checkerframework.dataflow.qual.Impure
-    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable Class<T> getType(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CacheTypeCapture<T> this) {
+    public Class<T> getType(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CacheTypeCapture<T> this) {
         return descriptor.getType();
     }
 
     @org.checkerframework.dataflow.qual.Impure
-    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CacheType<?> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable [] getTypeArguments(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CacheTypeCapture<T> this) {
+    public CacheType<?> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable [] getTypeArguments(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CacheTypeCapture<T> this) {
         return descriptor.getTypeArguments();
     }
 
@@ -97,17 +97,17 @@ public class CacheTypeCapture<T> implements CacheType<T> {
     private abstract static class BaseType<T> implements CacheType<T> {
 
         @org.checkerframework.dataflow.qual.Pure
-        public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable CacheType<?> getComponentType(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull BaseType<T> this) {
+        public CacheType<?> getComponentType(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull BaseType<T> this) {
             return null;
         }
 
         @org.checkerframework.dataflow.qual.Pure
-        public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable Class<T> getType(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull BaseType<T> this) {
+        public Class<T> getType(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull BaseType<T> this) {
             return null;
         }
 
         @org.checkerframework.dataflow.qual.Pure
-        public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CacheType<?> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable [] getTypeArguments(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull BaseType<T> this) {
+        public CacheType<?> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable [] getTypeArguments(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull BaseType<T> this) {
             return null;
         }
 
@@ -213,7 +213,7 @@ public class CacheTypeCapture<T> implements CacheType<T> {
         }
 
         @org.checkerframework.dataflow.qual.Impure
-        static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable Class<?> finalPrimitiveType(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable CacheType<?> td) {
+        static Class<?> finalPrimitiveType(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable CacheType<?> td) {
             while (td.isArray()) {
                 td = td.getComponentType();
             }

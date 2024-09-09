@@ -73,7 +73,7 @@ public interface CacheEntry<K, V> extends DataAware<K, V> {
    * happened or it was suppressed. If {@code null} then {@link #getValue}
    * returns a value and does not throw an exception.
    */
-  default  Throwable getException() {
+  @Nullable default  Throwable getException() {
     LoadExceptionInfo<K, V> info = getExceptionInfo();
     return info != null ? info.getException() : null;
   }

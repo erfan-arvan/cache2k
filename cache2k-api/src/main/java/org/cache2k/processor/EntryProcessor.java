@@ -85,6 +85,6 @@ public interface EntryProcessor<K, V,  R> extends DataAware<K, V> {
    *         {@link EntryProcessingException}.
    *         If an exception happens, the cache content will not be altered.
    */
-   R process(MutableCacheEntry<K, V> entry) throws Exception;
+   @Nullable R process(MutableCacheEntry<K, V> entry) throws Exception;
 
 }

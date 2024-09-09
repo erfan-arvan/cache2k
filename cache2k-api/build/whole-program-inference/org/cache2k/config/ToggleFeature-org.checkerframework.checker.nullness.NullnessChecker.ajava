@@ -72,7 +72,7 @@ public abstract class ToggleFeature implements SingleFeature {
      * Returns the feature instance, if present.
      */
     @org.checkerframework.dataflow.qual.Impure
-    public static <T extends ToggleFeature> @org.checkerframework.checker.nullness.qual.Nullable T extract(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<?, ?> builder, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Class<T> featureType) {
+    public static <T extends ToggleFeature> T extract(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<?, ?> builder, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Class<T> featureType) {
         Iterator<Feature> it = builder.config().getFeatures().iterator();
         while (it.hasNext()) {
             Feature feature = it.next();

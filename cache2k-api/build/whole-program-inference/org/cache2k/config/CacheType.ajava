@@ -86,6 +86,7 @@ public interface CacheType<T> {
     /**
      * Class type if not an array.
      */
+    @Nullable
     Class<T> getType();
 
     /**
@@ -110,6 +111,7 @@ public interface CacheType<T> {
     /**
      * Known type arguments, if the type is a parametrized type.
      */
+    @Nullable
     CacheType<?>[] getTypeArguments();
 
     /**

@@ -76,7 +76,7 @@ public interface CacheEntry<K, V> extends DataAware<K, V> {
      * returns a value and does not throw an exception.
      */
     @org.checkerframework.dataflow.qual.Pure
-    default @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable Throwable getException() {
+    default Throwable getException() {
         LoadExceptionInfo<K, V> info = getExceptionInfo();
         return info != null ? info.getException() : null;
     }

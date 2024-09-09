@@ -64,7 +64,7 @@ public class SectionContainer extends AbstractCollection<ConfigSection> implemen
     }
 
     @org.checkerframework.dataflow.qual.Impure
-    public <T extends ConfigSection> @org.checkerframework.checker.nullness.qual.Nullable T getSection(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Class<T> sectionType) {
+    public <T extends ConfigSection> T getSection(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Class<T> sectionType) {
         ConfigSection section = class2section.get(sectionType);
         return sectionType.cast(section);
     }

@@ -65,7 +65,7 @@ public class SectionContainer extends AbstractCollection<ConfigSection>
     return section != null ? sectionType.cast(section) : defaultFallback;
   }
 
-  public  <T extends ConfigSection> T getSection(Class<T> sectionType) {
+  @Nullable public  <T extends ConfigSection> T getSection(Class<T> sectionType) {
     ConfigSection section = class2section.get(sectionType);
     return sectionType.cast(section);
   }

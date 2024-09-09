@@ -90,7 +90,7 @@ public interface CacheType<T> {
      * Class type if not an array.
      */
     @org.checkerframework.dataflow.qual.Impure
-    @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable Class<T> getType();
+    Class<T> getType();
 
     /**
      * The type has generic type parameters and the concrete types are known.
@@ -118,7 +118,7 @@ public interface CacheType<T> {
      * Known type arguments, if the type is a parametrized type.
      */
     @org.checkerframework.dataflow.qual.Impure
-    @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CacheType<?> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable [] getTypeArguments();
+    CacheType<?> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable [] getTypeArguments();
 
     /**
      * Java language compatible type name

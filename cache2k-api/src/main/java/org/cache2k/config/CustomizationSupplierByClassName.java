@@ -31,7 +31,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 public final class CustomizationSupplierByClassName<T>
   implements CustomizationSupplier<T>, ValidatingConfigBean {
 
-  private  String className;
+  @Nullable private  String className;
 
   /**
    * Default constructor for beans.
@@ -50,7 +50,7 @@ public final class CustomizationSupplierByClassName<T>
     this.className = className;
   }
 
-  public  String getClassName() {
+  @Nullable public  String getClassName() {
     return className;
   }
 
@@ -58,7 +58,7 @@ public final class CustomizationSupplierByClassName<T>
     className = v;
   }
 
-  private String checkNull( String className) {
+  private String checkNull( @Nullable String className) {
     if (className == null) {
       throw new IllegalArgumentException("className not set");
     }
