@@ -1,95 +1,19 @@
 package org.cache2k.config;
-
-/*
- * #%L
- * cache2k API
- * %%
- * Copyright (C) 2000 - 2020 headissue GmbH, Munich
- * %%
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * #L%
- */
-
-import org.cache2k.Cache2kBuilder;
-import org.cache2k.Weigher;
-import org.cache2k.annotation.NonNull;
-import org.cache2k.annotation.Nullable;
-import org.cache2k.event.CacheEntryOperationListener;
-import org.cache2k.event.CacheLifecycleListener;
-import org.cache2k.expiry.ExpiryPolicy;
-import org.cache2k.expiry.ExpiryTimeValues;
-import org.cache2k.io.AdvancedCacheLoader;
-import org.cache2k.io.AsyncCacheLoader;
-import org.cache2k.io.CacheLoader;
-import org.cache2k.io.CacheWriter;
-import org.cache2k.io.ExceptionPropagator;
-import org.cache2k.io.ResiliencePolicy;
-
-import java.time.Duration;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-
-/**
- * Configuration for a cache2k cache.
- *
- * <p>To create a cache, the {@link Cache2kBuilder} is used. All configuration properties
- * are present on the builder and are documented in this place. Consequently all properties
- * refer to the corresponding builder method.
- *
- * <p>The configuration bean is designed to be serializable. This is used for example to copy
- * default configurations. The builder allows object references to customizations to be set.
- * If this happens the configuration is not serializable. Such configuration is only used for
- * immediate creation of one cache via the builder.
- *
- * <p>The configuration may contain additional beans, called configuration sections, that are
- * used to configure extensions or sub modules.
- *
- * <p>Within the XML configuration of a cache manager different default configuration
- * values may be specified. To get a configuration bean with the effective defaults of
- * a specific manager do {@code Cache2kBuilder.forUnknownTypes().manager(...).toConfiguration()}
- *
- * @author Jens Wilke
- */
-@SuppressWarnings("unused")
 public class Cache2kConfig<K, V>
   implements ConfigBean<Cache2kConfig<K, V>, Cache2kBuilder<K, V>>, ConfigWithSections {
-
-  /**
-   * A marker duration used in {@link #setExpireAfterWrite(Duration)}, to request
-   * eternal expiry. The maximum duration after the duration is considered as eternal
-   * for our purposes.
-   */
   public static final Duration EXPIRY_ETERNAL = Duration.ofMillis(ExpiryTimeValues.ETERNAL);
-  /**
-   * Marker duration that {@code setEternal(false)} was set.
-   */
   public static final Duration EXPIRY_NOT_ETERNAL = Duration.ofMillis(ExpiryTimeValues.ETERNAL - 1);
   public static final long UNSET_LONG = -1;
-
   private boolean storeByReference;
-  private @Nullable String name;
+  private  String name;
   private boolean nameWasGenerated;
-  private @Nullable CacheType<K> keyType;
-  private @Nullable CacheType<V> valueType;
+  private  CacheType<K> keyType;
+  private  CacheType<V> valueType;
   private long entryCapacity = UNSET_LONG;
-  private @Nullable Duration expireAfterWrite = null;
-  private @Nullable Duration timerLag = null;
+  private  Duration expireAfterWrite = null;
+  private  Duration timerLag = null;
   private long maximumWeight = UNSET_LONG;
   private int loaderThreadCount;
-
   private boolean eternal = false;
   private boolean keepDataAfterExpired = false;
   private boolean sharpExpiry = false;
@@ -98,127 +22,69 @@ public class Cache2kConfig<K, V>
   private boolean permitNullValues = false;
   private boolean recordModificationTime = false;
   private boolean boostConcurrency = false;
-
   private boolean disableStatistics = false;
   private boolean disableMonitoring = false;
-
   private boolean externalConfigurationPresent = false;
-
-  private @Nullable CustomizationSupplier<? extends Executor> loaderExecutor;
-  private @Nullable CustomizationSupplier<? extends Executor> refreshExecutor;
-  private @Nullable CustomizationSupplier<? extends Executor> asyncListenerExecutor;
-  private @Nullable CustomizationSupplier<? extends Executor> executor;
-  private @Nullable CustomizationSupplier<? extends ExpiryPolicy<K, V>> expiryPolicy;
-  private @Nullable CustomizationSupplier<? extends ResiliencePolicy<K, V>> resiliencePolicy;
-  private @Nullable CustomizationSupplier<? extends CacheLoader<K, V>> loader;
-  private @Nullable CustomizationSupplier<? extends CacheWriter<K, V>> writer;
-  private @Nullable CustomizationSupplier<? extends AdvancedCacheLoader<K, V>> advancedLoader;
-  private @Nullable CustomizationSupplier<? extends AsyncCacheLoader<K, V>> asyncLoader;
-  private @Nullable CustomizationSupplier<? extends ExceptionPropagator<K>> exceptionPropagator;
-  private @Nullable CustomizationSupplier<? extends Weigher<K, V>> weigher;
-
-  private @Nullable CustomizationCollection<CacheEntryOperationListener<K, V>> listeners;
-  private @Nullable CustomizationCollection<CacheEntryOperationListener<K, V>> asyncListeners;
-  private @Nullable Collection<CustomizationSupplier<CacheLifecycleListener>> lifecycleListeners;
-  private @Nullable Set<Feature> features;
-  private @Nullable SectionContainer sections;
-
-  /**
-   * Construct a config instance setting the type parameters and returning a
-   * proper generic type.
-   *
-   * @see Cache2kBuilder#keyType(Class)
-   * @see Cache2kBuilder#valueType(Class)
-   */
+  private  CustomizationSupplier<? extends Executor> loaderExecutor;
+  private  CustomizationSupplier<? extends Executor> refreshExecutor;
+  private  CustomizationSupplier<? extends Executor> asyncListenerExecutor;
+  private  CustomizationSupplier<? extends Executor> executor;
+  private  CustomizationSupplier<? extends ExpiryPolicy<K, V>> expiryPolicy;
+  private  CustomizationSupplier<? extends ResiliencePolicy<K, V>> resiliencePolicy;
+  private  CustomizationSupplier<? extends CacheLoader<K, V>> loader;
+  private  CustomizationSupplier<? extends CacheWriter<K, V>> writer;
+  private  CustomizationSupplier<? extends AdvancedCacheLoader<K, V>> advancedLoader;
+  private  CustomizationSupplier<? extends AsyncCacheLoader<K, V>> asyncLoader;
+  private  CustomizationSupplier<? extends ExceptionPropagator<K>> exceptionPropagator;
+  private  CustomizationSupplier<? extends Weigher<K, V>> weigher;
+  private  CustomizationCollection<CacheEntryOperationListener<K, V>> listeners;
+  private  CustomizationCollection<CacheEntryOperationListener<K, V>> asyncListeners;
+  private  Collection<CustomizationSupplier<CacheLifecycleListener>> lifecycleListeners;
+  private  Set<Feature> features;
+  private  SectionContainer sections;
   public static <K, V> Cache2kConfig<K, V> of(Class<K> keyType, Class<V> valueType) {
     Cache2kConfig<K, V> c = new Cache2kConfig<K, V>();
     c.setKeyType(CacheType.of(keyType));
     c.setValueType(CacheType.of(valueType));
     return c;
   }
-
-  /**
-   * Construct a config instance setting the type parameters and returning a
-   * proper generic type.
-   *
-   * @see Cache2kBuilder#keyType(CacheType)
-   * @see Cache2kBuilder#valueType(CacheType)
-   */
   public static <K, V> Cache2kConfig<K, V> of(CacheType<K> keyType, CacheType<V> valueType) {
     Cache2kConfig<K, V> c = new Cache2kConfig<K, V>();
     c.setKeyType(keyType);
     c.setValueType(valueType);
     return c;
   }
-
-  /**
-   * @see Cache2kBuilder#name(String)
-   */
-  public @Nullable String getName() { return name; }
-
-  /**
-   *
-   * @see Cache2kBuilder#name(String)
-   */
-  public void setName(@Nullable String name) {
+  public  String getName() { return name; }
+  public void setName( String name) {
     this.name = name;
   }
-
-  /**
-   * True if name is generated and not set by the cache client.
-   */
   public boolean isNameWasGenerated() {
     return nameWasGenerated;
   }
-
   public void setNameWasGenerated(boolean v) {
     this.nameWasGenerated = v;
   }
-
-  /**
-   *
-   * @see Cache2kBuilder#entryCapacity
-   */
   public long getEntryCapacity() {
     return entryCapacity;
   }
-
   public void setEntryCapacity(long v) {
     this.entryCapacity = v;
   }
-
-  /**
-   * @see Cache2kBuilder#refreshAhead(boolean)
-   */
   public boolean isRefreshAhead() {
     return refreshAhead;
   }
-
-  /**
-   * @see Cache2kBuilder#refreshAhead(boolean)
-   */
   public void setRefreshAhead(boolean v) {
     this.refreshAhead = v;
   }
-
-  public @Nullable CacheType<K> getKeyType() {
+  public  CacheType<K> getKeyType() {
     return keyType;
   }
-
-  /**
-   * @throws NullPointerException if parameter is null
-   */
   public static void checkNull(Object obj) {
     if (obj == null) {
       throw new NullPointerException("Null value not allowed");
     }
   }
-
-  /**
-   * @see Cache2kBuilder#keyType(CacheType)
-   * @see CacheType for a general discussion on types
-   */
-  public void setKeyType(@Nullable CacheType<K> v) {
+  public void setKeyType( CacheType<K> v) {
     if (v == null) {
       valueType = null;
       return;
@@ -228,16 +94,10 @@ public class Cache2kConfig<K, V>
     }
     keyType = v;
   }
-
-  public @Nullable CacheType<V> getValueType() {
+  public  CacheType<V> getValueType() {
     return valueType;
   }
-
-  /**
-   * @see Cache2kBuilder#valueType(CacheType)
-   * @see CacheType for a general discussion on types
-   */
-  public void setValueType(@Nullable CacheType<V> v) {
+  public void setValueType( CacheType<V> v) {
     if (v == null) {
       valueType = null;
       return;
@@ -247,51 +107,30 @@ public class Cache2kConfig<K, V>
     }
     valueType = v;
   }
-
-  public @Nullable Duration getExpireAfterWrite() {
+  public  Duration getExpireAfterWrite() {
     return expireAfterWrite;
   }
-
-  /**
-   * Sets expire after write. The value is capped at {@link #EXPIRY_ETERNAL}, meaning
-   * an equal or higher duration is treated as eternal expiry.
-   *
-   * @see Cache2kBuilder#expireAfterWrite
-   */
-  public void setExpireAfterWrite(@Nullable Duration v) {
+  public void setExpireAfterWrite( Duration v) {
     this.expireAfterWrite = durationCheckAndSanitize(v);
   }
-
   public boolean isEternal() {
     return eternal;
   }
-
   public void setEternal(boolean v) {
     this.eternal = v;
   }
-
-  public @Nullable Duration getTimerLag() {
+  public  Duration getTimerLag() {
     return timerLag;
   }
-
-  /**
-   * @see Cache2kBuilder#timerLag(long, TimeUnit)
-   */
-  public void setTimerLag(@Nullable Duration v) {
+  public void setTimerLag( Duration v) {
     this.timerLag = durationCheckAndSanitize(v);
   }
-
   public boolean isKeepDataAfterExpired() {
     return keepDataAfterExpired;
   }
-
   public long getMaximumWeight() {
     return maximumWeight;
   }
-
-  /**
-   * @see Cache2kBuilder#maximumWeight
-   */
   public void setMaximumWeight(long v) {
     if (entryCapacity >= 0) {
       throw new IllegalArgumentException(
@@ -299,210 +138,107 @@ public class Cache2kConfig<K, V>
     }
     maximumWeight = v;
   }
-
-  /**
-   * @see Cache2kBuilder#keepDataAfterExpired(boolean)
-   */
   public void setKeepDataAfterExpired(boolean v) {
     this.keepDataAfterExpired = v;
   }
-
   public boolean isSharpExpiry() {
     return sharpExpiry;
   }
-
-  /**
-   * @see Cache2kBuilder#sharpExpiry(boolean)
-   */
   public void setSharpExpiry(boolean v) {
     this.sharpExpiry = v;
   }
-
-  /**
-   * An external configuration for the cache was found and is applied.
-   * This is {@code true} if default values are set via the XML configuration or
-   * if there is a specific section for the cache name.
-   */
   public boolean isExternalConfigurationPresent() {
     return externalConfigurationPresent;
   }
-
   public void setExternalConfigurationPresent(boolean v) {
     externalConfigurationPresent = v;
   }
-
-  /**
-   * Mutable collection of additional configuration sections
-   */
   public SectionContainer getSections() {
     if (sections == null) {
       sections = new SectionContainer();
     }
     return sections;
   }
-
-  /**
-   * Adds the collection of sections to the existing list. This method is intended to
-   * improve integration with bean configuration mechanisms that use the set method and
-   * construct a set or list, like Springs' bean XML configuration.
-   */
   public void setSections(Collection<ConfigSection> c) {
     getSections().addAll(c);
   }
-
-  public @Nullable CustomizationSupplier<? extends CacheLoader<K, V>> getLoader() {
+  public  CustomizationSupplier<? extends CacheLoader<K, V>> getLoader() {
     return loader;
   }
-
-  public void setLoader(@Nullable CustomizationSupplier<? extends CacheLoader<K, V>> v) {
+  public void setLoader( CustomizationSupplier<? extends CacheLoader<K, V>> v) {
     loader = v;
   }
-
-  public @Nullable CustomizationSupplier<? extends AdvancedCacheLoader<K, V>> getAdvancedLoader() {
+  public  CustomizationSupplier<? extends AdvancedCacheLoader<K, V>> getAdvancedLoader() {
     return advancedLoader;
   }
-
-  /**
-   * @see Cache2kBuilder#loader(AdvancedCacheLoader)
-   */
-  public void setAdvancedLoader(@Nullable CustomizationSupplier<? extends AdvancedCacheLoader<K, V>> v) {
+  public void setAdvancedLoader( CustomizationSupplier<? extends AdvancedCacheLoader<K, V>> v) {
     advancedLoader = v;
   }
-
-  public @Nullable CustomizationSupplier<? extends AsyncCacheLoader<K, V>> getAsyncLoader() {
+  public  CustomizationSupplier<? extends AsyncCacheLoader<K, V>> getAsyncLoader() {
     return asyncLoader;
   }
-
-  public void setAsyncLoader(@Nullable CustomizationSupplier<? extends AsyncCacheLoader<K, V>> v) {
+  public void setAsyncLoader( CustomizationSupplier<? extends AsyncCacheLoader<K, V>> v) {
     asyncLoader = v;
   }
-
   public int getLoaderThreadCount() {
     return loaderThreadCount;
   }
-
-  /**
-   * @see Cache2kBuilder#loaderThreadCount(int)
-   */
   public void setLoaderThreadCount(int v) {
     loaderThreadCount = v;
   }
-
-  public @Nullable CustomizationSupplier<? extends ExpiryPolicy<K, V>> getExpiryPolicy() {
+  public  CustomizationSupplier<? extends ExpiryPolicy<K, V>> getExpiryPolicy() {
     return expiryPolicy;
   }
-
-  public void setExpiryPolicy(@Nullable CustomizationSupplier<? extends ExpiryPolicy<K, V>> v) {
+  public void setExpiryPolicy( CustomizationSupplier<? extends ExpiryPolicy<K, V>> v) {
     expiryPolicy = v;
   }
-
-  public @Nullable CustomizationSupplier<? extends CacheWriter<K, V>> getWriter() {
+  public  CustomizationSupplier<? extends CacheWriter<K, V>> getWriter() {
     return writer;
   }
-
-  /**
-   * @see Cache2kBuilder#writer(CacheWriter)
-   */
-  public void setWriter(@Nullable CustomizationSupplier<? extends CacheWriter<K, V>> v) {
+  public void setWriter( CustomizationSupplier<? extends CacheWriter<K, V>> v) {
     writer = v;
   }
-
   public boolean isStoreByReference() {
     return storeByReference;
   }
-
-  /**
-   * @see Cache2kBuilder#storeByReference(boolean)
-   */
   public void setStoreByReference(boolean v) {
     storeByReference = v;
   }
-
-  public @Nullable CustomizationSupplier<? extends ExceptionPropagator<K>> getExceptionPropagator() {
+  public  CustomizationSupplier<? extends ExceptionPropagator<K>> getExceptionPropagator() {
     return exceptionPropagator;
   }
-
-  /**
-   * @see Cache2kBuilder#exceptionPropagator(ExceptionPropagator)
-   */
-  public void setExceptionPropagator(@Nullable CustomizationSupplier<? extends ExceptionPropagator<K>> v) {
+  public void setExceptionPropagator( CustomizationSupplier<? extends ExceptionPropagator<K>> v) {
     exceptionPropagator = v;
   }
-
-  /**
-   * A set of listeners. Listeners added in this collection will be
-   * executed in a synchronous mode, meaning, further processing for
-   * an entry will stall until a registered listener is executed.
-   * The expiry will be always executed asynchronously.
-   *
-   * <p>A listener can be added by adding it to the collection.
-   * Duplicate (in terms of equal objects) listeners will be ignored.
-   *
-   * @return Mutable collection of listeners
-   */
-  public @NonNull
+  public 
   CustomizationCollection<CacheEntryOperationListener<K, V>> getListeners() {
     if (listeners == null) {
       listeners = new DefaultCustomizationCollection<CacheEntryOperationListener<K, V>>();
     }
     return listeners;
   }
-
-  /**
-   * @return True if listeners are added to this configuration.
-   */
   public boolean hasListeners() {
     return listeners != null && !listeners.isEmpty();
   }
-
-  /**
-   * Adds the collection of customizations to the existing list. This method is intended to
-   * improve integration with bean configuration mechanisms that use the set method and
-   * construct a set or list, like Springs' bean XML configuration.
-   */
   public void setListeners(
     Collection<CustomizationSupplier<CacheEntryOperationListener<K, V>>> c) {
     getListeners().addAll(c);
   }
-
-  /**
-   * A set of listeners. A listener can be added by adding it to the collection.
-   * Duplicate (in terms of equal objects) listeners will be ignored.
-   *
-   * @return Mutable collection of listeners
-   */
-  public @NonNull
+  public 
   CustomizationCollection<CacheEntryOperationListener<K, V>> getAsyncListeners() {
     if (asyncListeners == null) {
       asyncListeners = new DefaultCustomizationCollection<CacheEntryOperationListener<K, V>>();
     }
     return asyncListeners;
   }
-
-  /**
-   * @return True if listeners are added to this configuration.
-   */
   public boolean hasAsyncListeners() {
     return asyncListeners != null && !asyncListeners.isEmpty();
   }
-
-  /**
-   * Adds the collection of customizations to the existing list. This method is intended to
-   * improve integration with bean configuration mechanisms that use the set method and
-   * construct a set or list, like Springs' bean XML configuration.
-   */
   public void setAsyncListeners(
     Collection<CustomizationSupplier<CacheEntryOperationListener<K, V>>> c) {
     getAsyncListeners().addAll(c);
   }
-
-  /**
-   * A set of listeners. A listener can be added by adding it to the collection.
-   * Duplicate (in terms of equal objects) listeners will be ignored.
-   *
-   * @return Mutable collection of listeners
-   */
-  public @NonNull
+  public 
   Collection<CustomizationSupplier<? extends CacheLifecycleListener>> getLifecycleListeners() {
     if (lifecycleListeners == null) {
       lifecycleListeners = new DefaultCustomizationCollection<CacheLifecycleListener>();
@@ -510,178 +246,98 @@ public class Cache2kConfig<K, V>
     return (Collection<CustomizationSupplier<? extends CacheLifecycleListener>>) (Object)
       lifecycleListeners;
   }
-
-  /**
-   * @return True if listeners are added to this configuration.
-   */
   public boolean hasLifecycleListeners() {
     return lifecycleListeners != null && !lifecycleListeners.isEmpty();
   }
-
-  /**
-   * Adds the collection of customizations to the existing list. This method is intended to
-   * improve integration with bean configuration mechanisms that use the set method and
-   * construct a set or list, like Springs' bean XML configuration.
-   */
-  public void setLifecycleListeners(@NonNull Collection<CustomizationSupplier<? extends CacheLifecycleListener>> c) {
+  public void setLifecycleListeners( Collection<CustomizationSupplier<? extends CacheLifecycleListener>> c) {
     getLifecycleListeners().addAll(c);
   }
-
-  public @NonNull
+  public 
   Set<Feature> getFeatures() {
     if (features == null) {
       features = new HashSet<>();
     }
     return features;
   }
-
   public boolean hasFeatures() {
     return features != null && !features.isEmpty();
   }
-
-  public void setFeatures(@NonNull Set<? extends Feature> v) {
+  public void setFeatures( Set<? extends Feature> v) {
     getFeatures().addAll(v);
   }
-
-  public @Nullable CustomizationSupplier<? extends ResiliencePolicy<K, V>> getResiliencePolicy() {
+  public  CustomizationSupplier<? extends ResiliencePolicy<K, V>> getResiliencePolicy() {
     return resiliencePolicy;
   }
-
-  /**
-   * @see Cache2kBuilder#resiliencePolicy
-   */
-  public void setResiliencePolicy(@Nullable CustomizationSupplier<? extends ResiliencePolicy<K, V>> v) {
+  public void setResiliencePolicy( CustomizationSupplier<? extends ResiliencePolicy<K, V>> v) {
     resiliencePolicy = v;
   }
-
   public boolean isStrictEviction() {
     return strictEviction;
   }
-
-  /**
-   * @see Cache2kBuilder#strictEviction(boolean)
-   */
   public void setStrictEviction(boolean v) {
     strictEviction = v;
   }
-
   public boolean isPermitNullValues() {
     return permitNullValues;
   }
-
-  /**
-   * @see Cache2kBuilder#permitNullValues(boolean)
-   */
   public void setPermitNullValues(boolean v) {
     permitNullValues = v;
   }
-
   public boolean isDisableStatistics() {
     return disableStatistics;
   }
-
-  /**
-   * @see Cache2kBuilder#disableStatistics
-   */
   public void setDisableStatistics(boolean v) {
     disableStatistics = v;
   }
-
-  public @Nullable CustomizationSupplier<? extends Executor> getLoaderExecutor() {
+  public  CustomizationSupplier<? extends Executor> getLoaderExecutor() {
     return loaderExecutor;
   }
-
-  /**
-   * @see Cache2kBuilder#loaderExecutor(Executor)
-   */
-  public void setLoaderExecutor(@Nullable CustomizationSupplier<? extends Executor> v) {
+  public void setLoaderExecutor( CustomizationSupplier<? extends Executor> v) {
     loaderExecutor = v;
   }
-
   public boolean isRecordModificationTime() {
     return recordModificationTime;
   }
-
-  /**
-   * @see Cache2kBuilder#recordModificationTime
-   */
   public void setRecordModificationTime(boolean v) {
     recordModificationTime = v;
   }
-
-  public @Nullable CustomizationSupplier<? extends Executor> getRefreshExecutor() {
+  public  CustomizationSupplier<? extends Executor> getRefreshExecutor() {
     return refreshExecutor;
   }
-
-  /**
-   * @see Cache2kBuilder#refreshExecutor(Executor)
-   */
-  public void setRefreshExecutor(@Nullable CustomizationSupplier<? extends Executor> v) {
+  public void setRefreshExecutor( CustomizationSupplier<? extends Executor> v) {
     refreshExecutor = v;
   }
-
-  public @Nullable CustomizationSupplier<? extends Executor> getExecutor() {
+  public  CustomizationSupplier<? extends Executor> getExecutor() {
     return executor;
   }
-
-  /**
-   * @see Cache2kBuilder#executor(Executor)
-   */
-  public void setExecutor(@Nullable CustomizationSupplier<? extends Executor> v) {
+  public void setExecutor( CustomizationSupplier<? extends Executor> v) {
     executor = v;
   }
-
-  public @Nullable CustomizationSupplier<? extends Executor> getAsyncListenerExecutor() {
+  public  CustomizationSupplier<? extends Executor> getAsyncListenerExecutor() {
     return asyncListenerExecutor;
   }
-
-  /**
-   * @see Cache2kBuilder#asyncListenerExecutor(Executor)
-   */
-  public void setAsyncListenerExecutor(@Nullable CustomizationSupplier<? extends Executor> v) {
+  public void setAsyncListenerExecutor( CustomizationSupplier<? extends Executor> v) {
     asyncListenerExecutor = v;
   }
-
-  public @Nullable CustomizationSupplier<? extends Weigher<K, V>> getWeigher() {
+  public  CustomizationSupplier<? extends Weigher<K, V>> getWeigher() {
     return weigher;
   }
-
-  /**
-   * @see Cache2kBuilder#weigher(Weigher)
-   */
-  public void setWeigher(@Nullable CustomizationSupplier<? extends Weigher<K, V>> v) {
-    /*
-    if (entryCapacity >= 0) {
-      throw new IllegalArgumentException(
-        "entryCapacity already set, specifying a weigher is illegal");
-    }
-    */
+  public void setWeigher( CustomizationSupplier<? extends Weigher<K, V>> v) {
     weigher = v;
   }
-
   public boolean isBoostConcurrency() {
     return boostConcurrency;
   }
-
-  /**
-   * @see Cache2kBuilder#boostConcurrency(boolean)
-   */
   public void setBoostConcurrency(boolean v) {
     boostConcurrency = v;
   }
-
   public boolean isDisableMonitoring() {
     return disableMonitoring;
   }
-
-  /**
-   * @see Cache2kBuilder#disableMonitoring(boolean)
-   */
   public void setDisableMonitoring(boolean disableMonitoring) {
     this.disableMonitoring = disableMonitoring;
   }
-
-  private @Nullable Duration durationCheckAndSanitize(@Nullable Duration v) {
+  private  Duration durationCheckAndSanitize( Duration v) {
     if (v == null) {
       return null;
     }
@@ -693,12 +349,7 @@ public class Cache2kConfig<K, V>
     }
     return v;
   }
-
-  /**
-   * Creates a cache builder from the configuration.
-   */
   public Cache2kBuilder<K, V> builder() {
     return Cache2kBuilder.of(this);
   }
-
 }
