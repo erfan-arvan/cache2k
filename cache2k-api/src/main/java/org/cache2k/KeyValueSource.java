@@ -1,5 +1,5 @@
 package org.cache2k;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -20,8 +20,6 @@ package org.cache2k;
  * #L%
  */
 
-import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * Reduced interface to return a value selected by a key object. Cache users
  * of a read-through cache may choose this simple interface for requesting data
@@ -31,11 +29,10 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  */
 public interface KeyValueSource<K, V> extends DataAware<K, V> {
 
-  /**
-   * Returns a value associated with this key.
-   *
-   * @see Cache#get(Object)
-   */
-   V get(K key);
-
+    /**
+     * Returns a value associated with this key.
+     *
+     * @see Cache#get(Object)
+     */
+    V get(@Nullable() K key);
 }

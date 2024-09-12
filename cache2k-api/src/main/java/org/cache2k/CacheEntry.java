@@ -1,5 +1,5 @@
 package org.cache2k;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,8 +19,6 @@ package org.cache2k;
  * limitations under the License.
  * #L%
  */
-
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cache2k.io.CacheLoaderException;
 import org.cache2k.io.ExceptionPropagator;
 import org.cache2k.io.LoadExceptionInfo;
@@ -47,42 +45,42 @@ import org.cache2k.processor.MutableCacheEntry;
  */
 public interface CacheEntry<K, V> extends DataAware<K, V> {
 
-  /**
-   * Key associated with this entry.
-   */
-  K getKey();
+    /**
+     * Key associated with this entry.
+     */
+    K getKey();
 
-  /**
-   * Value of the entry. The value may be {@code null} if permitted for this cache
-   * via {@link Cache2kBuilder#permitNullValues(boolean)}. If the
-   * entry had a loader exception which is not suppressed, this exception will be
-   * propagated. This can be customized with
-   * {@link Cache2kBuilder#exceptionPropagator(ExceptionPropagator)}
-   *
-   * <p>For usage within the {@link org.cache2k.processor.EntryProcessor}:
-   * If a loader is present and the entry is not yet loaded or expired, a
-   * load is triggered. See the details at: {@link MutableCacheEntry#getValue()}
-   *
-   * @throws CacheLoaderException if loading produced an exception
-   */
-  V getValue();
+    /**
+     * Value of the entry. The value may be {@code null} if permitted for this cache
+     * via {@link Cache2kBuilder#permitNullValues(boolean)}. If the
+     * entry had a loader exception which is not suppressed, this exception will be
+     * propagated. This can be customized with
+     * {@link Cache2kBuilder#exceptionPropagator(ExceptionPropagator)}
+     *
+     * <p>For usage within the {@link org.cache2k.processor.EntryProcessor}:
+     * If a loader is present and the entry is not yet loaded or expired, a
+     * load is triggered. See the details at: {@link MutableCacheEntry#getValue()}
+     *
+     * @throws CacheLoaderException if loading produced an exception
+     */
+    V getValue();
 
-  /**
-   * The exception happened when the value was loaded and
-   * the exception could not be suppressed. {@code null} if no exception
-   * happened or it was suppressed. If {@code null} then {@link #getValue}
-   * returns a value and does not throw an exception.
-   */
-  default  Throwable getException() {
-    LoadExceptionInfo<K, V> info = getExceptionInfo();
-    return info != null ? info.getException() : null;
-  }
+    /**
+     * The exception happened when the value was loaded and
+     * the exception could not be suppressed. {@code null} if no exception
+     * happened or it was suppressed. If {@code null} then {@link #getValue}
+     * returns a value and does not throw an exception.
+     */
+    @Nullable()
+    default Throwable getException() {
+        LoadExceptionInfo<K, V> info = getExceptionInfo();
+        return info != null ? info.getException() : null;
+    }
 
-  /**
-   * Detailed information of latest exception from the loader or {@code null}
-   * if no exception happened or it was suppressed. If {@code null}
-   * then {@link #getValue} returns a value and does not throw an exception.
-   */
-   LoadExceptionInfo<K, V> getExceptionInfo();
-
+    /**
+     * Detailed information of latest exception from the loader or {@code null}
+     * if no exception happened or it was suppressed. If {@code null}
+     * then {@link #getValue} returns a value and does not throw an exception.
+     */
+    LoadExceptionInfo<K, V> getExceptionInfo();
 }

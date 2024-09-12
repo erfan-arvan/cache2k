@@ -1,5 +1,5 @@
 package org.cache2k.config;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,7 +19,6 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-
 /**
  * Feature that distinct type is only present once.
  *
@@ -28,4 +27,5 @@ package org.cache2k.config;
  *
  * @author Jens Wilke
  */
-public interface SingleFeature extends Feature { }
+public interface SingleFeature extends Feature {
+}

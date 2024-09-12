@@ -1,5 +1,6 @@
 package org.cache2k.io;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -42,12 +43,12 @@ public interface ResiliencePolicy<K, V> extends ExpiryTimeValues, DataAwareCusto
     @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull ResiliencePolicy<?, ?> DISABLED_POLICY = new ResiliencePolicy<Object, Object>() {
 
         @org.checkerframework.dataflow.qual.Pure
-        public  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull long suppressExceptionUntil(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Object key, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull LoadExceptionInfo<Object, Object> loadExceptionInfo, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CacheEntry<Object, Object> cachedEntry) {
+        public  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull long suppressExceptionUntil(Object key, LoadExceptionInfo<Object, Object> loadExceptionInfo, CacheEntry<Object, Object> cachedEntry) {
             return NOW;
         }
 
         @org.checkerframework.dataflow.qual.Pure
-        public  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull long retryLoadAfter(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Object key, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull LoadExceptionInfo<Object, Object> loadExceptionInfo) {
+        public  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull long retryLoadAfter(Object key, LoadExceptionInfo<Object, Object> loadExceptionInfo) {
             return NOW;
         }
     };

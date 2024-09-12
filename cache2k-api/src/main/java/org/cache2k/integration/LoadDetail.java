@@ -1,5 +1,5 @@
 package org.cache2k.integration;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -20,8 +20,6 @@ package org.cache2k.integration;
  * #L%
  */
 
-import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * @author Jens Wilke
  * @deprecated to be removed in version 2.2
@@ -29,26 +27,24 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 @Deprecated
 public abstract class LoadDetail<V> {
 
-  private Object value;
+    private Object value;
 
-  public LoadDetail(final Object valueOrWrapper) {
-    value = valueOrWrapper;
-  }
-
-  
-  public V getValue() {
-    if (value instanceof LoadDetail) {
-      return ((LoadDetail<V>) value).getValue();
+    public LoadDetail(final Object valueOrWrapper) {
+        value = valueOrWrapper;
     }
-    return (V) value;
-  }
 
-  
-  public  LoadDetail<V> getNextInChain() {
-    if (value instanceof LoadDetail) {
-      return ((LoadDetail<V>) value);
+    public V getValue() {
+        if (value instanceof LoadDetail) {
+            return ((LoadDetail<V>) value).getValue();
+        }
+        return (V) value;
     }
-    return null;
-  }
 
+    @Nullable()
+    public LoadDetail<V> getNextInChain() {
+        if (value instanceof LoadDetail) {
+            return ((LoadDetail<V>) value);
+        }
+        return null;
+    }
 }

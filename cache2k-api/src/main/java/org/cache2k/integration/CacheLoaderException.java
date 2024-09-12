@@ -1,5 +1,5 @@
 package org.cache2k.integration;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,7 +19,6 @@ package org.cache2k.integration;
  * limitations under the License.
  * #L%
  */
-
 /**
  * @author Jens Wilke
  * @deprecated Replaced with {@link org.cache2k.io.CacheLoaderException},
@@ -28,16 +27,15 @@ package org.cache2k.integration;
 @Deprecated
 public class CacheLoaderException extends org.cache2k.io.CacheLoaderException {
 
-  public CacheLoaderException(String message) {
-    super(message);
-  }
+    public CacheLoaderException(String message) {
+        super(message);
+    }
 
-  public CacheLoaderException(String message, Throwable ex) {
-    super(message, ex);
-  }
+    public CacheLoaderException(String message, Throwable ex) {
+        super(message, ex);
+    }
 
-  public CacheLoaderException(Throwable ex) {
-    super(ex);
-  }
-
+    public CacheLoaderException(Throwable ex) {
+        super(ex);
+    }
 }

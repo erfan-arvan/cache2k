@@ -5,7 +5,7 @@
  */
 @NonNullApi
 package org.cache2k.config;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -25,5 +25,5 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-
 import org.cache2k.annotation.NonNullApi;
+

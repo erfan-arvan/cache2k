@@ -1,5 +1,6 @@
 package org.cache2k;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,7 +20,6 @@ package org.cache2k;
  * limitations under the License.
  * #L%
  */
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cache2k.io.CacheLoaderException;
 import org.cache2k.io.ExceptionPropagator;
 import org.cache2k.io.LoadExceptionInfo;
@@ -76,7 +76,7 @@ public interface CacheEntry<K, V> extends DataAware<K, V> {
      * returns a value and does not throw an exception.
      */
     @org.checkerframework.dataflow.qual.Pure
-    default @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable Throwable getException() {
+    default Throwable getException() {
         LoadExceptionInfo<K, V> info = getExceptionInfo();
         return info != null ? info.getException() : null;
     }

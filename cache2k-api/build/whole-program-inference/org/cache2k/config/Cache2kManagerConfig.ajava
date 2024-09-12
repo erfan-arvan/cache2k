@@ -1,5 +1,7 @@
 package org.cache2k.config;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 /*
  * #%L
  * cache2k API
@@ -19,8 +21,6 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * Configuration options for a cache manager. The options can only be changed if a
  * XML file is provided. This bean is in the API artifact for documentation purposes.
@@ -29,8 +29,10 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  */
 public class Cache2kManagerConfig implements ConfigBean<Cache2kManagerConfig, Cache2kManagerConfig.Builder> {
 
+    @Nullable
     private String version = null;
 
+    @Nullable
     private String defaultManagerName = null;
 
     private boolean ignoreMissingCacheConfiguration = false;
@@ -50,6 +52,7 @@ public class Cache2kManagerConfig implements ConfigBean<Cache2kManagerConfig, Ca
         ignoreMissingCacheConfiguration = f;
     }
 
+    @Nullable()
     public String getDefaultManagerName() {
         return defaultManagerName;
     }
@@ -61,6 +64,7 @@ public class Cache2kManagerConfig implements ConfigBean<Cache2kManagerConfig, Ca
         defaultManagerName = v;
     }
 
+    @Nullable()
     public String getVersion() {
         return version;
     }

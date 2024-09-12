@@ -1,5 +1,6 @@
 package org.cache2k;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,7 +20,6 @@ package org.cache2k;
  * limitations under the License.
  * #L%
  */
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cache2k.expiry.ExpiryPolicy;
 import org.cache2k.expiry.ExpiryTimeValues;
 import org.cache2k.io.CacheLoader;
@@ -141,7 +141,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @throws CacheLoaderException if the loading produced an exception .
      */
     @Override
-    V get(K key);
+    V get(@Nullable() K key);
 
     /**
      * Returns an entry that contains the cache value associated with the given key.
@@ -169,7 +169,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @return An entry representing the cache mapping. Multiple calls for the same key may
      *          return different instances of the entry object.
      */
-    CacheEntry<K, V> getEntry(K key);
+    CacheEntry<K, V> getEntry(@Nullable() K key);
 
     /**
      * Returns the value associated to the given key.
@@ -193,7 +193,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      *         prevents it from being stored in this cache
      * @throws CacheLoaderException if the loading produced an exception .
      */
-    V peek(K key);
+    V peek(@Nullable() K key);
 
     /**
      * Returns an entry that contains the cache value associated with the given key.
@@ -216,7 +216,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @return An entry representing the cache mapping. Multiple calls for the same key may
      *          return different instances of the entry object.
      */
-    CacheEntry<K, V> peekEntry(K key);
+    CacheEntry<K, V> peekEntry(@Nullable() K key);
 
     /**
      * Returns {@code true}, if there is a mapping for the specified key.
@@ -231,7 +231,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      *         this cache
      * @throws NullPointerException if the specified key is null
      */
-    boolean containsKey(K key);
+    boolean containsKey(@Nullable() K key);
 
     /**
      * Inserts a new value associated with the given key or updates an
@@ -257,7 +257,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      *         by a {@link CacheWriter}
      */
     @Override
-    void put(K key, V value);
+    void put(@Nullable() K key, @Nullable() V value);
 
     /**
      * If the specified key is not already associated with a value (or exception),
@@ -303,7 +303,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @throws IllegalArgumentException if some property of the specified key
      *         or value prevents it from being stored in this cache
      */
-    V computeIfAbsent(K key, Callable<V> callable);
+    V computeIfAbsent(@Nullable() K key, @Nullable() Callable<V> callable);
 
     /**
      * If the specified key is not already associated
@@ -339,7 +339,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @throws IllegalArgumentException if some property of the specified key
      *         or value prevents it from being stored in this cache
      */
-    boolean putIfAbsent(K key, V value);
+    boolean putIfAbsent(@Nullable() K key, @Nullable() V value);
 
     /**
      * Replaces the entry for a key only if currently mapped to some value.
@@ -372,7 +372,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @throws CacheLoaderException if the loading of the entry produced
      *         an exception, which was not suppressed and is not yet expired
      */
-    V peekAndReplace(K key, V value);
+    V peekAndReplace(@Nullable() K key, @Nullable() V value);
 
     /**
      * Replaces the entry for a key only if currently mapped to some value.
@@ -405,7 +405,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @throws IllegalArgumentException if some property of the specified key
      *         or value prevents it from being stored in this cache.
      */
-    boolean replace(K key, V value);
+    boolean replace(@Nullable() K key, @Nullable() V value);
 
     /**
      * Replaces the entry for a key only if currently mapped to a given value.
@@ -431,7 +431,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @throws IllegalArgumentException if some property of a specified key
      *         or value prevents it from being stored in this map
      */
-    boolean replaceIfEquals(K key, V oldValue, V newValue);
+    boolean replaceIfEquals(@Nullable() K key, @Nullable() V oldValue, @Nullable() V newValue);
 
     /**
      * Removes the mapping for a key from the cache if it is present.
@@ -466,7 +466,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      *         the cache. This check is optional depending on the cache
      *         configuration.
      */
-    V peekAndRemove(K key);
+    V peekAndRemove(@Nullable() K key);
 
     /**
      * Removes the mapping for a key from the cache and returns {@code true} if it
@@ -479,7 +479,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      *         the cache. This check is optional depending on the cache
      *         configuration.
      */
-    boolean containsAndRemove(K key);
+    boolean containsAndRemove(@Nullable() K key);
 
     /**
      * Removes the mapping for a key from the cache if it is present.
@@ -504,7 +504,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @throws CacheWriterException if the writer call failed
      */
     @Override
-    void remove(K key);
+    void remove(@Nullable() K key);
 
     /**
      * Remove the mapping if the stored value is equal to the comparison value.
@@ -520,7 +520,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      *         this map
      * @return {@code true}, if mapping was removed
      */
-    boolean removeIfEquals(K key, V expectedValue);
+    boolean removeIfEquals(@Nullable() K key, @Nullable() V expectedValue);
 
     /**
      * Removes a set of keys. This has the same semantics of calling
@@ -531,7 +531,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @throws NullPointerException if a specified key is null
      */
     @Override
-    void removeAll(Iterable<? extends K> keys);
+    void removeAll(@Nullable() Iterable<? extends K> keys);
 
     /**
      * Updates an existing cache entry for the specified key, so it associates
@@ -574,7 +574,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @throws IllegalArgumentException if some property of the specified key
      *         or value prevents it from being stored in this cache.
      */
-    V peekAndPut(K key, V value);
+    V peekAndPut(@Nullable() K key, @Nullable() V value);
 
     /**
      * Updates an existing not expired mapping to expire at the given point in time.
@@ -602,7 +602,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @deprecated To be removed in 2.2. Use {@link #invoke(Object, EntryProcessor)}
      */
     @Deprecated
-    void expireAt(K key, long millis);
+    void expireAt(@Nullable() K key, @Nullable() long millis);
 
     /**
      * Asynchronously loads the given set of keys into the cache. Only missing or expired
@@ -624,7 +624,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @deprecated to be removed in 2.2
      */
     @Deprecated
-    void loadAll(Iterable<? extends K> keys, CacheOperationCompletionListener listener);
+    void loadAll(@Nullable() Iterable<? extends K> keys, @Nullable() CacheOperationCompletionListener listener);
 
     /**
      * Asynchronously loads the given set of keys into the cache. Always invokes load for all keys
@@ -646,7 +646,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @deprecated to be removed in 2.2
      */
     @Deprecated
-    void reloadAll(Iterable<? extends K> keys, CacheOperationCompletionListener listener);
+    void reloadAll(@Nullable() Iterable<? extends K> keys, @Nullable() CacheOperationCompletionListener listener);
 
     /**
      * Asynchronously loads the given set of keys into the cache. Only missing or expired
@@ -665,7 +665,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @return future getting notified on completion
      * @throws UnsupportedOperationException if no loader is defined
      */
-    CompletableFuture<Void> loadAll(Iterable<? extends K> keys);
+    CompletableFuture<Void> loadAll(@Nullable() Iterable<? extends K> keys);
 
     /**
      * Asynchronously loads the given set of keys into the cache. Always invokes load for all keys
@@ -684,7 +684,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @return future getting notified on completion
      * @throws UnsupportedOperationException if no loader is defined
      */
-    CompletableFuture<Void> reloadAll(Iterable<? extends K> keys);
+    CompletableFuture<Void> reloadAll(@Nullable() Iterable<? extends K> keys);
 
     /**
      * Invoke a user defined function on a cache entry.
@@ -701,7 +701,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @see EntryProcessor
      * @see org.cache2k.processor.MutableCacheEntry
      */
-    <R> R invoke(K key, EntryProcessor<K, V, R> processor);
+    <R> R invoke(@Nullable() K key, @Nullable() EntryProcessor<K, V, R> processor);
 
     /**
      * Invoke a user defined operation on a cache entry.
@@ -722,6 +722,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
         invoke(key, new EntryProcessor<K, V, Void>() {
 
             @Override
+            @Nullable()
             public Void process(MutableCacheEntry<K, V> entry) throws Exception {
                 mutator.mutate(entry);
                 return null;
@@ -746,7 +747,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @see EntryProcessor
      * @see org.cache2k.processor.MutableCacheEntry
      */
-    <R> Map<K, EntryProcessingResult<R>> invokeAll(Iterable<? extends K> keys, EntryProcessor<K, V, R> entryProcessor);
+    <R> Map<K, EntryProcessingResult<R>> invokeAll(@Nullable() Iterable<? extends K> keys, @Nullable() EntryProcessor<K, V, R> entryProcessor);
 
     /**
      * Invoke a user defined mutation operation on multiple cache entries specified by the
@@ -794,7 +795,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      *            Otherwise the exception is thrown when the key is requested.
      */
     @Override
-    Map<K, V> getAll(Iterable<? extends K> keys);
+    Map<K, V> getAll(@Nullable() Iterable<? extends K> keys);
 
     /**
      * Bulk version for {@link #peek(Object)}
@@ -814,7 +815,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @throws IllegalArgumentException if some property of the specified key
      *         prevents it from being stored in this cache
      */
-    Map<K, V> peekAll(Iterable<? extends K> keys);
+    Map<K, V> peekAll(@Nullable() Iterable<? extends K> keys);
 
     /**
      * Insert all elements of the map into the cache.
@@ -826,7 +827,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      * @throws NullPointerException if one of the specified keys is null
      */
     @Override
-    void putAll(Map<? extends K, ? extends V> valueMap);
+    void putAll(@Nullable() Map<? extends K, ? extends V> valueMap);
 
     /**
      * Iterate all keys in the cache.
@@ -913,7 +914,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
      *
      * @throws UnsupportedOperationException if interface is not available
      */
-    <T> T requestInterface(Class<T> type);
+    <T> T requestInterface(@Nullable() Class<T> type);
 
     /**
      * Returns a map interface for operating with this cache. Operations on the map

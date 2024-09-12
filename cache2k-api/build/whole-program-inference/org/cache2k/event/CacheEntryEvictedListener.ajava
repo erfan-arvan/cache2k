@@ -1,5 +1,6 @@
 package org.cache2k.event;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -37,5 +38,5 @@ public interface CacheEntryEvictedListener<K, V> extends CacheEntryOperationList
      * @param cache The cache that generated the event
      * @param entry Entry containing the recent data
      */
-    void onEntryEvicted(Cache<K, V> cache, CacheEntry<K, V> entry);
+    void onEntryEvicted(@Nullable() Cache<K, V> cache, @Nullable() CacheEntry<K, V> entry);
 }

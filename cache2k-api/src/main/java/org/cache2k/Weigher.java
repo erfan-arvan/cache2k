@@ -1,5 +1,5 @@
 package org.cache2k;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,7 +19,6 @@ package org.cache2k;
  * limitations under the License.
  * #L%
  */
-
 /**
  * Allows to give cached values a weight and limit the cache capacity by total weight.
  *
@@ -27,16 +26,15 @@ package org.cache2k;
  */
 public interface Weigher<K, V> extends DataAwareCustomization<K, V> {
 
-  /**
-   * Returns a weight for the given cached value. This will be called after a value is
-   * inserted or updated.
-   *
-   * <p>The cache implementations may derive an approximate value which has less precision.
-   * The total weight in the statistics represents an approximation as well.
-   *
-   * @return a positive long value representing the relative weight in comparison to the other
-   * entries in the cache.
-   */
-  int weigh(K key, V value);
-
+    /**
+     * Returns a weight for the given cached value. This will be called after a value is
+     * inserted or updated.
+     *
+     * <p>The cache implementations may derive an approximate value which has less precision.
+     * The total weight in the statistics represents an approximation as well.
+     *
+     * @return a positive long value representing the relative weight in comparison to the other
+     * entries in the cache.
+     */
+    int weigh(@Nullable() K key, @Nullable() V value);
 }

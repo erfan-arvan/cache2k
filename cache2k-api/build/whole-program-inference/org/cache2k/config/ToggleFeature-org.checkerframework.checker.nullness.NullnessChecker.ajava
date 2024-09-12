@@ -1,5 +1,6 @@
 package org.cache2k.config;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -20,7 +21,6 @@ package org.cache2k.config;
  * #L%
  */
 import org.cache2k.Cache2kBuilder;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import java.util.Iterator;
 
 /**
@@ -72,7 +72,7 @@ public abstract class ToggleFeature implements SingleFeature {
      * Returns the feature instance, if present.
      */
     @org.checkerframework.dataflow.qual.Impure
-    public static <T extends ToggleFeature> @org.checkerframework.checker.nullness.qual.Nullable T extract(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<?, ?> builder, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Class<T> featureType) {
+    public static <T extends ToggleFeature> T extract(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<?, ?> builder, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Class<T> featureType) {
         Iterator<Feature> it = builder.config().getFeatures().iterator();
         while (it.hasNext()) {
             Feature feature = it.next();
@@ -99,14 +99,14 @@ public abstract class ToggleFeature implements SingleFeature {
      * Check whether enabled and call implementations' doEnlist method.
      */
     @org.checkerframework.dataflow.qual.SideEffectFree
-    public final void enlist(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull ToggleFeature this, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CacheBuildContext<?, ?> ctx) {
+    public final void enlist(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull ToggleFeature this, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable CacheBuildContext<?, ?> ctx) {
         if (enabled) {
             doEnlist(ctx);
         }
     }
 
     @org.checkerframework.dataflow.qual.SideEffectFree
-    protected abstract void doEnlist(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CacheBuildContext<?, ?> ctx);
+    protected abstract void doEnlist(CacheBuildContext<?, ?> ctx);
 
     @org.checkerframework.dataflow.qual.Pure
     public final  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull boolean isEnabled() {

@@ -1,5 +1,5 @@
 package org.cache2k;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,7 +19,6 @@ package org.cache2k;
  * limitations under the License.
  * #L%
  */
-
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 /**
@@ -31,4 +30,5 @@ import org.checkerframework.checker.nullness.qual.NonNull;
  * @param <K> non null type for the cache key
  * @param <V> non null type for the cache value
  */
-public interface DataAware< K,  V> { }
+public interface DataAware<K, V> {
+}

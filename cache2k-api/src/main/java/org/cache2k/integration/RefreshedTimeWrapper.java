@@ -1,5 +1,5 @@
 package org.cache2k.integration;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,7 +19,6 @@ package org.cache2k.integration;
  * limitations under the License.
  * #L%
  */
-
 /**
  * @author Jens Wilke
  * @deprecated to be removed in version 2.2
@@ -27,18 +26,17 @@ package org.cache2k.integration;
 @Deprecated
 public final class RefreshedTimeWrapper<V> extends LoadDetail<V> {
 
-  private final long refreshTime;
+    private final long refreshTime;
 
-  /**
-   * Use {@link Loaders#wrapRefreshedTime(Object, long)}
-   */
-  public RefreshedTimeWrapper(final Object value, final long refreshTime) {
-    super(value);
-    this.refreshTime = refreshTime;
-  }
+    /**
+     * Use {@link Loaders#wrapRefreshedTime(Object, long)}
+     */
+    public RefreshedTimeWrapper(final Object value, final long refreshTime) {
+        super(value);
+        this.refreshTime = refreshTime;
+    }
 
-  public long getRefreshTime() {
-    return refreshTime;
-  }
-
+    public long getRefreshTime() {
+        return refreshTime;
+    }
 }

@@ -2,6 +2,8 @@
 [WARNING] 
 [WARNING] Some problems were encountered while building the effective model for org.cache2k:cache2k-api:jar:2.0-SNAPSHOT
 [WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.checkerframework:checker-qual:jar -> version 3.7.1 vs 3.45.1-SNAPSHOT @ line 52, column 17
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.checkerframework:checker-qual:jar -> version 3.7.1 vs 3.45.1-SNAPSHOT @ line 52, column 17
+[WARNING] 'parent.relativePath' of POM org.cache2k:cache2k-java11-parent:2.0-SNAPSHOT (/Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-java11-parent/pom.xml) points at org.cache2k:cache2k-api instead of org.cache2k:cache2k-parent, please verify your project structure @ org.cache2k:cache2k-java11-parent:2.0-SNAPSHOT, /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-java11-parent/pom.xml, line 5, column 11
 [WARNING] 
 [WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
 [WARNING] 
@@ -17,7 +19,7 @@
 [INFO] 
 [INFO] --- resources:3.1.0:resources (default-resources) @ cache2k-api ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/resources
+[INFO] skip non existing resourceDirectory /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/resources
 [INFO] 
 [INFO] --- compiler:3.11.0:compile (java-8-compile) @ cache2k-api ---
 [INFO] Compiling 95 source files with javac [forked debug release 8] to target/classes
@@ -27,53 +29,283 @@ WARNING: Illegal reflective access by org.checkerframework.javacutil.Resolver (f
 WARNING: Please consider reporting this to the maintainers of org.checkerframework.javacutil.Resolver
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-/Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[139,14] [nullness:method.invocation] call to withConfig(org.cache2k.config.Cache2kConfig<K,V>) not allowed on the given receiver.
+/Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/SectionContainer.java:[79,39] [keyfor:purity.not.sideeffectfree.call] call to side-effecting getClass().getSimpleName not allowed in side-effect-free method
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/SectionContainer.java:[79,39] [nullness:purity.not.sideeffectfree.call] call to side-effecting getClass().getSimpleName not allowed in side-effect-free method
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[51,19] [nullness:override.param] Incompatible parameter type for key.
+  found   : K[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: K[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    V extends @Initialized @Nullable Object get(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    V extends @Initialized @Nullable Object get(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[56,39] [nullness:override.param] Incompatible parameter type for key.
+  found   : K[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: K[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull CacheEntry<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> getEntry(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull CacheEntry<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> getEntry(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[61,20] [nullness:override.param] Incompatible parameter type for key.
+  found   : K[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: K[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    V extends @Initialized @Nullable Object peek(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    V extends @Initialized @Nullable Object peek(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[66,40] [nullness:override.param] Incompatible parameter type for key.
+  found   : K[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: K[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull CacheEntry<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> peekEntry(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull CacheEntry<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> peekEntry(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[71,33] [nullness:override.param] Incompatible parameter type for key.
+  found   : K[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: K[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean containsKey(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean containsKey(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[76,22] [nullness:override.param] Incompatible parameter type for key.
+  found   : K[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: K[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @NonNull void put(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @NonNull void put(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[76,29] [nullness:override.param] Incompatible parameter type for value.
+  found   : V[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: V[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @NonNull void put(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @NonNull void put(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[81,31] [nullness:override.param] Incompatible parameter type for key.
+  found   : K[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: K[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    V extends @Initialized @Nullable Object computeIfAbsent(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, @Initialized @Nullable Callable<V extends @Initialized @Nullable Object> p1)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    V extends @Initialized @Nullable Object computeIfAbsent(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, @Initialized @Nullable Callable<V extends @Initialized @Nullable Object> p1)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[86,33] [nullness:override.param] Incompatible parameter type for key.
+  found   : K[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: K[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean putIfAbsent(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean putIfAbsent(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[86,40] [nullness:override.param] Incompatible parameter type for value.
+  found   : V[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: V[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean putIfAbsent(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean putIfAbsent(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[91,30] [nullness:override.param] Incompatible parameter type for key.
+  found   : K[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: K[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    V extends @Initialized @Nullable Object peekAndReplace(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    V extends @Initialized @Nullable Object peekAndReplace(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[91,37] [nullness:override.param] Incompatible parameter type for value.
+  found   : V[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: V[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    V extends @Initialized @Nullable Object peekAndReplace(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    V extends @Initialized @Nullable Object peekAndReplace(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[96,29] [nullness:override.param] Incompatible parameter type for key.
+  found   : K[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: K[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean replace(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean replace(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[96,36] [nullness:override.param] Incompatible parameter type for value.
+  found   : V[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: V[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean replace(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean replace(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[101,37] [nullness:override.param] Incompatible parameter type for key.
+  found   : K[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: K[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean replaceIfEquals(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1, V extends @Initialized @Nullable Object p2)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean replaceIfEquals(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1, V extends @Initialized @Nullable Object p2)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[101,44] [nullness:override.param] Incompatible parameter type for oldValue.
+  found   : V[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: V[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean replaceIfEquals(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1, V extends @Initialized @Nullable Object p2)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean replaceIfEquals(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1, V extends @Initialized @Nullable Object p2)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[101,56] [nullness:override.param] Incompatible parameter type for newValue.
+  found   : V[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: V[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean replaceIfEquals(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1, V extends @Initialized @Nullable Object p2)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean replaceIfEquals(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1, V extends @Initialized @Nullable Object p2)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[106,29] [nullness:override.param] Incompatible parameter type for key.
+  found   : K[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: K[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    V extends @Initialized @Nullable Object peekAndRemove(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    V extends @Initialized @Nullable Object peekAndRemove(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[111,39] [nullness:override.param] Incompatible parameter type for key.
+  found   : K[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: K[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean containsAndRemove(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean containsAndRemove(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[116,25] [nullness:override.param] Incompatible parameter type for key.
+  found   : K[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: K[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @NonNull void remove(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @NonNull void remove(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[121,36] [nullness:override.param] Incompatible parameter type for key.
+  found   : K[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: K[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean removeIfEquals(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean removeIfEquals(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[121,43] [nullness:override.param] Incompatible parameter type for expectedValue.
+  found   : V[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: V[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean removeIfEquals(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @NonNull boolean removeIfEquals(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[131,26] [nullness:override.param] Incompatible parameter type for key.
+  found   : K[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: K[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    V extends @Initialized @Nullable Object peekAndPut(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    V extends @Initialized @Nullable Object peekAndPut(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[131,33] [nullness:override.param] Incompatible parameter type for value.
+  found   : V[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: V[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    V extends @Initialized @Nullable Object peekAndPut(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    V extends @Initialized @Nullable Object peekAndPut(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, V extends @Initialized @Nullable Object p1)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[136,27] [nullness:override.param] Incompatible parameter type for key.
+  found   : K[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: K[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @NonNull void expireAt(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, @Initialized @Nullable long p1)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @NonNull void expireAt(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, @Initialized @Nullable long p1)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[161,26] [nullness:override.param] Incompatible parameter type for key.
+  found   : K[ extends @Initialized @Nullable Object super @Initialized @NonNull Void]
+  required: K[ extends @Initialized @Nullable Object super @Initialized @Nullable Void]
+  Consequence: method in @Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    <R extends @Initialized @Nullable Object> R extends @Initialized @Nullable Object invoke(@Initialized @NonNull ForwardingCache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, @Initialized @Nullable EntryProcessor<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object, R extends @Initialized @Nullable Object> p1)
+  cannot override method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    <R extends @Initialized @Nullable Object> R extends @Initialized @Nullable Object invoke(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this, K extends @Initialized @Nullable Object p0, @Initialized @Nullable EntryProcessor<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object, R extends @Initialized @Nullable Object> p1)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[236,25] [nullness:type.argument] incompatible type argument for type parameter K of ConcurrentMap.
+  found   : K extends @Initialized @Nullable Object
+  required: @Initialized @NonNull Object
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[236,28] [nullness:type.argument] incompatible type argument for type parameter V of ConcurrentMap.
+  found   : V extends @Initialized @Nullable Object
+  required: @Initialized @NonNull Object
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[245,44] [keyfor:purity.not.sideeffectfree.call] call to side-effecting this.getClass().getSimpleName not allowed in side-effect-free method
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[245,44] [nullness:purity.not.sideeffectfree.call] call to side-effecting this.getClass().getSimpleName not allowed in side-effect-free method
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/Cache.java:[604,49] [nullness:nullness.on.primitive] nullness annotations are not applicable to primitive types
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/Cache.java:[725,56] [nullness:override.param] Incompatible parameter type for entry.
+  found   : @Initialized @NonNull MutableCacheEntry<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+  required: @Initialized @Nullable MutableCacheEntry<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+  Consequence: method in @Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>.@Initialized @NonNull <anonymous org.cache2k.Cache$1>
+    @Initialized @Nullable Void process(@Initialized @NonNull Cache<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>.@Initialized @NonNull <anonymous org.cache2k.Cache$1> this, @Initialized @NonNull MutableCacheEntry<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> p0) throws @Initialized @NonNull Exception
+  cannot override method in @Initialized @NonNull EntryProcessor<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object, @Initialized @Nullable Void>
+    @Initialized @Nullable Void process(@Initialized @NonNull EntryProcessor<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object, @Initialized @Nullable Void> this, @Initialized @Nullable MutableCacheEntry<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> p0) throws @Initialized @NonNull Exception
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/Cache.java:[936,18] [nullness:type.argument] incompatible type argument for type parameter K of ConcurrentMap.
+  found   : K extends @Initialized @Nullable Object
+  required: @Initialized @NonNull Object
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/Cache.java:[936,21] [nullness:type.argument] incompatible type argument for type parameter V of ConcurrentMap.
+  found   : V extends @Initialized @Nullable Object
+  required: @Initialized @NonNull Object
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/CacheEntry.java:[75,22] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [default]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/CacheEntry.java:[75,22] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [default]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[92,21] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[92,21] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[95,21] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[95,21] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[148,71] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[148,71] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[151,71] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[151,71] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[154,70] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[154,70] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[157,25] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[157,25] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[160,29] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[160,29] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[288,20] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[288,20] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[311,20] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[311,20] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[375,11] [nullness:override.return] Incompatible return type.
+  found   : @Initialized @Nullable SectionContainer
+  required: @Initialized @NonNull SectionContainer
+  Consequence: method in @Initialized @NonNull Cache2kConfig<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object>
+    @Initialized @Nullable SectionContainer getSections(@Initialized @NonNull Cache2kConfig<K extends @Initialized @Nullable Object, V extends @Initialized @Nullable Object> this)
+  cannot override method in @Initialized @NonNull ConfigWithSections
+    @Initialized @NonNull SectionContainer getSections(@Initialized @NonNull ConfigWithSections this)
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[375,28] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[375,28] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[388,19] [nullness:dereference.of.nullable] dereference of possibly-null reference getSections()
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[482,70] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[482,70] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[493,11] [nullness:nullness.on.primitive] nullness annotations are not applicable to primitive types
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[493,19] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[493,19] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[503,20] [nullness:dereference.of.nullable] dereference of possibly-null reference getListeners()
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[513,70] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[513,70] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[524,11] [nullness:nullness.on.primitive] nullness annotations are not applicable to primitive types
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[524,19] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[524,19] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[534,25] [nullness:dereference.of.nullable] dereference of possibly-null reference getAsyncListeners()
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[544,79] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[544,79] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[555,11] [nullness:nullness.on.primitive] nullness annotations are not applicable to primitive types
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[555,19] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[555,19] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[565,29] [nullness:dereference.of.nullable] dereference of possibly-null reference getLifecycleListeners()
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[569,24] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[569,24] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[577,11] [nullness:nullness.on.primitive] nullness annotations are not applicable to primitive types
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[577,19] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[577,19] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [public]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/config/Cache2kConfig.java:[582,19] [nullness:dereference.of.nullable] dereference of possibly-null reference getFeatures()
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[126,25] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[126,25] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[129,25] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[129,25] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[132,32] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[132,32] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[135,25] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[135,25] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[138,18] [nullness:method.invocation] call to withConfig(org.cache2k.config.Cache2kConfig<K,V>) not allowed on the given receiver.
   found   : @UnderInitialization(org.cache2k.Cache2kBuilder.class) @NonNull Cache2kBuilder</*RAW*/>
   required: @Initialized @NonNull Cache2kBuilder</*RAW*/>
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[1019,35] [nullness:contracts.precondition.override] Subclass precondition is stronger for 'this.config' in config.
-    In superclass org.cache2k.config.ConfigBuilder: no information
-    In subclass org.cache2k.Cache2kBuilder: @Nullable
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/Cache.java:[937,16] [nullness:type.argument] incompatible type argument for type parameter K of ConcurrentMap.
-  found   : K extends @Initialized @Nullable Object
-  required: @Initialized @NonNull Object
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/Cache.java:[937,19] [nullness:type.argument] incompatible type argument for type parameter V of ConcurrentMap.
-  found   : V extends @Initialized @Nullable Object
-  required: @Initialized @NonNull Object
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/config/SectionContainer.java:[84,35] [keyfor:purity.not.sideeffectfree.call] call to side-effecting getClass().getSimpleName not allowed in side-effect-free method
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/config/SectionContainer.java:[84,35] [nullness:purity.not.sideeffectfree.call] call to side-effecting getClass().getSimpleName not allowed in side-effect-free method
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/config/CustomizationReferenceSupplier.java:[44,27] [nullness:argument] incompatible argument for parameter arg0 of Objects.requireNonNull.
-  found   : T extends @Initialized @Nullable Object
-  required: T extends @Initialized @NonNull Object
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/config/ToggleFeature.java:[82,15] [nullness:return] incompatible types in return.
-  type of expression: T extends @Initialized @NonNull ToggleFeature
-  method return type: T extends @Initialized @Nullable ToggleFeature
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/config/ToggleFeature.java:[150,35] [keyfor:purity.not.sideeffectfree.call] call to side-effecting getClass().getSimpleName not allowed in side-effect-free method
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/config/ToggleFeature.java:[150,35] [nullness:purity.not.sideeffectfree.call] call to side-effecting getClass().getSimpleName not allowed in side-effect-free method
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/config/DefaultCustomizationCollection.java:[68,35] [keyfor:purity.not.sideeffectfree.call] call to side-effecting getClass().getSimpleName not allowed in side-effect-free method
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/config/DefaultCustomizationCollection.java:[68,35] [nullness:purity.not.sideeffectfree.call] call to side-effecting getClass().getSimpleName not allowed in side-effect-free method
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[243,23] [nullness:type.argument] incompatible type argument for type parameter K of ConcurrentMap.
-  found   : K extends @Initialized @Nullable Object
-  required: @Initialized @NonNull Object
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[243,26] [nullness:type.argument] incompatible type argument for type parameter V of ConcurrentMap.
-  found   : V extends @Initialized @Nullable Object
-  required: @Initialized @NonNull Object
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[252,40] [keyfor:purity.not.sideeffectfree.call] call to side-effecting this.getClass().getSimpleName not allowed in side-effect-free method
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/ForwardingCache.java:[252,40] [nullness:purity.not.sideeffectfree.call] call to side-effecting this.getClass().getSimpleName not allowed in side-effect-free method
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/integration/Loaders.java:[43,39] [nullness:argument] incompatible argument for parameter value of RefreshedTimeWrapper constructor.
-  found   : V extends @Initialized @Nullable Object
-  required: @Initialized @NonNull Object
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/config/CacheTypeCapture.java:[51,6] [nullness:dereference.of.nullable] dereference of possibly-null reference ((ParameterizedType)this.getClass().getGenericSuperclass())
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/config/CacheTypeCapture.java:[130,54] [keyfor:purity.not.sideeffectfree.call] call to side-effecting getTypeName not allowed in side-effect-free method
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/config/CacheTypeCapture.java:[130,54] [nullness:purity.not.sideeffectfree.call] call to side-effecting getTypeName not allowed in side-effect-free method
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/config/CacheTypeCapture.java:[156,10] [nullness:dereference.of.nullable] dereference of possibly-null reference s
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/config/CacheTypeCapture.java:[210,13] [nullness:dereference.of.nullable] dereference of possibly-null reference td
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/config/CacheTypeCapture.java:[219,13] [nullness:dereference.of.nullable] dereference of possibly-null reference td
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/AbstractCache.java:[232,23] [nullness:type.argument] incompatible type argument for type parameter K of ConcurrentMap.
-  found   : K extends @Initialized @Nullable Object
-  required: @Initialized @NonNull Object
-[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_wpi_without_s_cache2k-CFNullness/cache2k-api/src/main/java/org/cache2k/AbstractCache.java:[232,26] [nullness:type.argument] incompatible type argument for type parameter V of ConcurrentMap.
-  found   : V extends @Initialized @Nullable Object
-  required: @Initialized @NonNull Object
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[180,32] [keyfor:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[180,32] [nullness:type.anno.before.modifier] write type annotation @Nullable() immediately before type, after modifiers [private]
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[219,14] [nullness:dereference.of.nullable] dereference of possibly-null reference me.cfg()
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[231,14] [nullness:dereference.of.nullable] dereference of possibly-null reference me.cfg()
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[244,14] [nullness:dereference.of.nullable] dereference of possibly-null reference me.cfg()
+[WARNING] /Users/erfanarvan/Desktop/comparisonPaper/wpi-njr-debug/dataset/post_cache2k_CFNullness/cache2k-api/src/main/java/org/cache2k/Cache2kBuilder.java:[256,14] [nullness:dereference.of.nullable] dereference of possibly-null reference me.cfg()
 [INFO] 
 [INFO] --- compiler:3.11.0:compile (java-11-compile) @ cache2k-api ---
 [WARNING] ***************************************************************************************************************************************************************************
@@ -84,6 +316,6 @@ WARNING: All illegal access operations will be denied in a future release
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  12.559 s
-[INFO] Finished at: 2024-08-18T02:17:02-04:00
+[INFO] Total time:  10.802 s
+[INFO] Finished at: 2024-09-12T18:33:07-04:00
 [INFO] ------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 package org.cache2k.processor;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,7 +19,6 @@ package org.cache2k.processor;
  * limitations under the License.
  * #L%
  */
-
 import org.cache2k.DataAware;
 
 /**
@@ -30,9 +29,8 @@ import org.cache2k.DataAware;
  */
 public interface EntryMutator<K, V> extends DataAware<K, V> {
 
-  /**
-   * @see EntryProcessor#process(MutableCacheEntry)
-   */
-  void mutate(MutableCacheEntry<K, V> entry) throws Exception;
-
+    /**
+     * @see EntryProcessor#process(MutableCacheEntry)
+     */
+    void mutate(@Nullable() MutableCacheEntry<K, V> entry) throws Exception;
 }

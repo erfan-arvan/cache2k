@@ -1,5 +1,5 @@
 package org.cache2k.annotation;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,10 +19,8 @@ package org.cache2k.annotation;
  * limitations under the License.
  * #L%
  */
-
 import kotlin.annotations.jvm.MigrationStatus;
 import kotlin.annotations.jvm.UnderMigration;
-
 import javax.annotation.Nonnull;
 import javax.annotation.meta.TypeQualifierDefault;
 import java.lang.annotation.Documented;
@@ -50,10 +48,10 @@ import java.lang.annotation.Target;
  * @see <a href="https://youtrack.jetbrains.com/issue/IDEA-144920"/>
  * @see <a href="https://youtrack.jetbrains.com/issue/KT-21408"/>
  */
-@Target(value = {ElementType.PACKAGE, ElementType.TYPE})
+@Target(value = { ElementType.PACKAGE, ElementType.TYPE })
 @Retention(value = RetentionPolicy.CLASS)
 @Documented
-
-@TypeQualifierDefault(value = {ElementType.METHOD, ElementType.PARAMETER})
+@TypeQualifierDefault(value = { ElementType.METHOD, ElementType.PARAMETER })
 @UnderMigration(status = MigrationStatus.STRICT)
-public @interface NonNullApi { }
+public @interface NonNullApi {
+}

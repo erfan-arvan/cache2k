@@ -1,5 +1,5 @@
 package org.cache2k.processor;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,10 +19,8 @@ package org.cache2k.processor;
  * limitations under the License.
  * #L%
  */
-
 import org.cache2k.DataAware;
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * An invokable function to perform an atomic operation on a cache entry. The entry
@@ -67,24 +65,23 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  * @see org.cache2k.Cache#invokeAll
  */
 @FunctionalInterface
-public interface EntryProcessor<K, V,  R> extends DataAware<K, V> {
+public interface EntryProcessor<K, V, R> extends DataAware<K, V> {
 
-  /**
-   * Examines or mutates an entry.
-   *
-   * <p><b>Important:</b> The method must not have any side effects except on the processed entry.
-   * For one call to {@link org.cache2k.Cache#invoke} the method might be called several times.
-   * Some methods of {@link MutableCacheEntry} throw exceptions that are consumed by the
-   * cache to do asynchronous processing.
-   *
-   * <p>The cache is only modified, if the method completes without exception.
-   *
-   * @param entry the entry to examine or mutate. The reference is only valid within a method call
-   * @return a user defined result, that will be passed through and returned
-   * @throws Exception an arbitrary exception that will be wrapped into a
-   *         {@link EntryProcessingException}.
-   *         If an exception happens, the cache content will not be altered.
-   */
-   R process(MutableCacheEntry<K, V> entry) throws Exception;
-
+    /**
+     * Examines or mutates an entry.
+     *
+     * <p><b>Important:</b> The method must not have any side effects except on the processed entry.
+     * For one call to {@link org.cache2k.Cache#invoke} the method might be called several times.
+     * Some methods of {@link MutableCacheEntry} throw exceptions that are consumed by the
+     * cache to do asynchronous processing.
+     *
+     * <p>The cache is only modified, if the method completes without exception.
+     *
+     * @param entry the entry to examine or mutate. The reference is only valid within a method call
+     * @return a user defined result, that will be passed through and returned
+     * @throws Exception an arbitrary exception that will be wrapped into a
+     *         {@link EntryProcessingException}.
+     *         If an exception happens, the cache content will not be altered.
+     */
+    R process(@Nullable() MutableCacheEntry<K, V> entry) throws Exception;
 }

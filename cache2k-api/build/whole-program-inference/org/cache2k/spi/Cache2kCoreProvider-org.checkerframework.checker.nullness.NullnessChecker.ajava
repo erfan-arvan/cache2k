@@ -1,5 +1,6 @@
 package org.cache2k.spi;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -36,19 +37,19 @@ public interface Cache2kCoreProvider {
      * @see CacheManager#setDefaultName(String)
      */
     @org.checkerframework.dataflow.qual.SideEffectFree
-    void setDefaultManagerName(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull ClassLoader cl, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String s);
+    void setDefaultManagerName(ClassLoader cl, String s);
 
     /**
      * @see CacheManager#getDefaultName()
      */
     @org.checkerframework.dataflow.qual.Pure
-    String getDefaultManagerName(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull ClassLoader cl);
+    String getDefaultManagerName(ClassLoader cl);
 
     /**
      * @see CacheManager#getInstance(ClassLoader, String)
      */
     @org.checkerframework.dataflow.qual.Pure
-    CacheManager getManager(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull ClassLoader cl, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String name);
+    CacheManager getManager(ClassLoader cl, String name);
 
     /**
      * Default class loader, this is the class loader used to load the cache implementation.
@@ -66,19 +67,19 @@ public interface Cache2kCoreProvider {
      * Close all cache manager associated to this class loader.
      */
     @org.checkerframework.dataflow.qual.SideEffectFree
-    void close(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull ClassLoader l);
+    void close(ClassLoader l);
 
     /**
      * Close a specific cache manager by its name.
      */
     @org.checkerframework.dataflow.qual.SideEffectFree
-    void close(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull ClassLoader l, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String managerName);
+    void close(ClassLoader l, String managerName);
 
     /**
      * Create a cache, apply external configuration before creating it.
      */
     @org.checkerframework.dataflow.qual.Pure
-    <K, V> Cache<K, V> createCache(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CacheManager m, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kConfig<K, V> cfg);
+    <K, V> Cache<K, V> createCache(CacheManager m, Cache2kConfig<K, V> cfg);
 
     /**
      * Return the effective default configuration for this manager. A different default
@@ -88,7 +89,7 @@ public interface Cache2kCoreProvider {
      *         never {@code null}
      */
     @org.checkerframework.dataflow.qual.Pure
-    Cache2kConfig getDefaultConfig(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CacheManager m);
+    Cache2kConfig getDefaultConfig(CacheManager m);
 
     /**
      * @since 2

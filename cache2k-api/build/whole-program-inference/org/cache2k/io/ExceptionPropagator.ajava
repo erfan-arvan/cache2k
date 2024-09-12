@@ -1,5 +1,6 @@
 package org.cache2k.io;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -21,7 +22,6 @@ package org.cache2k.io;
  */
 import org.cache2k.Customization;
 import org.cache2k.DataAwareCustomization;
-import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * In read through mode exceptions are cached. Every time an entry is requested from the
@@ -62,5 +62,5 @@ public interface ExceptionPropagator<K, V> extends DataAwareCustomization<K, V> 
      * @param loadExceptionInfo information of original exception and
      *                             when the original exception occurred.
      */
-    RuntimeException propagateException(LoadExceptionInfo<K, V> loadExceptionInfo);
+    RuntimeException propagateException(@Nullable() LoadExceptionInfo<K, V> loadExceptionInfo);
 }

@@ -1,5 +1,5 @@
 package org.cache2k.config;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,10 +19,7 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
-
 import java.util.Objects;
 
 /**
@@ -31,40 +28,39 @@ import java.util.Objects;
  *
  * @author Jens Wilke
  */
-public final class CustomizationReferenceSupplier< T> implements CustomizationSupplier<T> {
+public final class CustomizationReferenceSupplier<T> implements CustomizationSupplier<T> {
 
-  private final  T object;
+    private final T object;
 
-  /**
-   * Construct a customization factory that returns always the same object instance.
-   *
-   * @param obj reference to a customization. Not null.
-   */
-  public CustomizationReferenceSupplier( T obj) {
-    Objects.requireNonNull(obj);
-    object = obj;
-  }
-
-  @Override
-  public T supply(CacheBuildContext ignored) {
-    return object;
-  }
-
-  @Override
-  public boolean equals( Object other) {
-    if (this == other) {
-      return true;
+    /**
+     * Construct a customization factory that returns always the same object instance.
+     *
+     * @param obj reference to a customization. Not null.
+     */
+    public CustomizationReferenceSupplier(T obj) {
+        Objects.requireNonNull(obj);
+        object = obj;
     }
-    if (!(other instanceof CustomizationReferenceSupplier)) {
-      return false;
+
+    @Override
+    public T supply(@Nullable() CacheBuildContext ignored) {
+        return object;
     }
-    CustomizationReferenceSupplier<?> obj = (CustomizationReferenceSupplier<?>) other;
-    return object.equals(obj.object);
-  }
 
-  @Override
-  public int hashCode() {
-    return object.hashCode();
-  }
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (!(other instanceof CustomizationReferenceSupplier)) {
+            return false;
+        }
+        CustomizationReferenceSupplier<?> obj = (CustomizationReferenceSupplier<?>) other;
+        return object.equals(obj.object);
+    }
 
+    @Override
+    public int hashCode() {
+        return object.hashCode();
+    }
 }

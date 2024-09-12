@@ -1,5 +1,6 @@
 package org.cache2k.operation;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API

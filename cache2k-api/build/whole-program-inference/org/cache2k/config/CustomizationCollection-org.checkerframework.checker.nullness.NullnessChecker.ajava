@@ -1,5 +1,6 @@
 package org.cache2k.config;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -41,7 +42,7 @@ public interface CustomizationCollection<T> extends Collection<CustomizationSupp
      * @throws IllegalArgumentException if the entry is already existing.
      */
     @org.checkerframework.dataflow.qual.Impure
-     @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull boolean add(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CustomizationSupplier<T> e);
+     @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull boolean add(CustomizationSupplier<T> e);
 
     /**
      * Adds all customizations to the collection.
@@ -50,5 +51,5 @@ public interface CustomizationCollection<T> extends Collection<CustomizationSupp
      * @throws IllegalArgumentException if an entry is already existing.
      */
     @org.checkerframework.dataflow.qual.Pure
-    boolean addAll(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Collection<? extends CustomizationSupplier<T>> c);
+    boolean addAll(Collection<? extends CustomizationSupplier<T>> c);
 }

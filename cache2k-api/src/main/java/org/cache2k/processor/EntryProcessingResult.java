@@ -1,5 +1,5 @@
 package org.cache2k.processor;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -20,8 +20,6 @@ package org.cache2k.processor;
  * #L%
  */
 
-import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * Result tuple for {@code Cache.invokeAll()}.
  *
@@ -29,19 +27,18 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  * @see org.cache2k.Cache#invokeAll
  * @author Jens Wilke
  */
-public interface EntryProcessingResult< R> {
+public interface EntryProcessingResult<R> {
 
-  /**
-   * Result of entry processing.
-   *
-   * @throws EntryProcessingException if an exception occurred during processing.
-   */
-  R getResult();
+    /**
+     * Result of entry processing.
+     *
+     * @throws EntryProcessingException if an exception occurred during processing.
+     */
+    R getResult();
 
-  /**
-   * Original exception of entry processing or {@code null} if no exception occurred.
-   * If this is {@code null}, {@link #getResult} will throw no exception.
-   */
-  Throwable getException();
-
+    /**
+     * Original exception of entry processing or {@code null} if no exception occurred.
+     * If this is {@code null}, {@link #getResult} will throw no exception.
+     */
+    Throwable getException();
 }

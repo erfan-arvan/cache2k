@@ -1,5 +1,5 @@
 package org.cache2k.config;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,7 +19,6 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-
 /**
  * A configuration section. Additional sections can be added to the main configuration
  * via {@link Cache2kConfig#getSections()}. Each section might contain sections as well.
@@ -27,10 +26,7 @@ package org.cache2k.config;
  *
  * @author Jens Wilke
  */
-public interface ConfigSection
-  <SELF extends ConfigSection<SELF, B>, B extends SectionBuilder<B, SELF>>
-  extends ConfigBean<SELF, B> {
+public interface ConfigSection<SELF extends ConfigSection<SELF, B>, B extends SectionBuilder<B, SELF>> extends ConfigBean<SELF, B> {
 
-  B builder();
-
+    B builder();
 }

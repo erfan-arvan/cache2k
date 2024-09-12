@@ -1,5 +1,6 @@
 package org.cache2k;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,7 +20,6 @@ package org.cache2k;
  * limitations under the License.
  * #L%
  */
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cache2k.expiry.ExpiryPolicy;
 import org.cache2k.expiry.ExpiryTimeValues;
 import org.cache2k.io.CacheLoader;
@@ -740,8 +740,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
     default void mutate( Cache<K, V> this, K key,  EntryMutator<K, V> mutator) {
         invoke(key, new EntryProcessor<K, V, Void>() {
 
-            @org.checkerframework.dataflow.qual.Pure
-            public Void process( MutableCacheEntry<K, V> entry) throws Exception {
+            public Void process(MutableCacheEntry<K, V> entry) throws Exception {
                 mutator.mutate(entry);
                 return null;
             }

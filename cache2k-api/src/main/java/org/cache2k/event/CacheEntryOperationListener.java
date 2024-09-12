@@ -1,5 +1,5 @@
 package org.cache2k.event;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,9 +19,7 @@ package org.cache2k.event;
  * limitations under the License.
  * #L%
  */
-
 import org.cache2k.DataAware;
-
 import java.util.EventListener;
 
 /**

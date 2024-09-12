@@ -1,5 +1,5 @@
 package org.cache2k.config;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,10 +19,7 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-
 import org.cache2k.Cache2kBuilder;
-import org.checkerframework.checker.nullness.qual.Nullable;
-
 import java.util.Iterator;
 
 /**
@@ -39,114 +36,111 @@ import java.util.Iterator;
  */
 public abstract class ToggleFeature implements SingleFeature {
 
-  /**
-   * Enable the feature in the main configuration. If the feature is
-   * already existing it is replaced by a newly created one.
-   *
-   * @return the created feature to set additional parameters
-   */
-  public static <T extends ToggleFeature> T enable(Cache2kBuilder<?, ?> builder,
-                                                   Class<T> featureType) {
-    try {
-      T feature = featureType.getConstructor().newInstance();
-      builder.config().getFeatures().add(feature);
-      return feature;
-    } catch (Exception e) {
-      throw new LinkageError("Instantiation failed", e);
+    /**
+     * Enable the feature in the main configuration. If the feature is
+     * already existing it is replaced by a newly created one.
+     *
+     * @return the created feature to set additional parameters
+     */
+    public static <T extends ToggleFeature> T enable(Cache2kBuilder<?, ?> builder, Class<T> featureType) {
+        try {
+            T feature = featureType.getConstructor().newInstance();
+            builder.config().getFeatures().add(feature);
+            return feature;
+        } catch (Exception e) {
+            throw new LinkageError("Instantiation failed", e);
+        }
     }
-  }
 
-  /**
-   * Disable the feature by removing it from the configuration.
-   */
-  public static void disable(Cache2kBuilder<?, ?> builder,
-                            Class<? extends ToggleFeature> featureType) {
-    Iterator<Feature> it = builder.config().getFeatures().iterator();
-    while (it.hasNext()) {
-      if (it.next().getClass().equals(featureType)) {
-        it.remove();
-      }
+    /**
+     * Disable the feature by removing it from the configuration.
+     */
+    public static void disable(Cache2kBuilder<?, ?> builder, Class<? extends ToggleFeature> featureType) {
+        Iterator<Feature> it = builder.config().getFeatures().iterator();
+        while (it.hasNext()) {
+            if (it.next().getClass().equals(featureType)) {
+                it.remove();
+            }
+        }
     }
-  }
 
-  /**
-   * Returns the feature instance, if present.
-   */
-  
-  public static <T extends ToggleFeature>  T extract(Cache2kBuilder<?, ?> builder,
-                                                              Class<T> featureType) {
-    Iterator<Feature> it = builder.config().getFeatures().iterator();
-    while (it.hasNext()) {
-      Feature feature = it.next();
-      if (feature.getClass().equals(featureType)) {
-        return (T) feature;
-      }
+    /**
+     * Returns the feature instance, if present.
+     */
+    @Nullable()
+    public static <T extends ToggleFeature> T extract(Cache2kBuilder<?, ?> builder, Class<T> featureType) {
+        Iterator<Feature> it = builder.config().getFeatures().iterator();
+        while (it.hasNext()) {
+            Feature feature = it.next();
+            if (feature.getClass().equals(featureType)) {
+                return (T) feature;
+            }
+        }
+        return null;
     }
-    return null;
-  }
 
-  /**
-   * Returns true if the feature is enabled. Meaning, the feature instance is present
-   * and enabled.
-   */
-  
-  public static boolean isEnabled(Cache2kBuilder<?, ?> builder,
-                                  Class<? extends ToggleFeature> featureType) {
-    ToggleFeature f = extract(builder, featureType);
-    return f != null ? f.isEnabled() : false;
-  }
-
-  private boolean enabled = true;
-
-  /**
-   * Check whether enabled and call implementations' doEnlist method.
-   */
-  @Override
-  public final void enlist(CacheBuildContext<?, ?> ctx) {
-    if (enabled) {
-      doEnlist(ctx);
+    /**
+     * Returns true if the feature is enabled. Meaning, the feature instance is present
+     * and enabled.
+     */
+    public static boolean isEnabled(Cache2kBuilder<?, ?> builder, Class<? extends ToggleFeature> featureType) {
+        ToggleFeature f = extract(builder, featureType);
+        return f != null ? f.isEnabled() : false;
     }
-  }
 
-  protected abstract void doEnlist(CacheBuildContext<?, ?> ctx);
+    private boolean enabled = true;
 
-  public final boolean isEnabled() {
-    return enabled;
-  }
+    /**
+     * Check whether enabled and call implementations' doEnlist method.
+     */
+    @Override
+    public final void enlist(CacheBuildContext<?, ?> ctx) {
+        if (enabled) {
+            doEnlist(ctx);
+        }
+    }
 
-  public final void setEnabled(boolean v) {
-    this.enabled = v;
-  }
+    protected abstract void doEnlist(@Nullable() CacheBuildContext<?, ?> ctx);
 
-  /**
-   * Alternate setter for spelling flexibility in XML configuration.
-   */
-  public final void setEnable(boolean v) {
-    this.enabled = v;
-  }
+    public final boolean isEnabled() {
+        return enabled;
+    }
 
-  /**
-   * Identical if its the same implementation class.
-   */
-  @Override
-  public final boolean equals( Object o) {
-    if (o == null) { return false; }
-    return getClass().equals(o.getClass());
-  }
+    public final void setEnabled(boolean v) {
+        this.enabled = v;
+    }
 
-  /**
-   * Hashcode from the implementation class.
-   */
-  @Override
-  public final int hashCode() {
-    return getClass().hashCode();
-  }
+    /**
+     * Alternate setter for spelling flexibility in XML configuration.
+     */
+    public final void setEnable(boolean v) {
+        this.enabled = v;
+    }
 
-  /**
-   * Override if this takes additional parameters.
-   */
-  @Override
-  public String toString() {
-    return getClass().getSimpleName() + '{' + (enabled ? "enabled" : "disabled") + '}';
-  }
+    /**
+     * Identical if its the same implementation class.
+     */
+    @Override
+    public final boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+        return getClass().equals(o.getClass());
+    }
+
+    /**
+     * Hashcode from the implementation class.
+     */
+    @Override
+    public final int hashCode() {
+        return getClass().hashCode();
+    }
+
+    /**
+     * Override if this takes additional parameters.
+     */
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + '{' + (enabled ? "enabled" : "disabled") + '}';
+    }
 }

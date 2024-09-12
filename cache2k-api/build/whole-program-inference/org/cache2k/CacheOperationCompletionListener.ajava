@@ -1,5 +1,6 @@
 package org.cache2k;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -45,5 +46,5 @@ public interface CacheOperationCompletionListener extends EventListener {
      * Errors while loading a value, will be delayed and propagated when the respective key
      * is accessed. This is subject to the resilience configuration.
      */
-    void onException(Throwable exception);
+    void onException(@Nullable() Throwable exception);
 }

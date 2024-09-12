@@ -1,5 +1,5 @@
 package org.cache2k.config;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,9 +19,6 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-
-import org.checkerframework.checker.nullness.qual.Nullable;
-
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -51,64 +48,71 @@ import java.lang.reflect.Type;
  * @see <a href="https://github.com/google/guava/wiki/ReflectionExplained">
  *   ReflectionExplained - Google Guava Documentation</a>
  */
-
 public interface CacheType<T> {
 
-  /** The used prefix for the toString() output. */
-  String DESCRIPTOR_TO_STRING_PREFIX = "CacheType:";
+    /**
+     * The used prefix for the toString() output.
+     */
+    String DESCRIPTOR_TO_STRING_PREFIX = "CacheType:";
 
-  static <T> CacheType<T> of(Class<T> t) {
-    return (CacheType<T>) of((Type) t);
-  }
-
-  
-  static CacheType<?> of(Type t) {
-    if (t instanceof ParameterizedType) {
-      ParameterizedType pt = (ParameterizedType) t;
-      Class c = (Class) pt.getRawType();
-      CacheType[] ta = new CacheType[pt.getActualTypeArguments().length];
-      for (int i = 0; i < ta.length; i++) {
-        ta[i] = of(pt.getActualTypeArguments()[i]);
-      }
-      return new CacheTypeCapture.OfGeneric(c, ta);
-    } else if (t instanceof GenericArrayType) {
-      GenericArrayType gat = (GenericArrayType) t;
-      return new CacheTypeCapture.OfArray(of(gat.getGenericComponentType()));
+    static <T> CacheType<T> of(Class<T> t) {
+        return (CacheType<T>) of((Type) t);
     }
-    if (!(t instanceof Class)) {
-      throw new IllegalArgumentException("The run time type is not available, got: " + t);
+
+    static CacheType<?> of(Type t) {
+        if (t instanceof ParameterizedType) {
+            ParameterizedType pt = (ParameterizedType) t;
+            Class c = (Class) pt.getRawType();
+            CacheType[] ta = new CacheType[pt.getActualTypeArguments().length];
+            for (int i = 0; i < ta.length; i++) {
+                ta[i] = of(pt.getActualTypeArguments()[i]);
+            }
+            return new CacheTypeCapture.OfGeneric(c, ta);
+        } else if (t instanceof GenericArrayType) {
+            GenericArrayType gat = (GenericArrayType) t;
+            return new CacheTypeCapture.OfArray(of(gat.getGenericComponentType()));
+        }
+        if (!(t instanceof Class)) {
+            throw new IllegalArgumentException("The run time type is not available, got: " + t);
+        }
+        Class c = (Class) t;
+        if (c.isArray()) {
+            return new CacheTypeCapture.OfArray(of(c.getComponentType()));
+        }
+        return new CacheTypeCapture.OfClass(c);
     }
-    Class c = (Class) t;
-    if (c.isArray()) {
-      return new CacheTypeCapture.OfArray(of(c.getComponentType()));
-    }
-    return new CacheTypeCapture.OfClass(c);
-  }
 
-  /** Class type if not an array. */
-   Class<T> getType();
+    /**
+     * Class type if not an array.
+     */
+    Class<T> getType();
 
-  /**
-   * The type has generic type parameters and the concrete types are known.
-   * {@link #getTypeArguments()} returns the the arguments.
-   */
-  boolean hasTypeArguments();
+    /**
+     * The type has generic type parameters and the concrete types are known.
+     * {@link #getTypeArguments()} returns the the arguments.
+     */
+    boolean hasTypeArguments();
 
-  /**
-   * This type is an array. To analyze a multi dimensional array descend to the component,
-   * for example {@code getComponentType().isArray()}.
-   *
-   * @see #getComponentType()
-   */
-  boolean isArray();
+    /**
+     * This type is an array. To analyze a multi dimensional array descend to the component,
+     * for example {@code getComponentType().isArray()}.
+     *
+     * @see #getComponentType()
+     */
+    boolean isArray();
 
-  /** The component type in case of an array */
-   CacheType<?> getComponentType();
+    /**
+     * The component type in case of an array
+     */
+    CacheType<?> getComponentType();
 
-  /** Known type arguments, if the type is a parametrized type. */
-   CacheType<?>[] getTypeArguments();
+    /**
+     * Known type arguments, if the type is a parametrized type.
+     */
+    CacheType<?>[] getTypeArguments();
 
-  /** Java language compatible type name */
-  String getTypeName();
-
+    /**
+     * Java language compatible type name
+     */
+    String getTypeName();
 }

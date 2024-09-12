@@ -1,5 +1,6 @@
 package org.cache2k;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -20,7 +21,6 @@ package org.cache2k;
  * #L%
  */
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cache2k.config.Cache2kConfig;
 import org.cache2k.config.CacheType;
 import org.cache2k.config.ConfigBean;
@@ -123,12 +123,16 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
         return cb;
     }
 
+    @Nullable
     private CacheType<K> keyType;
 
+    @Nullable
     private CacheType<V> valueType;
 
+    @Nullable
     private Cache2kConfig<K, V> config = null;
 
+    @Nullable
     private CacheManager manager = null;
 
     private Cache2kBuilder(Cache2kConfig<K, V> cfg) {
@@ -173,6 +177,7 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
     /**
      * Bind to default manager if not set before. Read in default configuration.
      */
+    @Nullable()
     private Cache2kConfig<K, V> cfg() {
         if (config == null) {
             config = CacheManager.PROVIDER.getDefaultConfig(getManager());
@@ -999,6 +1004,7 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
     /**
      * Get the associated cache manager.
      */
+    @Nullable()
     public final CacheManager getManager() {
         if (manager == null) {
             manager = CacheManager.getInstance();

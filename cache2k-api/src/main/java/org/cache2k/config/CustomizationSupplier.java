@@ -1,5 +1,5 @@
 package org.cache2k.config;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,7 +19,6 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 /**
@@ -37,13 +36,12 @@ import org.checkerframework.checker.nullness.qual.NonNull;
  * @author Jens Wilke
  */
 @FunctionalInterface
-public interface CustomizationSupplier< T> {
+public interface CustomizationSupplier<T> {
 
-  /**
-   * Create or return an existing customization instance.
-   *
-   * @return created customization, never {@code null}
-   */
-  T supply(CacheBuildContext<?, ?> buildContext);
-
+    /**
+     * Create or return an existing customization instance.
+     *
+     * @return created customization, never {@code null}
+     */
+    T supply(@Nullable() CacheBuildContext<?, ?> buildContext);
 }

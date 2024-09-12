@@ -1,5 +1,6 @@
 package org.cache2k.integration;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -21,7 +22,6 @@ package org.cache2k.integration;
  */
 import org.cache2k.Cache2kBuilder;
 import org.cache2k.CacheEntry;
-import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * @deprecated Replaced with {@link org.cache2k.io.AdvancedCacheLoader},
@@ -49,5 +49,5 @@ public abstract class AdvancedCacheLoader<K, V> implements org.cache2k.io.Advanc
      *                   wrapped and rethrown via a {@link CacheLoaderException}
      */
     @Override
-    public abstract V load(K key, long startTime, CacheEntry<K, V> currentEntry) throws Exception;
+    public abstract V load(@Nullable() K key, @Nullable() long startTime, @Nullable() CacheEntry<K, V> currentEntry) throws Exception;
 }

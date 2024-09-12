@@ -1,5 +1,5 @@
 package org.cache2k;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,7 +19,6 @@ package org.cache2k;
  * limitations under the License.
  * #L%
  */
-
 import org.cache2k.expiry.ExpiryPolicy;
 import org.cache2k.io.CacheLoader;
 
@@ -31,16 +30,15 @@ import org.cache2k.io.CacheLoader;
  */
 public class CustomizationException extends CacheException {
 
-  public CustomizationException(String message) {
-    super(message);
-  }
+    public CustomizationException(String message) {
+        super(message);
+    }
 
-  public CustomizationException(Throwable cause) {
-    super(cause);
-  }
+    public CustomizationException(Throwable cause) {
+        super(cause);
+    }
 
-  public CustomizationException(String message, Throwable cause) {
-    super(message, cause);
-  }
-
+    public CustomizationException(String message, Throwable cause) {
+        super(message, cause);
+    }
 }

@@ -1,5 +1,7 @@
 package org.cache2k.integration;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 /*
  * #%L
  * cache2k API
@@ -19,8 +21,6 @@ package org.cache2k.integration;
  * limitations under the License.
  * #L%
  */
-import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * @author Jens Wilke
  * @deprecated to be removed in version 2.2
@@ -44,7 +44,7 @@ public abstract class LoadDetail<V> {
     }
 
     @org.checkerframework.dataflow.qual.Pure
-    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable LoadDetail<V> getNextInChain() {
+    public LoadDetail<V> getNextInChain() {
         if (value instanceof LoadDetail) {
             return ((LoadDetail<V>) value);
         }

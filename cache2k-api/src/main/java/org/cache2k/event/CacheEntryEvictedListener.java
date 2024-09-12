@@ -1,5 +1,5 @@
 package org.cache2k.event;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,7 +19,6 @@ package org.cache2k.event;
  * limitations under the License.
  * #L%
  */
-
 import org.cache2k.Cache;
 import org.cache2k.CacheEntry;
 
@@ -31,13 +30,12 @@ import org.cache2k.CacheEntry;
  */
 public interface CacheEntryEvictedListener<K, V> extends CacheEntryOperationListener<K, V> {
 
-  /**
-   * Called upon eviction of a cache entry. When used as synchronous listener other cache
-   * operations can still proceed except for this entry or {@link Cache#removeAll()}.
-   *
-   * @param cache The cache that generated the event
-   * @param entry Entry containing the recent data
-   */
-  void onEntryEvicted(Cache<K, V> cache, CacheEntry<K, V> entry);
-
+    /**
+     * Called upon eviction of a cache entry. When used as synchronous listener other cache
+     * operations can still proceed except for this entry or {@link Cache#removeAll()}.
+     *
+     * @param cache The cache that generated the event
+     * @param entry Entry containing the recent data
+     */
+    void onEntryEvicted(@Nullable() Cache<K, V> cache, @Nullable() CacheEntry<K, V> entry);
 }

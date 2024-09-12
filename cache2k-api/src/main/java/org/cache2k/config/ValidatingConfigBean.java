@@ -1,5 +1,5 @@
 package org.cache2k.config;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,21 +19,18 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-
 /**
  * Configuration bean that is able to validate itself.
  *
  * @author Jens Wilke
  */
-
 public interface ValidatingConfigBean extends ConfigBean {
 
-  /**
-   * Check whether the configuration is valid, especially whether mandatory fields
-   * are set.
-   *
-   * @throws IllegalStateException if configuration is not valid
-   */
-  void validate();
-
+    /**
+     * Check whether the configuration is valid, especially whether mandatory fields
+     * are set.
+     *
+     * @throws IllegalStateException if configuration is not valid
+     */
+    void validate();
 }

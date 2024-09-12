@@ -1,5 +1,5 @@
 package org.cache2k.io;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,11 +19,9 @@ package org.cache2k.io;
  * limitations under the License.
  * #L%
  */
-
 import org.cache2k.Cache2kBuilder;
 import org.cache2k.CacheEntry;
 import org.cache2k.DataAwareCustomization;
-
 import java.util.EventListener;
 import java.util.concurrent.Executor;
 
@@ -37,88 +35,85 @@ import java.util.concurrent.Executor;
 @FunctionalInterface
 public interface AsyncCacheLoader<K, V> extends DataAwareCustomization<K, V> {
 
-  /**
-   * Starts an asynchronous load operation.
-   *
-   * <p>If this call throws an exception, it is assumed that the load operation was not
-   * started and the callback will not called.
-   *
-   * @param key key of the value to load
-   * @param context additional context information for the load operation
-   * @param callback interface to notify for load completion
-   * @throws Exception an exception, if the load operation cannot be started
-   */
-  void load(K key, Context<K, V> context, Callback<V> callback) throws Exception;
-
-  /**
-   * Relevant context information for a single load request.
-   *
-   * <p>Rationale: Instead of a rather long parameter list, we define an interface.
-   * This allows us later to add some information without breaking implementations
-   * of the {@link AsyncCacheLoader}. The context does not include the cache, since the
-   * loader should not depend on it and do any other operations on the cache while loading.
-   */
-  interface Context<K, V> {
-
     /**
-     * Time in millis since epoch of start of load operation
-     */
-    long getStartTime();
-
-    /**
-     * Cache key for the load request. Although the key is a call parameter
-     * it is repeated here, so users can choose to pass on the key or the
-     * whole context.
-     */
-    K getKey();
-
-    /**
-     * The configured executor for async operations.
+     * Starts an asynchronous load operation.
      *
-     * @see org.cache2k.Cache2kBuilder#executor(Executor)
-     */
-    Executor getExecutor();
-
-    /**
-     * The configured loader executor.
+     * <p>If this call throws an exception, it is assumed that the load operation was not
+     * started and the callback will not called.
      *
-     * @see org.cache2k.Cache2kBuilder#loaderExecutor(Executor)
+     * @param key key of the value to load
+     * @param context additional context information for the load operation
+     * @param callback interface to notify for load completion
+     * @throws Exception an exception, if the load operation cannot be started
      */
-    Executor getLoaderExecutor();
+    void load(@Nullable() K key, @Nullable() Context<K, V> context, @Nullable() Callback<V> callback) throws Exception;
 
     /**
-     * Current entry in the cache. The entry is available if the load is caused
-     * by a reload or refresh. If expired before, {@code null} is returned.
-     * If {@link Cache2kBuilder#keepDataAfterExpired(boolean)} is enabled, also
-     * an expired entry is provided to the loader for optimization purposes.
-     * See also the description of
-     * {@link Cache2kBuilder#keepDataAfterExpired(boolean)} and
-     * {@link Cache2kBuilder#refreshAhead(boolean)}.
-     */
-    CacheEntry<K, V> getCurrentEntry();
-
-  }
-
-  /**
-   * Callback for async cache load.
-   */
-  interface Callback<V> extends EventListener {
-
-    /**
-     * Called to provide the loaded value to be stored in the cache.
+     * Relevant context information for a single load request.
      *
-     * @throws IllegalStateException if the callback was already made
+     * <p>Rationale: Instead of a rather long parameter list, we define an interface.
+     * This allows us later to add some information without breaking implementations
+     * of the {@link AsyncCacheLoader}. The context does not include the cache, since the
+     * loader should not depend on it and do any other operations on the cache while loading.
      */
-    void onLoadSuccess(V value);
+    interface Context<K, V> {
+
+        /**
+         * Time in millis since epoch of start of load operation
+         */
+        long getStartTime();
+
+        /**
+         * Cache key for the load request. Although the key is a call parameter
+         * it is repeated here, so users can choose to pass on the key or the
+         * whole context.
+         */
+        K getKey();
+
+        /**
+         * The configured executor for async operations.
+         *
+         * @see org.cache2k.Cache2kBuilder#executor(Executor)
+         */
+        Executor getExecutor();
+
+        /**
+         * The configured loader executor.
+         *
+         * @see org.cache2k.Cache2kBuilder#loaderExecutor(Executor)
+         */
+        Executor getLoaderExecutor();
+
+        /**
+         * Current entry in the cache. The entry is available if the load is caused
+         * by a reload or refresh. If expired before, {@code null} is returned.
+         * If {@link Cache2kBuilder#keepDataAfterExpired(boolean)} is enabled, also
+         * an expired entry is provided to the loader for optimization purposes.
+         * See also the description of
+         * {@link Cache2kBuilder#keepDataAfterExpired(boolean)} and
+         * {@link Cache2kBuilder#refreshAhead(boolean)}.
+         */
+        CacheEntry<K, V> getCurrentEntry();
+    }
 
     /**
-     * Called if a failure happened. The exceptions is propagated to
-     * the clients accessing the associated key.
-     *
-     * @throws IllegalStateException if the callback was already made
+     * Callback for async cache load.
      */
-    void onLoadFailure(Throwable t);
+    interface Callback<V> extends EventListener {
 
-  }
+        /**
+         * Called to provide the loaded value to be stored in the cache.
+         *
+         * @throws IllegalStateException if the callback was already made
+         */
+        void onLoadSuccess(@Nullable() V value);
 
+        /**
+         * Called if a failure happened. The exceptions is propagated to
+         * the clients accessing the associated key.
+         *
+         * @throws IllegalStateException if the callback was already made
+         */
+        void onLoadFailure(@Nullable() Throwable t);
+    }
 }

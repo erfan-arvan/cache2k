@@ -1,5 +1,5 @@
 package org.cache2k.operation;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,7 +19,6 @@ package org.cache2k.operation;
  * limitations under the License.
  * #L%
  */
-
 import org.cache2k.Cache;
 
 /**
@@ -30,17 +29,16 @@ import org.cache2k.Cache;
  */
 public interface CacheControl extends CacheOperation, CacheInfo {
 
-  /**
-   * Request an management interface of the given cache.
-   */
-  static CacheControl of(Cache<?, ?> cache) {
-    return cache.requestInterface(CacheControl.class);
-  }
+    /**
+     * Request an management interface of the given cache.
+     */
+    static CacheControl of(Cache<?, ?> cache) {
+        return cache.requestInterface(CacheControl.class);
+    }
 
-  /**
-   * Returns a snapshot of cache statistics if this cache supports statistics
-   * or {@code null} otherwise.
-   */
-  CacheStatistics sampleStatistics();
-
+    /**
+     * Returns a snapshot of cache statistics if this cache supports statistics
+     * or {@code null} otherwise.
+     */
+    CacheStatistics sampleStatistics();
 }

@@ -1,5 +1,5 @@
 package org.cache2k.config;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,7 +19,6 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-
 /**
  * Marks the class as bean compatible, meaning, it has a public default constructor
  * and getter and setters for all its properties. A class not be marked with this

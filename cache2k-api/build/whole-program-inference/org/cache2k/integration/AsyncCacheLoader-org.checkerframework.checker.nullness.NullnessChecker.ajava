@@ -1,5 +1,6 @@
 package org.cache2k.integration;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -45,7 +46,7 @@ public interface AsyncCacheLoader<K, V> {
      * @since 1.4
      */
     @org.checkerframework.dataflow.qual.SideEffectFree
-    void load(K key, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Context<K, V> context, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Callback<V> callback) throws Exception;
+    void load(K key, Context<K, V> context, Callback<V> callback) throws Exception;
 
     /**
      * Relevant context information for a single load request.

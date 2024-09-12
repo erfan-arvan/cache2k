@@ -1,5 +1,6 @@
 package org.cache2k.io;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -41,12 +42,12 @@ public interface ResiliencePolicy<K, V> extends ExpiryTimeValues, DataAwareCusto
     ResiliencePolicy<?, ?> DISABLED_POLICY = new ResiliencePolicy<Object, Object>() {
 
         @Override
-        public long suppressExceptionUntil(Object key, LoadExceptionInfo<Object, Object> loadExceptionInfo, CacheEntry<Object, Object> cachedEntry) {
+        public long suppressExceptionUntil(@Nullable() Object key, @Nullable() LoadExceptionInfo<Object, Object> loadExceptionInfo, @Nullable() CacheEntry<Object, Object> cachedEntry) {
             return NOW;
         }
 
         @Override
-        public long retryLoadAfter(Object key, LoadExceptionInfo<Object, Object> loadExceptionInfo) {
+        public long retryLoadAfter(@Nullable() Object key, @Nullable() LoadExceptionInfo<Object, Object> loadExceptionInfo) {
             return NOW;
         }
     };
@@ -85,11 +86,11 @@ public interface ResiliencePolicy<K, V> extends ExpiryTimeValues, DataAwareCusto
      *         If the returned time is after {@link LoadExceptionInfo#getLoadTime()}
      *         the exception will be suppressed for the ongoing operation.
      */
-    long suppressExceptionUntil(K key, LoadExceptionInfo<K, V> loadExceptionInfo, CacheEntry<K, V> cachedEntry);
+    long suppressExceptionUntil(@Nullable() K key, @Nullable() LoadExceptionInfo<K, V> loadExceptionInfo, @Nullable() CacheEntry<K, V> cachedEntry);
 
     /**
      * Called after the loader threw an exception and no previous value is available or
      * {@link #suppressExceptionUntil} returned zero.
      */
-    long retryLoadAfter(K key, LoadExceptionInfo<K, V> loadExceptionInfo);
+    long retryLoadAfter(@Nullable() K key, @Nullable() LoadExceptionInfo<K, V> loadExceptionInfo);
 }

@@ -1,5 +1,5 @@
 package org.cache2k.config;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,12 +19,10 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-
 import org.cache2k.DataAwareCustomization;
 
 /**
  * @author Jens Wilke
  */
-public interface DataCustomizationSupplier<K, V, T extends DataAwareCustomization<K, V>>
-  extends CustomizationSupplier<T> {
+public interface DataCustomizationSupplier<K, V, T extends DataAwareCustomization<K, V>> extends CustomizationSupplier<T> {
 }

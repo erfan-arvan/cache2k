@@ -1,5 +1,6 @@
 package org.cache2k.processor;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -20,7 +21,6 @@ package org.cache2k.processor;
  * #L%
  */
 import org.cache2k.CacheEntry;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cache2k.io.CacheLoader;
 import org.cache2k.io.CacheLoaderException;
 import org.cache2k.io.LoadExceptionInfo;
@@ -144,7 +144,7 @@ public interface MutableCacheEntry<K, V> extends CacheEntry<K, V> {
      * <p>If a writer is registered, the
      * {@link CacheWriter#write(Object, Object)} is called.
      */
-    MutableCacheEntry<K, V> setValue(V v);
+    MutableCacheEntry<K, V> setValue(@Nullable() V v);
 
     /**
      * Calls the loader unconditionally in this operation. Multiple calls to reload
@@ -186,7 +186,7 @@ public interface MutableCacheEntry<K, V> extends CacheEntry<K, V> {
      *                          the entry processor will be executed again.
      * @see ResiliencePolicy
      */
-    MutableCacheEntry<K, V> setException(Throwable ex);
+    MutableCacheEntry<K, V> setException(@Nullable() Throwable ex);
 
     /**
      * Set a new expiry time for the entry. If combined with {@link #setValue} the entry
@@ -200,7 +200,7 @@ public interface MutableCacheEntry<K, V> extends CacheEntry<K, V> {
      *                          needs to do an operation to supply it. After completion,
      *                          the entry processor will be executed again.
      */
-    MutableCacheEntry<K, V> setExpiryTime(long t);
+    MutableCacheEntry<K, V> setExpiryTime(@Nullable() long t);
 
     /**
      * Returns the effective expiry time of the current cache entry in case {@link #exists()}
@@ -236,5 +236,5 @@ public interface MutableCacheEntry<K, V> extends CacheEntry<K, V> {
      *                          needs to do an operation to supply it. After completion,
      *                          the entry processor will be executed again.
      */
-    MutableCacheEntry<K, V> setModificationTime(long t);
+    MutableCacheEntry<K, V> setModificationTime(@Nullable() long t);
 }

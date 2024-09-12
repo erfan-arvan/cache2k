@@ -1,5 +1,5 @@
 package org.cache2k.config;
-
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,7 +19,6 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -32,25 +31,23 @@ import java.util.Collection;
  * @author Jens Wilke
  * @see DefaultCustomizationCollection
  */
-public interface CustomizationCollection<T> extends
-  Collection<CustomizationSupplier<T>>, Serializable {
+public interface CustomizationCollection<T> extends Collection<CustomizationSupplier<T>>, Serializable {
 
-  /**
-   * Adds a customization to the collection.
-   *
-   * @return always {@code true}
-   * @throws IllegalArgumentException if the entry is already existing.
-   */
-  @Override
-  boolean add(CustomizationSupplier<T> e);
+    /**
+     * Adds a customization to the collection.
+     *
+     * @return always {@code true}
+     * @throws IllegalArgumentException if the entry is already existing.
+     */
+    @Override
+    boolean add(@Nullable() CustomizationSupplier<T> e);
 
-  /**
-   * Adds all customizations to the collection.
-   *
-   * @return always {@code true}
-   * @throws IllegalArgumentException if an entry is already existing.
-   */
-  @Override
-  boolean addAll(Collection<? extends CustomizationSupplier<T>> c);
-
+    /**
+     * Adds all customizations to the collection.
+     *
+     * @return always {@code true}
+     * @throws IllegalArgumentException if an entry is already existing.
+     */
+    @Override
+    boolean addAll(@Nullable() Collection<? extends CustomizationSupplier<T>> c);
 }
