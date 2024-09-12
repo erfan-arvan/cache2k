@@ -1,6 +1,5 @@
 package org.cache2k.integration;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,7 +18,6 @@ package org.cache2k.integration;
  * limitations under the License.
  * #L%
  */
-
 import org.cache2k.CustomizationException;
 
 /**
@@ -30,8 +28,7 @@ import org.cache2k.CustomizationException;
 @Deprecated
 public class CacheWriterException extends org.cache2k.io.CacheWriterException {
 
-  public CacheWriterException(final Throwable cause) {
-    super(cause);
-  }
-
+    public CacheWriterException(final Throwable cause) {
+        super(cause);
+    }
 }

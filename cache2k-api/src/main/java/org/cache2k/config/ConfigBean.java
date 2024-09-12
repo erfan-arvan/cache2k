@@ -1,6 +1,5 @@
 package org.cache2k.config;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,7 +18,6 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-
 /**
  * Marker for cache configuration beans. The marker is not mandatory.
  *
@@ -28,10 +26,7 @@ package org.cache2k.config;
  *
  * @author Jens Wilke
  */
-public interface ConfigBean
-  <SELF extends ConfigBean<SELF, B>, B extends ConfigBuilder<B, SELF>>
-  extends BeanMarker {
+public interface ConfigBean<SELF extends ConfigBean<SELF, B>, B extends ConfigBuilder<B, SELF>> extends BeanMarker {
 
-  B builder();
-
+    B builder();
 }

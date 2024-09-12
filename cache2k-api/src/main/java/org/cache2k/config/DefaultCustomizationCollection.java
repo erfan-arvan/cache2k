@@ -1,6 +1,5 @@
 package org.cache2k.config;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,7 +18,6 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-
 import java.util.AbstractCollection;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -34,38 +32,35 @@ import java.util.Iterator;
  *
  * @author Jens Wilke
  */
-public final class DefaultCustomizationCollection<T>
-  extends AbstractCollection<CustomizationSupplier<T>>
-  implements CustomizationCollection<T> {
+public final class DefaultCustomizationCollection<T> extends AbstractCollection<CustomizationSupplier<T>> implements CustomizationCollection<T> {
 
-  private Collection<CustomizationSupplier<T>> list = new ArrayList<CustomizationSupplier<T>>();
+    private Collection<CustomizationSupplier<T>> list = new ArrayList<CustomizationSupplier<T>>();
 
-  @Override
-  public int size() {
-    return list.size();
-  }
-
-  @Override
-  public Iterator<CustomizationSupplier<T>> iterator() {
-    return list.iterator();
-  }
-
-  /**
-   * Adds a customization to the collection.
-   *
-   * @return always {@code true}
-   * @throws IllegalArgumentException if the entry is already existing.
-   */
-  @Override
-  public boolean add(final CustomizationSupplier<T> entry) {
-    if (list.contains(entry)) {
-      throw new IllegalArgumentException("duplicate entry");
+    @Override
+    public int size() {
+        return list.size();
     }
-    return list.add(entry);
-  }
 
-  public String toString() {
-    return getClass().getSimpleName() + list.toString();
-  }
+    @Override
+    public Iterator<CustomizationSupplier<T>> iterator() {
+        return list.iterator();
+    }
 
+    /**
+     * Adds a customization to the collection.
+     *
+     * @return always {@code true}
+     * @throws IllegalArgumentException if the entry is already existing.
+     */
+    @Override
+    public boolean add(final CustomizationSupplier<T> entry) {
+        if (list.contains(entry)) {
+            throw new IllegalArgumentException("duplicate entry");
+        }
+        return list.add(entry);
+    }
+
+    public String toString() {
+        return getClass().getSimpleName() + list.toString();
+    }
 }

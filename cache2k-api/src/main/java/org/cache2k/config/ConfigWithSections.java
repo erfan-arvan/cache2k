@@ -1,6 +1,5 @@
 package org.cache2k.config;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,7 +18,6 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-
 /**
  * If the configuration bean has additional sub configuration beans, then it implements this
  * interface. Sections are essentially Java beans. The mechanism is intended to allow extension
@@ -31,6 +29,5 @@ package org.cache2k.config;
  */
 public interface ConfigWithSections {
 
-  SectionContainer getSections();
-
+    SectionContainer getSections();
 }

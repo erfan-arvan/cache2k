@@ -1,6 +1,5 @@
 package org.cache2k;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,7 +18,6 @@ package org.cache2k;
  * limitations under the License.
  * #L%
  */
-
 /**
  * Base class of all cache exceptions.
  *
@@ -27,18 +25,18 @@ package org.cache2k;
  */
 public class CacheException extends RuntimeException {
 
-  public CacheException() { }
+    public CacheException() {
+    }
 
-  public CacheException(String message) {
-    super(message);
-  }
+    public CacheException(String message) {
+        super(message);
+    }
 
-  public CacheException(String message, Throwable cause) {
-    super(message, cause);
-  }
+    public CacheException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-  public CacheException(Throwable cause) {
-    super(cause);
-  }
-
+    public CacheException(Throwable cause) {
+        super(cause);
+    }
 }

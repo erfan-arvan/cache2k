@@ -1,6 +1,5 @@
 package org.cache2k.event;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,7 +18,6 @@ package org.cache2k.event;
  * limitations under the License.
  * #L%
  */
-
 import org.cache2k.Cache;
 import org.cache2k.CacheEntry;
 import org.cache2k.io.CacheLoader;
@@ -32,18 +30,17 @@ import org.cache2k.io.CacheLoader;
  */
 public interface CacheEntryCreatedListener<K, V> extends CacheEntryOperationListener<K, V> {
 
-  /**
-   * Called for the creation of a cache entry and after all cache writers ran successfully.
-   * A synchronous event is executed before the entry becomes visible for cache clients.
-   * If an inserted or loaded value expires immediately, no created event is sent.
-   *
-   * <p>Exceptions thrown by asynchronous listeners will be propagated to the cache client
-   * directly.
-   *
-   * @param cache Reference to the cache that generated the event.
-   * @param entry Entry containing the current data. It is only valid to access the object during
-   *              the call of this method. The object value may become invalid afterwards.
-   */
-  void onEntryCreated(Cache<K, V> cache, CacheEntry<K, V> entry);
-
+    /**
+     * Called for the creation of a cache entry and after all cache writers ran successfully.
+     * A synchronous event is executed before the entry becomes visible for cache clients.
+     * If an inserted or loaded value expires immediately, no created event is sent.
+     *
+     * <p>Exceptions thrown by asynchronous listeners will be propagated to the cache client
+     * directly.
+     *
+     * @param cache Reference to the cache that generated the event.
+     * @param entry Entry containing the current data. It is only valid to access the object during
+     *              the call of this method. The object value may become invalid afterwards.
+     */
+    void onEntryCreated(@Nullable Cache<K, V> cache, @Nullable CacheEntry<K, V> entry);
 }

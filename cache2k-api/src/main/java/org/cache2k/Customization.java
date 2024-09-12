@@ -1,6 +1,5 @@
 package org.cache2k;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,7 +18,6 @@ package org.cache2k;
  * limitations under the License.
  * #L%
  */
-
 /**
  * A customization dealing with cached data.
  *

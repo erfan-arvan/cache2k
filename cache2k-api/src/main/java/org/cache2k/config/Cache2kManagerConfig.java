@@ -1,6 +1,5 @@
 package org.cache2k.config;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -20,92 +19,98 @@ package org.cache2k.config;
  * #L%
  */
 
-import org.cache2k.annotation.Nullable;
-
 /**
  * Configuration options for a cache manager. The options can only be changed if a
  * XML file is provided. This bean is in the API artifact for documentation purposes.
  *
  * @author Jens Wilke
  */
-public class Cache2kManagerConfig
-  implements ConfigBean<Cache2kManagerConfig, Cache2kManagerConfig.Builder> {
+public class Cache2kManagerConfig implements ConfigBean<Cache2kManagerConfig, Cache2kManagerConfig.Builder> {
 
-  private  String version = null;
-  private  String defaultManagerName = null;
-  private boolean ignoreMissingCacheConfiguration = false;
-  private boolean skipCheckOnStartup = false;
-  private boolean ignoreAnonymousCache = false;
+    @Nullable
+    private String version = null;
 
-  public boolean isIgnoreMissingCacheConfiguration() {
-    return ignoreMissingCacheConfiguration;
-  }
+    @Nullable
+    private String defaultManagerName = null;
 
-  /**
-   * Configure a cache with default parameters if configuration has no specific section for it.
-   */
-  public void setIgnoreMissingCacheConfiguration(boolean f) {
-    ignoreMissingCacheConfiguration = f;
-  }
+    private boolean ignoreMissingCacheConfiguration = false;
 
-  public  String getDefaultManagerName() {
-    return defaultManagerName;
-  }
+    private boolean skipCheckOnStartup = false;
 
-  /**
-   * Replace the default name of the default cache manager.
-   */
-  public void setDefaultManagerName(String v) {
-    defaultManagerName = v;
-  }
+    private boolean ignoreAnonymousCache = false;
 
-  public  String getVersion() {
-    return version;
-  }
-
-  /**
-   * Version of the configuration. Mandatory in every cache configuration. The version affects
-   * how the configuration XML file is interpreted.
-   */
-  public void setVersion(String v) {
-    version = v;
-  }
-
-  public boolean isSkipCheckOnStartup() {
-    return skipCheckOnStartup;
-  }
-
-  /**
-   * The configuration for each cache is parsed and checked as soon as the cache manager is created.
-   */
-  public void setSkipCheckOnStartup(boolean f) {
-    skipCheckOnStartup = f;
-  }
-
-  public boolean isIgnoreAnonymousCache() {
-    return ignoreAnonymousCache;
-  }
-
-  /**
-   * When a configuration is present, every cache needs a cache name so that the configuration
-   * can be applied.
-   */
-  public void setIgnoreAnonymousCache(boolean f) {
-    ignoreAnonymousCache = f;
-  }
-
-  /**
-   * Not supported, but will eventually get one.
-   */
-  @Override
-  public Builder builder() {
-    throw new UnsupportedOperationException();
-  }
-
-  public static class Builder implements ConfigBuilder<Builder, Cache2kManagerConfig> {
-    @Override
-    public Cache2kManagerConfig config() {
-      throw new UnsupportedOperationException();
+    public boolean isIgnoreMissingCacheConfiguration() {
+        return ignoreMissingCacheConfiguration;
     }
-  }
+
+    /**
+     * Configure a cache with default parameters if configuration has no specific section for it.
+     */
+    public void setIgnoreMissingCacheConfiguration(boolean f) {
+        ignoreMissingCacheConfiguration = f;
+    }
+
+    @Nullable
+    public String getDefaultManagerName() {
+        return defaultManagerName;
+    }
+
+    /**
+     * Replace the default name of the default cache manager.
+     */
+    public void setDefaultManagerName(String v) {
+        defaultManagerName = v;
+    }
+
+    @Nullable
+    public String getVersion() {
+        return version;
+    }
+
+    /**
+     * Version of the configuration. Mandatory in every cache configuration. The version affects
+     * how the configuration XML file is interpreted.
+     */
+    public void setVersion(String v) {
+        version = v;
+    }
+
+    public boolean isSkipCheckOnStartup() {
+        return skipCheckOnStartup;
+    }
+
+    /**
+     * The configuration for each cache is parsed and checked as soon as the cache manager is created.
+     */
+    public void setSkipCheckOnStartup(boolean f) {
+        skipCheckOnStartup = f;
+    }
+
+    public boolean isIgnoreAnonymousCache() {
+        return ignoreAnonymousCache;
+    }
+
+    /**
+     * When a configuration is present, every cache needs a cache name so that the configuration
+     * can be applied.
+     */
+    public void setIgnoreAnonymousCache(boolean f) {
+        ignoreAnonymousCache = f;
+    }
+
+    /**
+     * Not supported, but will eventually get one.
+     */
+    @Override
+    public Builder builder() {
+        throw new UnsupportedOperationException();
+    }
+
+    public static class Builder implements ConfigBuilder<Builder, Cache2kManagerConfig> {
+
+        @Override
+        public Cache2kManagerConfig config() {
+            throw new UnsupportedOperationException();
+        }
+    }
 }

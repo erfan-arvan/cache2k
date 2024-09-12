@@ -22,7 +22,6 @@ package org.cache2k.expiry;
 
 import org.cache2k.Cache2kBuilder;
 import org.cache2k.CacheEntry;
-import org.cache2k.annotation.Nullable;
 
 import java.util.concurrent.TimeUnit;
 

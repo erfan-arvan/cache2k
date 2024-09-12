@@ -1,5 +1,6 @@
 package org.cache2k.io;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -60,5 +61,5 @@ public interface ExceptionPropagator<K> extends Customization<K, Void> {
      * @param loadExceptionInfo information of original exception and
      *                             when the original exception occurred.
      */
-    RuntimeException propagateException(LoadExceptionInfo<K> loadExceptionInfo);
+    RuntimeException propagateException(@Nullable LoadExceptionInfo<K> loadExceptionInfo);
 }

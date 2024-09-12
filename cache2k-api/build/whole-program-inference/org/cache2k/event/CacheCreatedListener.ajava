@@ -1,5 +1,6 @@
 package org.cache2k.event;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -36,5 +37,5 @@ public interface CacheCreatedListener extends CacheLifecycleListener {
      * @return {@code null} or a CompletableFuture, if this method uses async
      *         processing
      */
-    <K, V> CompletableFuture<Void> onCacheCreated(Cache<K, V> cache, CacheBuildContext<K, V> ctx);
+    <K, V> CompletableFuture<Void> onCacheCreated(@Nullable Cache<K, V> cache, @Nullable CacheBuildContext<K, V> ctx);
 }

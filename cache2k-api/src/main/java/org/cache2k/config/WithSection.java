@@ -1,6 +1,5 @@
 package org.cache2k.config;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,7 +18,6 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-
 import org.cache2k.Customization;
 
 /**
@@ -27,10 +25,7 @@ import org.cache2k.Customization;
  *
  * @author Jens Wilke
  */
-public interface WithSection
-    <CFG extends ConfigSection<CFG, B>,
-    B extends SectionBuilder<B, CFG>> {
+public interface WithSection<CFG extends ConfigSection<CFG, B>, B extends SectionBuilder<B, CFG>> {
 
-  Class<CFG> getConfigClass();
-
+    Class<CFG> getConfigClass();
 }

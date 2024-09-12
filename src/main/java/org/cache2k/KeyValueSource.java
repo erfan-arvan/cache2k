@@ -20,7 +20,6 @@ package org.cache2k;
  * #L%
  */
 
-import org.cache2k.annotation.Nullable;
 
 /**
  * Reduced interface to return a value selected by a key object. Cache users

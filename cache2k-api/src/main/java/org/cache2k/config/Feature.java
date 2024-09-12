@@ -1,6 +1,5 @@
 package org.cache2k.config;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,7 +18,6 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-
 /**
  * Features need to properly implement {@code equals()} and {@code hashCode()}
  *
@@ -27,11 +25,10 @@ package org.cache2k.config;
  */
 public interface Feature {
 
-  /**
-   * The feature enables itself by augmenting the cache config.
-   * Called when {@link org.cache2k.Cache2kBuilder#build} is called
-   * before the actual cache creation.
-   */
-  void enlist(CacheBuildContext<?, ?> ctx);
-
+    /**
+     * The feature enables itself by augmenting the cache config.
+     * Called when {@link org.cache2k.Cache2kBuilder#build} is called
+     * before the actual cache creation.
+     */
+    void enlist(@Nullable CacheBuildContext<?, ?> ctx);
 }

@@ -1,6 +1,5 @@
 package org.cache2k.spi;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,7 +18,6 @@ package org.cache2k.spi;
  * limitations under the License.
  * #L%
  */
-
 import org.cache2k.Cache;
 import org.cache2k.CacheManager;
 import org.cache2k.config.Cache2kConfig;
@@ -32,58 +30,57 @@ import org.cache2k.config.Cache2kConfig;
  */
 public interface Cache2kCoreProvider {
 
-  /**
-   * @see CacheManager#setDefaultName(String)
-   */
-  void setDefaultManagerName(ClassLoader cl, String s);
+    /**
+     * @see CacheManager#setDefaultName(String)
+     */
+    void setDefaultManagerName(@Nullable ClassLoader cl, @Nullable String s);
 
-  /**
-   * @see CacheManager#getDefaultName()
-   */
-  String getDefaultManagerName(ClassLoader cl);
+    /**
+     * @see CacheManager#getDefaultName()
+     */
+    String getDefaultManagerName(@Nullable ClassLoader cl);
 
-  /**
-   * @see CacheManager#getInstance(ClassLoader, String)
-   */
-  CacheManager getManager(ClassLoader cl, String name);
+    /**
+     * @see CacheManager#getInstance(ClassLoader, String)
+     */
+    CacheManager getManager(@Nullable ClassLoader cl, @Nullable String name);
 
-  /**
-   * Default class loader, this is the class loader used to load the cache implementation.
-   */
-  ClassLoader getDefaultClassLoader();
+    /**
+     * Default class loader, this is the class loader used to load the cache implementation.
+     */
+    ClassLoader getDefaultClassLoader();
 
-  /**
-   * Close all cache2k cache managers.
-   */
-  void close();
+    /**
+     * Close all cache2k cache managers.
+     */
+    void close();
 
-  /**
-   * Close all cache manager associated to this class loader.
-   */
-  void close(ClassLoader l);
+    /**
+     * Close all cache manager associated to this class loader.
+     */
+    void close(@Nullable ClassLoader l);
 
-  /**
-   * Close a specific cache manager by its name.
-   */
-  void close(ClassLoader l, String managerName);
+    /**
+     * Close a specific cache manager by its name.
+     */
+    void close(@Nullable ClassLoader l, @Nullable String managerName);
 
-  /**
-   * Create a cache, apply external configuration before creating it.
-   */
-  <K, V> Cache<K, V> createCache(CacheManager m, Cache2kConfig<K, V> cfg);
+    /**
+     * Create a cache, apply external configuration before creating it.
+     */
+    <K, V> Cache<K, V> createCache(@Nullable CacheManager m, @Nullable Cache2kConfig<K, V> cfg);
 
-  /**
-   * Return the effective default configuration for this manager. A different default
-   * configuration may be provided by the configuration system.
-   *
-   * @return mutable configuration instance containing the effective configuration defaults,
-   *         never {@code null}
-   */
-  Cache2kConfig getDefaultConfig(CacheManager m);
+    /**
+     * Return the effective default configuration for this manager. A different default
+     * configuration may be provided by the configuration system.
+     *
+     * @return mutable configuration instance containing the effective configuration defaults,
+     *         never {@code null}
+     */
+    Cache2kConfig getDefaultConfig(@Nullable CacheManager m);
 
-  /**
-   * @since 2
-   */
-  String getVersion();
-
+    /**
+     * @since 2
+     */
+    String getVersion();
 }

@@ -5,8 +5,7 @@
  * @deprecated the package will be removed completely
  */
 package org.cache2k.integration;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%

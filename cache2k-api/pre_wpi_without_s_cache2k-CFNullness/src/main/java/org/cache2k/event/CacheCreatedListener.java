@@ -1,4 +1,4 @@
-package org.cache2k.processor;
+package org.cache2k.event;
 
 /*
  * #%L
@@ -19,14 +19,26 @@ package org.cache2k.processor;
  * limitations under the License.
  * #L%
  */
-import org.cache2k.CacheException;
+
+import org.cache2k.Cache;
+import org.cache2k.config.CacheBuildContext;
+
+import java.util.concurrent.CompletableFuture;
 
 /**
- * Used by the entry processor to abort the processing to carry out
- * some, possibly asynchronous, processing.
- *
  * @author Jens Wilke
  */
-@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
-public class RestartException extends CacheException {
+public interface CacheCreatedListener extends CacheLifecycleListener {
+
+  /**
+   * A new cache has been created.
+   *
+   * @param ctx The build context of the cache. The listener may read
+   *            but not modify its configuration parameters.
+   * @return {@code null} or a CompletableFuture, if this method uses async
+   *         processing
+   */
+  <K, V> CompletableFuture<Void> onCacheCreated(Cache<K, V> cache,
+                                                CacheBuildContext<K, V> ctx);
+
 }

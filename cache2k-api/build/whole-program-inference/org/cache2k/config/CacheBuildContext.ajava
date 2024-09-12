@@ -1,5 +1,6 @@
 package org.cache2k.config;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -47,5 +48,5 @@ public interface CacheBuildContext<K, V> {
      */
     Cache2kConfig<K, V> getConfig();
 
-    <T> T createCustomization(CustomizationSupplier<T> supplier);
+    <T> T createCustomization(@Nullable CustomizationSupplier<T> supplier);
 }

@@ -1,6 +1,5 @@
 package org.cache2k.integration;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,7 +18,6 @@ package org.cache2k.integration;
  * limitations under the License.
  * #L%
  */
-
 import org.cache2k.CacheEntry;
 import org.cache2k.io.AdvancedCacheLoader;
 import org.cache2k.io.CacheLoader;
@@ -31,20 +29,17 @@ import org.cache2k.io.CacheLoader;
 @Deprecated
 public class Loaders {
 
-  /**
-   * Wraps a loaded value to add the refreshed value.
-   *
-   * @see CacheLoader#load(Object)
-   * @see AdvancedCacheLoader#load(Object, long, CacheEntry)
-   */
-  
-  public static <V> LoadDetail<V> wrapRefreshedTime(V value, long refreshedTimeInMillis) {
-    return new RefreshedTimeWrapper<V>(value, refreshedTimeInMillis);
-  }
+    /**
+     * Wraps a loaded value to add the refreshed value.
+     *
+     * @see CacheLoader#load(Object)
+     * @see AdvancedCacheLoader#load(Object, long, CacheEntry)
+     */
+    public static <V> LoadDetail<V> wrapRefreshedTime(V value, long refreshedTimeInMillis) {
+        return new RefreshedTimeWrapper<V>(value, refreshedTimeInMillis);
+    }
 
-  public static <V> LoadDetail<V> wrapRefreshedTime(
-    LoadDetail<V> value, long refreshedTimeInMillis) {
-    return new RefreshedTimeWrapper<V>(value, refreshedTimeInMillis);
-  }
-
+    public static <V> LoadDetail<V> wrapRefreshedTime(LoadDetail<V> value, long refreshedTimeInMillis) {
+        return new RefreshedTimeWrapper<V>(value, refreshedTimeInMillis);
+    }
 }

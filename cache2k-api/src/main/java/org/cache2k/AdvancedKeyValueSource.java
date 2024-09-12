@@ -1,6 +1,5 @@
 package org.cache2k;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,7 +18,6 @@ package org.cache2k;
  * limitations under the License.
  * #L%
  */
-
 import java.util.Map;
 
 /**
@@ -30,12 +28,11 @@ import java.util.Map;
  */
 public interface AdvancedKeyValueSource<K, V> extends KeyValueSource<K, V> {
 
-  /**
-   * Retrieves all values for the given keys. For a more detailed description see
-   * the cache interface.
-   *
-   * @see Cache#getAll(Iterable)
-   */
-  Map<K, V> getAll(Iterable<? extends K> keys);
-
+    /**
+     * Retrieves all values for the given keys. For a more detailed description see
+     * the cache interface.
+     *
+     * @see Cache#getAll(Iterable)
+     */
+    Map<K, V> getAll(@Nullable Iterable<? extends K> keys);
 }

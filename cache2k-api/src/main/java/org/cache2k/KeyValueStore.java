@@ -1,6 +1,5 @@
 package org.cache2k;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,10 +18,8 @@ package org.cache2k;
  * limitations under the License.
  * #L%
  */
-
 import org.cache2k.io.CacheLoader;
 import org.cache2k.io.CacheWriter;
-
 import java.util.Map;
 
 /**
@@ -36,45 +33,44 @@ import java.util.Map;
  */
 public interface KeyValueStore<K, V> extends AdvancedKeyValueSource<K, V> {
 
-  /**
-   * Insert or update a value associated with the given key.
-   *
-   * @see Cache#put(Object, Object)
-   * @param key key with which the specified value is associated
-   * @param value value to be associated with the specified key
-   */
-  void put(K key, V value);
+    /**
+     * Insert or update a value associated with the given key.
+     *
+     * @see Cache#put(Object, Object)
+     * @param key key with which the specified value is associated
+     * @param value value to be associated with the specified key
+     */
+    void put(@Nullable K key, @Nullable V value);
 
-  /**
-   * Insert or update all elements of the map into the cache.
-   *
-   * @param valueMap Map of keys with associated values to be inserted in the cache
-   * @throws NullPointerException if one of the specified keys is null
-   */
-  void putAll(Map<? extends K, ? extends V> valueMap);
+    /**
+     * Insert or update all elements of the map into the cache.
+     *
+     * @param valueMap Map of keys with associated values to be inserted in the cache
+     * @throws NullPointerException if one of the specified keys is null
+     */
+    void putAll(@Nullable Map<? extends K, ? extends V> valueMap);
 
-  /**
-   * Remove a value from the cache that is associated with the key.
-   *
-   * <p>Rationale: It is intentional that this method does not return
-   * a boolean or the previous entry. When operating in cache through
-   * configuration (which means {@link CacheWriter}
-   * {@link CacheLoader} is registered) a boolean
-   * could mean two different things: the value was present in the cache or
-   * the value was present in the system of authority. The purpose of this
-   * interface is a reduced set of methods that cannot be misinterpreted.
-   *
-   * @see Cache#remove
-   * @param key key which mapping is to be removed from the cache, not null
-   */
-  void remove(K key);
+    /**
+     * Remove a value from the cache that is associated with the key.
+     *
+     * <p>Rationale: It is intentional that this method does not return
+     * a boolean or the previous entry. When operating in cache through
+     * configuration (which means {@link CacheWriter}
+     * {@link CacheLoader} is registered) a boolean
+     * could mean two different things: the value was present in the cache or
+     * the value was present in the system of authority. The purpose of this
+     * interface is a reduced set of methods that cannot be misinterpreted.
+     *
+     * @see Cache#remove
+     * @param key key which mapping is to be removed from the cache, not null
+     */
+    void remove(@Nullable K key);
 
-  /**
-   * Remove mappings from the cache.
-   *
-   * @see Cache#removeAll
-   * @param keys keys is to be removed from the cache
-   */
-  void removeAll(Iterable<? extends K> keys);
-
+    /**
+     * Remove mappings from the cache.
+     *
+     * @see Cache#removeAll
+     * @param keys keys is to be removed from the cache
+     */
+    void removeAll(@Nullable Iterable<? extends K> keys);
 }

@@ -1,4 +1,10 @@
-package org.cache2k.processor;
+/**
+ * Package for operational aspects of a cache.
+ *
+ * @author Jens Wilke
+ */
+@NonNullIsDefault
+package org.cache2k.operation;
 
 /*
  * #%L
@@ -19,14 +25,5 @@ package org.cache2k.processor;
  * limitations under the License.
  * #L%
  */
-import org.cache2k.CacheException;
+import org.cache2k.annotation.NonNullIsDefault;
 
-/**
- * Used by the entry processor to abort the processing to carry out
- * some, possibly asynchronous, processing.
- *
- * @author Jens Wilke
- */
-@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.KeyForSubchecker")
-public class RestartException extends CacheException {
-}

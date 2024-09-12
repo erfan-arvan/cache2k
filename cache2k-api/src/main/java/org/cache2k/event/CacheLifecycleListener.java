@@ -1,6 +1,5 @@
 package org.cache2k.event;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,7 +18,6 @@ package org.cache2k.event;
  * limitations under the License.
  * #L%
  */
-
 import java.util.EventListener;
 import java.util.concurrent.CompletableFuture;
 
@@ -30,15 +28,21 @@ import java.util.concurrent.CompletableFuture;
  */
 public interface CacheLifecycleListener extends EventListener {
 
-  /**
-   * Single instance of completed future.
-   */
-  CompletableFuture<Void> COMPLETE = new CompletableFuture<Void>() {
-    public CompletableFuture<Void> newIncompleteFuture() {
-      return this;
-    }
-    public void obtrudeValue(Void value) { throw new UnsupportedOperationException(); }
-    public void obtrudeException(Throwable ex) { throw new UnsupportedOperationException(); }
-  };
+    /**
+     * Single instance of completed future.
+     */
+    CompletableFuture<Void> COMPLETE = new CompletableFuture<Void>() {
 
+        public CompletableFuture<Void> newIncompleteFuture() {
+            return this;
+        }
+
+        public void obtrudeValue(Void value) {
+            throw new UnsupportedOperationException();
+        }
+
+        public void obtrudeException(Throwable ex) {
+            throw new UnsupportedOperationException();
+        }
+    };
 }

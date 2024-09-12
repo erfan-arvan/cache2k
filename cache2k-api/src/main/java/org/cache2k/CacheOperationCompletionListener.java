@@ -1,6 +1,5 @@
 package org.cache2k;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,7 +18,6 @@ package org.cache2k;
  * limitations under the License.
  * #L%
  */
-
 import java.util.EventListener;
 
 /**
@@ -33,19 +31,18 @@ import java.util.EventListener;
 @Deprecated
 public interface CacheOperationCompletionListener extends EventListener {
 
-  /**
-   * Signals the completion of a {@link Cache#loadAll}, {@link Cache#reloadAll} or
-   * {@link Cache#prefetchAll} operation.
-   */
-  void onCompleted();
+    /**
+     * Signals the completion of a {@link Cache#loadAll}, {@link Cache#reloadAll} or
+     * {@link Cache#prefetchAll} operation.
+     */
+    void onCompleted();
 
-  /**
-   * The operation could not completed, because of an error.
-   *
-   * <p>In the current implementation, there is no condition which raises a call to this method.
-   * Errors while loading a value, will be delayed and propagated when the respective key
-   * is accessed. This is subject to the resilience configuration.
-   */
-  void onException(Throwable exception);
-
+    /**
+     * The operation could not completed, because of an error.
+     *
+     * <p>In the current implementation, there is no condition which raises a call to this method.
+     * Errors while loading a value, will be delayed and propagated when the respective key
+     * is accessed. This is subject to the resilience configuration.
+     */
+    void onException(@Nullable Throwable exception);
 }

@@ -20,7 +20,6 @@ package org.cache2k.integration;
  * #L%
  */
 
-import org.cache2k.annotation.Nullable;
 
 /**
  * @author Jens Wilke

@@ -1,5 +1,6 @@
 package org.cache2k;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -19,7 +20,6 @@ package org.cache2k;
  * limitations under the License.
  * #L%
  */
-import org.cache2k.annotation.Nullable;
 import org.cache2k.config.Cache2kConfig;
 import org.cache2k.config.CacheType;
 import org.cache2k.config.ConfigBean;
@@ -126,23 +126,17 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
         return cb;
     }
 
-    private @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.MonotonicNonNull CacheType<K> keyType;
+    private CacheType<K> keyType;
 
-    private @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.MonotonicNonNull CacheType<V> valueType;
+    private CacheType<V> valueType;
 
-    private @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.MonotonicNonNull Cache2kConfig<K, V> config = null;
+    private Cache2kConfig<K, V> config = null;
 
-    private @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.MonotonicNonNull CacheManager manager = null;
+    private CacheManager manager = null;
 
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.initialization.qual.FBCBottom.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.initialization.qual.FBCBottom.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     private Cache2kBuilder(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kConfig<K, V> cfg) {
         withConfig(cfg);
@@ -164,9 +158,7 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.keyType" })
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.valueType" })
     @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.initialization.qual.FBCBottom.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.initialization.qual.FBCBottom.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     protected Cache2kBuilder() {
         Type t = this.getClass().getGenericSuperclass();
@@ -181,16 +173,8 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
         }
     }
 
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.initialization.qual.FBCBottom.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.initialization.qual.FBCBottom.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.SideEffectFree
     private Cache2kBuilder(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable CacheType<K> keyType, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable CacheType<V> valueType) {
         this.keyType = keyType;
@@ -198,13 +182,8 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
     }
 
     @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.initialization.qual.FBCBottom.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.initialization.qual.FBCBottom.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     private void withConfig(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kConfig<K, V> cfg) {
         config = cfg;
@@ -213,16 +192,9 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
     /**
      * Bind to default manager if not set before. Read in default configuration.
      */
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
-    private @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kConfig<K, V> cfg() {
+    private Cache2kConfig<K, V> cfg() {
         if (config == null) {
             config = CacheManager.PROVIDER.getDefaultConfig(getManager());
             if (keyType != null) {
@@ -245,9 +217,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *         is created.
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.manager" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> manager(CacheManager manager) {
         if (this.manager != null) {
@@ -264,10 +233,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @throws IllegalArgumentException in case the type is illegal
      * @see CacheType for a general discussion on types
      */
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final <K2> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K2, V> keyType(Class<K2> t) {
         Cache2kBuilder<K2, V> me = (Cache2kBuilder<K2, V>) this;
@@ -281,10 +246,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @throws IllegalArgumentException in case the type is illegal
      * @see CacheType for a general discussion on types
      */
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final <V2> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V2> valueType(Class<V2> t) {
         Cache2kBuilder<K, V2> me = (Cache2kBuilder<K, V2>) this;
@@ -299,10 +260,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @throws IllegalArgumentException in case the type is illegal
      * @see CacheType for a general discussion on types
      */
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final <K2> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K2, V> keyType(CacheType<K2> t) {
         Cache2kBuilder<K2, V> me = (Cache2kBuilder<K2, V>) this;
@@ -316,10 +273,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @throws IllegalArgumentException in case the type is illegal
      * @see CacheType for a general discussion on types
      */
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final <V2> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V2> valueType(CacheType<V2> t) {
         Cache2kBuilder<K, V2> me = (Cache2kBuilder<K, V2>) this;
@@ -339,9 +292,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see #name(String)
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> name(String uniqueName, Class<?> clazz, String fieldName) {
         if (fieldName == null) {
@@ -362,14 +312,7 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *
      * @see #name(String)
      */
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> name(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Class<?> clazz, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String fieldName) {
         if (fieldName == null) {
@@ -387,9 +330,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see #name(String)
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> name(Class<?> clazz) {
         cfg().setName(clazz.getName());
@@ -424,9 +364,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see Cache#getName()
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> name(String v) {
         cfg().setName(v);
@@ -441,9 +378,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see AdvancedCacheLoader
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> keepDataAfterExpired(boolean v) {
         cfg().setKeepDataAfterExpired(v);
@@ -461,9 +395,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * will usually run stable without tuning or setting a reasonable size.
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> entryCapacity(long v) {
         cfg().setEntryCapacity(v);
@@ -485,9 +416,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @throws IllegalArgumentException in case a previous setting is reset
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> eternal(boolean v) {
         cfg().setEternal(v);
@@ -516,9 +444,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *   cache2k user guide - Expiry and Refresh</a>
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> expireAfterWrite(long v, TimeUnit u) {
         cfg().setExpireAfterWrite(toDuration(v, u));
@@ -530,9 +455,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * expiry and refresh operations. The default is approximately one second.
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> timerLag(long v, TimeUnit u) {
         cfg().setTimerLag(toDuration(v, u));
@@ -549,9 +471,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * are wrapped into a {@link CacheLoaderException}.
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> exceptionPropagator(final org.cache2k.integration.ExceptionPropagator<K> ep) {
         checkNull(ep);
@@ -595,14 +514,7 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * Sets customization for propagating loader exceptions. By default loader exceptions
      * are wrapped into a {@link CacheLoaderException}.
      */
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> exceptionPropagator(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull ExceptionPropagator<K> ep) {
         cfg().setExceptionPropagator(wrapCustomizationInstance(ep));
@@ -618,9 +530,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
     }
 
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> loader(final org.cache2k.integration.AsyncCacheLoader<K, V> oldLoader) {
         checkNull(oldLoader);
@@ -673,9 +582,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see CacheLoader for general discussion on cache loaders
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> loader(CacheLoader<K, V> l) {
         cfg().setLoader(wrapCustomizationInstance(l));
@@ -689,9 +595,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see CacheLoader for general discussion on cache loaders
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> loader(AdvancedCacheLoader<K, V> l) {
         cfg().setAdvancedLoader(wrapCustomizationInstance(l));
@@ -705,14 +608,7 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *
      * @see CacheLoader for general discussion on cache loaders
      */
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> loader(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull AsyncCacheLoader<K, V> l) {
         cfg().setAsyncLoader(wrapCustomizationInstance(l));
@@ -725,9 +621,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see CacheLoader for general discussion on cache loaders
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> wrappingLoader(AdvancedCacheLoader<K, LoadDetail<V>> l) {
         cfg().setAdvancedLoader((CustomizationSupplier<AdvancedCacheLoader<K, V>>) (Object) wrapCustomizationInstance(l));
@@ -740,9 +633,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see CacheLoader for general discussion on cache loaders
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> wrappingLoader(CacheLoader<K, LoadDetail<V>> l) {
         cfg().setAdvancedLoader((CustomizationSupplier<AdvancedCacheLoader<K, V>>) (Object) wrapCustomizationInstance(l));
@@ -754,9 +644,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * called synchronously upon cache mutations. By default write through is not enabled.
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> writer(CacheWriter<K, V> w) {
         cfg().setWriter(wrapCustomizationInstance(w));
@@ -768,9 +655,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * integration.
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> addCacheClosedListener(CacheClosedListener listener) {
         cfg().getLifecycleListeners().add(wrapCustomizationInstance(listener));
@@ -786,9 +670,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @param listener The listener to add
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> addListener(CacheEntryOperationListener<K, V> listener) {
         cfg().getListeners().add(wrapCustomizationInstance(listener));
@@ -803,9 +684,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @param listener The listener to add
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> addAsyncListener(CacheEntryOperationListener<K, V> listener) {
         cfg().getAsyncListeners().add(wrapCustomizationInstance(listener));
@@ -820,9 +698,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * is set to 0 then expiry calculation is not used, all entries expire immediately.
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> expiryPolicy(ExpiryPolicy<K, V> c) {
         cfg().setExpiryPolicy(wrapCustomizationInstance(c));
@@ -851,9 +726,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see #loaderThreadCount(int)
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> refreshAhead(boolean f) {
         cfg().setRefreshAhead(f);
@@ -868,9 +740,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * {@link ExpiryPolicy} returned. This has no effect on {@link #expireAfterWrite(long, TimeUnit)}.
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> sharpExpiry(boolean f) {
         cfg().setSharpExpiry(f);
@@ -889,9 +758,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see #refreshExecutor(Executor)
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> loaderThreadCount(int v) {
         cfg().setLoaderThreadCount(v);
@@ -909,9 +775,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * used by application developers to future proof the applications with upcoming versions.
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> storeByReference(boolean v) {
         cfg().setStoreByReference(v);
@@ -924,9 +787,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * {@link #expireAfterWrite} is set to 0.
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> resiliencePolicy(ResiliencePolicy<K, V> v) {
         cfg().setResiliencePolicy(wrapCustomizationInstance(v));
@@ -934,9 +794,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
     }
 
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> resiliencePolicy(CustomizationSupplier<? extends ResiliencePolicy<K, V>> v) {
         cfg().setResiliencePolicy(v);
@@ -950,9 +807,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * testing and evaluation purposes.
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> strictEviction(boolean flag) {
         cfg().setStrictEviction(flag);
@@ -971,9 +825,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see ExpiryPolicy#calculateExpiryTime(Object, Object, long, CacheEntry)
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> permitNullValues(boolean flag) {
         cfg().setPermitNullValues(flag);
@@ -986,9 +837,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * can be controlled via {@link #disableMonitoring(boolean)}
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> disableStatistics(boolean flag) {
         cfg().setDisableStatistics(flag);
@@ -1002,9 +850,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see MutableCacheEntry#getModificationTime()
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> recordModificationTime(boolean flag) {
         cfg().setRecordModificationTime(flag);
@@ -1020,9 +865,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * that utilize all cores and cache operations account for most CPU cycles.
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> boostConcurrency(boolean f) {
         cfg().setBoostConcurrency(f);
@@ -1036,9 +878,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * respect this parameter.
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> disableMonitoring(boolean f) {
         cfg().setDisableMonitoring(f);
@@ -1052,9 +891,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see #loaderThreadCount(int)
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> loaderExecutor(Executor v) {
         cfg().setLoaderExecutor(new CustomizationReferenceSupplier<Executor>(v));
@@ -1073,9 +909,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see #loaderExecutor(Executor)
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> refreshExecutor(Executor v) {
         cfg().setRefreshExecutor(new CustomizationReferenceSupplier<Executor>(v));
@@ -1088,9 +921,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * executor is used that has unbounded thread capacity otherwise.
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> executor(Executor v) {
         cfg().setExecutor(new CustomizationReferenceSupplier<Executor>(v));
@@ -1104,9 +934,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see #addAsyncListener(CacheEntryOperationListener)
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> asyncListenerExecutor(Executor v) {
         cfg().setAsyncListenerExecutor(new CustomizationReferenceSupplier<Executor>(v));
@@ -1119,9 +946,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * performance impact on the update of existing entries.
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> weigher(Weigher<K, V> v) {
         cfg().setWeigher(new CustomizationReferenceSupplier<Weigher<K, V>>(v));
@@ -1139,9 +963,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * The maximum weight setting cannot be used together with {@link #entryCapacity(long)}.
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> maximumWeight(long v) {
         cfg().setMaximumWeight(v);
@@ -1152,10 +973,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * Call the consumer with this builder. This can be used to apply configuration
      * fragments within the fluent configuration scheme.
      */
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> setup(Consumer<Cache2kBuilder<K, V>> consumer) {
         consumer.accept(this);
@@ -1165,20 +982,12 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
     /**
      * Enable a feature
      */
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> enable(Class<? extends ToggleFeature> feature) {
         ToggleFeature.enable(this, feature);
         return this;
     }
 
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> disable(Class<? extends ToggleFeature> feature) {
         ToggleFeature.disable(this, feature);
@@ -1195,14 +1004,7 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @param <B> type of the builder for the config section
      * @param <CFG> the type of the config section
      */
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final <B extends SectionBuilder<B, CFG>, CFG extends ConfigSection<CFG, B>> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> with(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Class<CFG> configSectionClass, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Consumer<B> builderAction) {
         CFG section = cfg().getSections().getSection(configSectionClass);
@@ -1224,9 +1026,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * instead of instances.
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> set(Consumer<Cache2kConfig<K, V>> configAction) {
         configAction.accept(config());
@@ -1244,9 +1043,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @param <SUP> the supplier for the customization
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public <B extends SectionBuilder<B, CFG>, CFG extends ConfigSection<CFG, B>, SUP extends WithSection<CFG, B> & CustomizationSupplier<?>> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> setupWith(Function<Cache2kBuilder<K, V>, SUP> setupAction, Consumer<B> builderAction) {
         with(setupAction.apply(this).getConfigClass(), builderAction);
@@ -1260,10 +1056,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @param enabler setup function returning am associated configuration
      * @param builderAction function to configure
      */
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public <B extends ConfigBuilder<B, CFG>, CFG extends ConfigBean<CFG, B>> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> setup(Function<Cache2kBuilder<K, V>, CFG> enabler, Consumer<B> builderAction) {
         builderAction.accept(enabler.apply(this).builder());
@@ -1276,10 +1068,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @param featureType Type of feature which has additional bean properties
      * @param builderAction function to configure the feature
      */
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public <B extends ConfigBuilder<B, T>, T extends ToggleFeature & ConfigBean<T, B>> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> enable(Class<T> featureType, Consumer<B> builderAction) {
         T bean = ToggleFeature.enable(this, featureType);
@@ -1293,9 +1081,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * are identical to {@link #with(Class, Consumer)}
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public <B extends SectionBuilder<B, CFG>, T extends ToggleFeature & WithSection<CFG, B>, CFG extends ConfigSection<CFG, B>> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> enableWith(Class<T> featureType, Consumer<B> builderAction) {
         T bean = ToggleFeature.enable(this, featureType);
@@ -1312,32 +1097,18 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *
      * @return configuration objects with the parameters set in the builder.
      */
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
-    public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kConfig<K, V> config(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> this) {
+    public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable Cache2kConfig<K, V> config(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> this) {
         return cfg();
     }
 
     /**
      * Get the associated cache manager.
      */
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.manager" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
-    public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CacheManager getManager() {
+    public final CacheManager getManager() {
         if (manager == null) {
             manager = CacheManager.getInstance();
         }
@@ -1357,8 +1128,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.manager" })
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.keyType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
-    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.valueType" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache<K, V> build() {
         return CacheManager.PROVIDER.createCache(getManager(), cfg());

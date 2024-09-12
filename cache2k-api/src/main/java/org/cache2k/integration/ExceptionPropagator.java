@@ -1,6 +1,5 @@
 package org.cache2k.integration;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,7 +18,6 @@ package org.cache2k.integration;
  * limitations under the License.
  * #L%
  */
-
 /**
  * @author Jens Wilke
  * @deprecated Replaced with {@link org.cache2k.io.ExceptionPropagator},
@@ -28,13 +26,12 @@ package org.cache2k.integration;
 @Deprecated
 public interface ExceptionPropagator<K> {
 
-  /**
-   * Generate runtime exception to throw. The original exception is passed in as information.
-   * Every returned exception should be filled with a stack trace based on the current
-   * method call. This is done by the exception constructor automatically.
-   *
-   * @param exceptionInformation information when the original exception occurred.
-   */
-  RuntimeException propagateException(K key, ExceptionInformation exceptionInformation);
-
+    /**
+     * Generate runtime exception to throw. The original exception is passed in as information.
+     * Every returned exception should be filled with a stack trace based on the current
+     * method call. This is done by the exception constructor automatically.
+     *
+     * @param exceptionInformation information when the original exception occurred.
+     */
+    RuntimeException propagateException(@Nullable K key, @Nullable ExceptionInformation exceptionInformation);
 }

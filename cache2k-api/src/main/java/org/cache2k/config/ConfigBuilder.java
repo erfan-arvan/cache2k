@@ -1,6 +1,5 @@
 package org.cache2k.config;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,13 +18,10 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-
 /**
  * @author Jens Wilke
  */
-public interface ConfigBuilder
-  <SELF extends ConfigBuilder<SELF, T>, T extends ConfigBean<T, SELF>> {
+public interface ConfigBuilder<SELF extends ConfigBuilder<SELF, T>, T extends ConfigBean<T, SELF>> {
 
-  T config();
-
+    T config();
 }

@@ -1,6 +1,5 @@
 package org.cache2k.expiry;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,9 +18,7 @@ package org.cache2k.expiry;
  * limitations under the License.
  * #L%
  */
-
 import org.cache2k.Cache2kBuilder;
-
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -37,14 +34,13 @@ import java.util.concurrent.TimeUnit;
  */
 public interface ValueWithExpiryTime {
 
-  /**
-   * Point in time in milliseconds when the value should expire.
-   *
-   * @return time of expiry in millis since epoch. See {@link ExpiryTimeValues} for the meaning of
-   *          special values.
-   * @see ExpiryPolicy
-   * @see ExpiryTimeValues
-   */
-  long getCacheExpiryTime();
-
+    /**
+     * Point in time in milliseconds when the value should expire.
+     *
+     * @return time of expiry in millis since epoch. See {@link ExpiryTimeValues} for the meaning of
+     *          special values.
+     * @see ExpiryPolicy
+     * @see ExpiryTimeValues
+     */
+    long getCacheExpiryTime();
 }

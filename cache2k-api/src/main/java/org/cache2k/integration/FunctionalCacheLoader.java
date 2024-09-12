@@ -1,6 +1,5 @@
 package org.cache2k.integration;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,7 +18,6 @@ package org.cache2k.integration;
  * limitations under the License.
  * #L%
  */
-
 /**
  * @deprecated Replaced with {@link org.cache2k.io.CacheLoader},
  *   to be removed in version 2.2
@@ -27,9 +25,8 @@ package org.cache2k.integration;
 @Deprecated
 public interface FunctionalCacheLoader<K, V> extends org.cache2k.io.CacheLoader<K, V> {
 
-  /**
-   * @see CacheLoader#load(Object)
-   */
-  V load(K key) throws Exception;
-
+    /**
+     * @see CacheLoader#load(Object)
+     */
+    V load(@Nullable K key) throws Exception;
 }

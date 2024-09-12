@@ -1,5 +1,7 @@
 package org.cache2k.config;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 /*
  * #%L
  * cache2k API
@@ -40,7 +42,7 @@ public final class CustomizationReferenceSupplier<T> implements CustomizationSup
     }
 
     @Override
-    public T supply(CacheBuildContext ignored) {
+    public T supply(@Nullable CacheBuildContext ignored) {
         return object;
     }
 

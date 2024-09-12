@@ -1,5 +1,7 @@
 package org.cache2k.config;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 /*
  * #%L
  * cache2k API
@@ -42,7 +44,7 @@ public final class CustomizationReferenceSupplier<T> implements CustomizationSup
     }
 
     @org.checkerframework.dataflow.qual.Pure
-    public T supply(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CustomizationReferenceSupplier<T> this, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CacheBuildContext ignored) {
+    public T supply(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CustomizationReferenceSupplier<T> this, CacheBuildContext ignored) {
         return object;
     }
 

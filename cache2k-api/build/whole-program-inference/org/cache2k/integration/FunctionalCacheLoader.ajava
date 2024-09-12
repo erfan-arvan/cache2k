@@ -1,5 +1,7 @@
 package org.cache2k.integration;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 /*
  * #%L
  * cache2k API
@@ -29,5 +31,5 @@ public interface FunctionalCacheLoader<K, V> extends org.cache2k.io.CacheLoader<
     /**
      * @see CacheLoader#load(Object)
      */
-    V load(K key) throws Exception;
+    V load(@Nullable K key) throws Exception;
 }

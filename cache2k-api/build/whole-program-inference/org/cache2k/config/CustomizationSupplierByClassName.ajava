@@ -1,5 +1,7 @@
 package org.cache2k.config;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 /*
  * #%L
  * cache2k API
@@ -19,8 +21,6 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-import org.cache2k.annotation.Nullable;
-
 /**
  * Creates a new instance of the customization based on the class name and the class loader
  * in effect by the cache.
@@ -29,6 +29,7 @@ import org.cache2k.annotation.Nullable;
  */
 public final class CustomizationSupplierByClassName<T> implements CustomizationSupplier<T>, ValidatingConfigBean {
 
+    @Nullable
     private String className;
 
     /**
@@ -51,6 +52,7 @@ public final class CustomizationSupplierByClassName<T> implements CustomizationS
         this.className = className;
     }
 
+    @Nullable
     public String getClassName() {
         return className;
     }
@@ -72,6 +74,7 @@ public final class CustomizationSupplierByClassName<T> implements CustomizationS
     }
 
     @Override
+    @Nullable
     public T supply(CacheBuildContext<?, ?> ctx) {
         try {
             return (T) ctx.getCacheManager().getClassLoader().loadClass(className).getConstructor().newInstance();
@@ -81,6 +84,7 @@ public final class CustomizationSupplierByClassName<T> implements CustomizationS
     }
 
     @Override
+    @Nullable
     public boolean equals(Object other) {
         if (this == other)
             return true;
@@ -94,6 +98,7 @@ public final class CustomizationSupplierByClassName<T> implements CustomizationS
     }
 
     @Override
+    @Nullable
     public int hashCode() {
         if (className != null) {
             return className.hashCode();

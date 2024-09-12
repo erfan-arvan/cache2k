@@ -1,5 +1,6 @@
 package org.cache2k;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -20,7 +21,6 @@ package org.cache2k;
  * #L%
  */
 import org.cache2k.annotation.NonNull;
-import org.cache2k.annotation.Nullable;
 import org.cache2k.expiry.ExpiryPolicy;
 import org.cache2k.expiry.ExpiryTimeValues;
 import org.cache2k.io.CacheLoader;
@@ -312,7 +312,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
      *         or value prevents it from being stored in this cache
      */
     @org.checkerframework.dataflow.qual.Impure
-    V computeIfAbsent(K key, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Callable<V> callable);
+    V computeIfAbsent(K key, Callable<V> callable);
 
     /**
      * If the specified key is not already associated
@@ -547,7 +547,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
      * @throws NullPointerException if a specified key is null
      */
     @org.checkerframework.dataflow.qual.Impure
-    void removeAll(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Iterable<? extends K> keys);
+    void removeAll(Iterable<? extends K> keys);
 
     /**
      * Updates an existing cache entry for the specified key, so it associates
@@ -619,7 +619,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
      * @deprecated To be removed in 2.2. Use {@link #invoke(Object, EntryProcessor)}
      */
     @org.checkerframework.dataflow.qual.Impure
-    void expireAt(K key,  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull long millis);
+    void expireAt(K key, long millis);
 
     /**
      * Asynchronously loads the given set of keys into the cache. Only missing or expired
@@ -641,7 +641,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
      * @deprecated to be removed in 2.2
      */
     @org.checkerframework.dataflow.qual.Impure
-    void loadAll(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Iterable<? extends K> keys, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CacheOperationCompletionListener listener);
+    void loadAll(Iterable<? extends K> keys, CacheOperationCompletionListener listener);
 
     /**
      * Asynchronously loads the given set of keys into the cache. Always invokes load for all keys
@@ -663,7 +663,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
      * @deprecated to be removed in 2.2
      */
     @org.checkerframework.dataflow.qual.Impure
-    void reloadAll(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Iterable<? extends K> keys, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CacheOperationCompletionListener listener);
+    void reloadAll(Iterable<? extends K> keys, CacheOperationCompletionListener listener);
 
     /**
      * Asynchronously loads the given set of keys into the cache. Only missing or expired
@@ -683,7 +683,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
      * @throws UnsupportedOperationException if no loader is defined
      */
     @org.checkerframework.dataflow.qual.Impure
-    @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CompletableFuture<Void> loadAll(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Iterable<? extends K> keys);
+    @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CompletableFuture<Void> loadAll(Iterable<? extends K> keys);
 
     /**
      * Asynchronously loads the given set of keys into the cache. Always invokes load for all keys
@@ -703,7 +703,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
      * @throws UnsupportedOperationException if no loader is defined
      */
     @org.checkerframework.dataflow.qual.Impure
-    @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CompletableFuture<Void> reloadAll(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Iterable<? extends K> keys);
+    @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CompletableFuture<Void> reloadAll(Iterable<? extends K> keys);
 
     /**
      * Invoke a user defined function on a cache entry.
@@ -721,7 +721,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
      * @see org.cache2k.processor.MutableCacheEntry
      */
     @org.checkerframework.dataflow.qual.Impure
-    <R> R invoke(K key, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull EntryProcessor<K, V, R> processor);
+    <R> R invoke(K key, EntryProcessor<K, V, R> processor);
 
     /**
      * Invoke a user defined operation on a cache entry.
@@ -764,7 +764,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
      * @see org.cache2k.processor.MutableCacheEntry
      */
     @org.checkerframework.dataflow.qual.Impure
-    <R> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Map<K, EntryProcessingResult<R>> invokeAll(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Iterable<? extends K> keys, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull EntryProcessor<K, V, R> entryProcessor);
+    <R> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Map<K, EntryProcessingResult<R>> invokeAll(Iterable<? extends K> keys, EntryProcessor<K, V, R> entryProcessor);
 
     /**
      * Invoke a user defined mutation operation on multiple cache entries specified by the
@@ -813,7 +813,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
      *            Otherwise the exception is thrown when the key is requested.
      */
     @org.checkerframework.dataflow.qual.Impure
-    @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Map<K, V> getAll(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Iterable<? extends K> keys);
+    @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Map<K, V> getAll(Iterable<? extends K> keys);
 
     /**
      * Bulk version for {@link #peek(Object)}
@@ -834,7 +834,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
      *         prevents it from being stored in this cache
      */
     @org.checkerframework.dataflow.qual.Impure
-    @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Map<K, V> peekAll(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Iterable<? extends K> keys);
+    @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Map<K, V> peekAll(Iterable<? extends K> keys);
 
     /**
      * Insert all elements of the map into the cache.
@@ -846,7 +846,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
      * @throws NullPointerException if one of the specified keys is null
      */
     @org.checkerframework.dataflow.qual.Impure
-    void putAll(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Map<? extends K, ? extends V> valueMap);
+    void putAll(Map<? extends K, ? extends V> valueMap);
 
     /**
      * Iterate all keys in the cache.
@@ -940,7 +940,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
      * @throws UnsupportedOperationException if interface is not available
      */
     @org.checkerframework.dataflow.qual.Impure
-    <T> T requestInterface(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Class<T> type);
+    <T> T requestInterface(Class<T> type);
 
     /**
      * Returns a map interface for operating with this cache. Operations on the map

@@ -1,5 +1,6 @@
 package org.cache2k.event;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -45,5 +46,5 @@ public interface CacheEntryUpdatedListener<K, V> extends CacheEntryOperationList
      *                         It is only valid to access the object during the
      *                     call of this method. The object value may become invalid afterwards.
      */
-    void onEntryUpdated(Cache<K, V> cache, CacheEntry<K, V> currentEntry, CacheEntry<K, V> entryWithNewData);
+    void onEntryUpdated(@Nullable Cache<K, V> cache, @Nullable CacheEntry<K, V> currentEntry, @Nullable CacheEntry<K, V> entryWithNewData);
 }

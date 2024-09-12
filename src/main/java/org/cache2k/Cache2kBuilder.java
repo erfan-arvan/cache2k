@@ -20,7 +20,6 @@ package org.cache2k;
  * #L%
  */
 
-import org.cache2k.annotation.Nullable;
 import org.cache2k.config.Cache2kConfig;
 import org.cache2k.config.CacheType;
 import org.cache2k.config.ConfigBean;

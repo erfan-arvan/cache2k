@@ -20,7 +20,6 @@ package org.cache2k.processor;
  * #L%
  */
 
-import org.cache2k.annotation.Nullable;
 
 /**
  * An invokable function to perform an atomic operation on a cache entry. The entry

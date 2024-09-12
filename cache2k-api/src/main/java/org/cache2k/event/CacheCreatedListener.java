@@ -1,6 +1,5 @@
 package org.cache2k.event;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,10 +18,8 @@ package org.cache2k.event;
  * limitations under the License.
  * #L%
  */
-
 import org.cache2k.Cache;
 import org.cache2k.config.CacheBuildContext;
-
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -30,15 +27,13 @@ import java.util.concurrent.CompletableFuture;
  */
 public interface CacheCreatedListener extends CacheLifecycleListener {
 
-  /**
-   * A new cache has been created.
-   *
-   * @param ctx The build context of the cache. The listener may read
-   *            but not modify its configuration parameters.
-   * @return {@code null} or a CompletableFuture, if this method uses async
-   *         processing
-   */
-  <K, V> CompletableFuture<Void> onCacheCreated(Cache<K, V> cache,
-                                                CacheBuildContext<K, V> ctx);
-
+    /**
+     * A new cache has been created.
+     *
+     * @param ctx The build context of the cache. The listener may read
+     *            but not modify its configuration parameters.
+     * @return {@code null} or a CompletableFuture, if this method uses async
+     *         processing
+     */
+    <K, V> CompletableFuture<Void> onCacheCreated(@Nullable Cache<K, V> cache, @Nullable CacheBuildContext<K, V> ctx);
 }

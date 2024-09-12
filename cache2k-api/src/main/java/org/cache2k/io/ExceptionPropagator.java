@@ -1,6 +1,5 @@
 package org.cache2k.io;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,7 +18,6 @@ package org.cache2k.io;
  * limitations under the License.
  * #L%
  */
-
 import org.cache2k.Customization;
 
 /**
@@ -47,20 +45,19 @@ import org.cache2k.Customization;
 @FunctionalInterface
 public interface ExceptionPropagator<K> extends Customization<K, Void> {
 
-  /**
-   * Called when an entry value with exception is accessed.
-   * Potentially wraps and rethrows the original exception.
-   *
-   * <p>The default implementation wraps the exception into a {@link CacheLoaderException}
-   * and contains some id or timestamp of the original exception to show that we might
-   * through multiple exceptions on each entry access for a single loader exception.
-   *
-   * <p>API rationale: We create an exception instead of doing a {@code throw} in the
-   * exception propagator, to keep the control flow obvious in the calling method.
-   *
-   * @param loadExceptionInfo information of original exception and
-   *                             when the original exception occurred.
-   */
-  RuntimeException propagateException(LoadExceptionInfo<K> loadExceptionInfo);
-
+    /**
+     * Called when an entry value with exception is accessed.
+     * Potentially wraps and rethrows the original exception.
+     *
+     * <p>The default implementation wraps the exception into a {@link CacheLoaderException}
+     * and contains some id or timestamp of the original exception to show that we might
+     * through multiple exceptions on each entry access for a single loader exception.
+     *
+     * <p>API rationale: We create an exception instead of doing a {@code throw} in the
+     * exception propagator, to keep the control flow obvious in the calling method.
+     *
+     * @param loadExceptionInfo information of original exception and
+     *                             when the original exception occurred.
+     */
+    RuntimeException propagateException(@Nullable LoadExceptionInfo<K> loadExceptionInfo);
 }

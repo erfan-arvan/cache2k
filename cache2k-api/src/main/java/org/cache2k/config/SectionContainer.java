@@ -1,6 +1,5 @@
 package org.cache2k.config;
-
-/*
+import org.checkerframework.checker.nullness.qual.Nullable;/*
  * #%L
  * cache2k API
  * %%
@@ -19,7 +18,6 @@ package org.cache2k.config;
  * limitations under the License.
  * #L%
  */
-
 import java.io.Serializable;
 import java.util.AbstractCollection;
 import java.util.Collection;
@@ -34,53 +32,49 @@ import java.util.Map;
  * @author Jens Wilke
  * @see ConfigWithSections
  */
-public class SectionContainer extends AbstractCollection<ConfigSection>
-  implements Collection<ConfigSection>, Serializable {
+public class SectionContainer extends AbstractCollection<ConfigSection> implements Collection<ConfigSection>, Serializable {
 
-  private final Map<Class<? extends ConfigSection>, ConfigSection> class2section = new HashMap<>();
+    private final Map<Class<? extends ConfigSection>, ConfigSection> class2section = new HashMap<>();
 
-  /**
-   * Add a new configuration section to the container.
-   *
-   * @throws IllegalArgumentException if same type is already present and a singleton
-   * @return always {@code true}
-   */
-  @Override
-  public boolean add(ConfigSection section) {
-    if (getSection(section.getClass()) !=  null) {
-      throw new IllegalArgumentException(
-        "Section of same type already inserted: " + section.getClass().getName());
+    /**
+     * Add a new configuration section to the container.
+     *
+     * @throws IllegalArgumentException if same type is already present and a singleton
+     * @return always {@code true}
+     */
+    @Override
+    public boolean add(ConfigSection section) {
+        if (getSection(section.getClass()) != null) {
+            throw new IllegalArgumentException("Section of same type already inserted: " + section.getClass().getName());
+        }
+        class2section.put(section.getClass(), section);
+        return true;
     }
-    class2section.put(section.getClass(), section);
-    return true;
-  }
 
-  /**
-   * Retrieve a single section from the container.
-   */
-  public <T extends ConfigSection> T getSection(Class<T> sectionType, T defaultFallback) {
-    ConfigSection section = class2section.get(sectionType);
-    return section != null ? sectionType.cast(section) : defaultFallback;
-  }
+    /**
+     * Retrieve a single section from the container.
+     */
+    public <T extends ConfigSection> T getSection(Class<T> sectionType, T defaultFallback) {
+        ConfigSection section = class2section.get(sectionType);
+        return section != null ? sectionType.cast(section) : defaultFallback;
+    }
 
-  public <T extends ConfigSection> T getSection(Class<T> sectionType) {
-    ConfigSection section = class2section.get(sectionType);
-    return sectionType.cast(section);
-  }
+    public <T extends ConfigSection> T getSection(Class<T> sectionType) {
+        ConfigSection section = class2section.get(sectionType);
+        return sectionType.cast(section);
+    }
 
-  @Override
-  public Iterator<ConfigSection> iterator() {
-    return class2section.values().iterator();
-  }
+    @Override
+    public Iterator<ConfigSection> iterator() {
+        return class2section.values().iterator();
+    }
 
-  @Override
-  public int size() {
-    return class2section.size();
-  }
+    @Override
+    public int size() {
+        return class2section.size();
+    }
 
-  public String toString() {
-    return getClass().getSimpleName() + class2section.values().toString();
-  }
-
+    public String toString() {
+        return getClass().getSimpleName() + class2section.values().toString();
+    }
 }
-

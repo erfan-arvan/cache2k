@@ -1,5 +1,6 @@
 package org.cache2k.config;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 /*
  * #%L
  * cache2k API
@@ -22,7 +23,6 @@ package org.cache2k.config;
 import org.cache2k.Cache2kBuilder;
 import org.cache2k.Weigher;
 import org.cache2k.annotation.NonNull;
-import org.cache2k.annotation.Nullable;
 import org.cache2k.event.CacheEntryOperationListener;
 import org.cache2k.event.CacheLifecycleListener;
 import org.cache2k.expiry.ExpiryPolicy;
@@ -89,8 +89,10 @@ public class Cache2kConfig<K, V> implements ConfigBean<Cache2kConfig<K, V>, Cach
 
     private long entryCapacity = UNSET_LONG;
 
+    @Nullable
     private Duration expireAfterWrite = null;
 
+    @Nullable
     private Duration timerLag = null;
 
     private long maximumWeight = UNSET_LONG;
@@ -143,14 +145,19 @@ public class Cache2kConfig<K, V> implements ConfigBean<Cache2kConfig<K, V>, Cach
 
     private CustomizationSupplier<? extends Weigher<K, V>> weigher;
 
+    @Nullable
     private CustomizationCollection<CacheEntryOperationListener<K, V>> listeners;
 
+    @Nullable
     private CustomizationCollection<CacheEntryOperationListener<K, V>> asyncListeners;
 
+    @Nullable
     private Collection<CustomizationSupplier<CacheLifecycleListener>> lifecycleListeners;
 
+    @Nullable
     private Set<Feature> features;
 
+    @Nullable
     private SectionContainer sections;
 
     /**
@@ -278,6 +285,7 @@ public class Cache2kConfig<K, V> implements ConfigBean<Cache2kConfig<K, V>, Cach
         valueType = v;
     }
 
+    @Nullable
     public Duration getExpireAfterWrite() {
         return expireAfterWrite;
     }
@@ -300,6 +308,7 @@ public class Cache2kConfig<K, V> implements ConfigBean<Cache2kConfig<K, V>, Cach
         this.eternal = v;
     }
 
+    @Nullable
     public Duration getTimerLag() {
         return timerLag;
     }
@@ -363,6 +372,7 @@ public class Cache2kConfig<K, V> implements ConfigBean<Cache2kConfig<K, V>, Cach
     /**
      * Mutable collection of additional configuration sections
      */
+    @Nullable
     public SectionContainer getSections() {
         if (sections == null) {
             sections = new SectionContainer();
@@ -469,6 +479,7 @@ public class Cache2kConfig<K, V> implements ConfigBean<Cache2kConfig<K, V>, Cach
      *
      * @return Mutable collection of listeners
      */
+    @Nullable
     public CustomizationCollection<CacheEntryOperationListener<K, V>> getListeners() {
         if (listeners == null) {
             listeners = new DefaultCustomizationCollection<CacheEntryOperationListener<K, V>>();
@@ -479,6 +490,7 @@ public class Cache2kConfig<K, V> implements ConfigBean<Cache2kConfig<K, V>, Cach
     /**
      * @return True if listeners are added to this configuration.
      */
+    @Nullable
     public boolean hasListeners() {
         return listeners != null && !listeners.isEmpty();
     }
@@ -498,6 +510,7 @@ public class Cache2kConfig<K, V> implements ConfigBean<Cache2kConfig<K, V>, Cach
      *
      * @return Mutable collection of listeners
      */
+    @Nullable
     public CustomizationCollection<CacheEntryOperationListener<K, V>> getAsyncListeners() {
         if (asyncListeners == null) {
             asyncListeners = new DefaultCustomizationCollection<CacheEntryOperationListener<K, V>>();
@@ -508,6 +521,7 @@ public class Cache2kConfig<K, V> implements ConfigBean<Cache2kConfig<K, V>, Cach
     /**
      * @return True if listeners are added to this configuration.
      */
+    @Nullable
     public boolean hasAsyncListeners() {
         return asyncListeners != null && !asyncListeners.isEmpty();
     }
@@ -527,6 +541,7 @@ public class Cache2kConfig<K, V> implements ConfigBean<Cache2kConfig<K, V>, Cach
      *
      * @return Mutable collection of listeners
      */
+    @Nullable
     public Collection<CustomizationSupplier<? extends CacheLifecycleListener>> getLifecycleListeners() {
         if (lifecycleListeners == null) {
             lifecycleListeners = new DefaultCustomizationCollection<CacheLifecycleListener>();
@@ -537,6 +552,7 @@ public class Cache2kConfig<K, V> implements ConfigBean<Cache2kConfig<K, V>, Cach
     /**
      * @return True if listeners are added to this configuration.
      */
+    @Nullable
     public boolean hasLifecycleListeners() {
         return lifecycleListeners != null && !lifecycleListeners.isEmpty();
     }
@@ -550,6 +566,7 @@ public class Cache2kConfig<K, V> implements ConfigBean<Cache2kConfig<K, V>, Cach
         getLifecycleListeners().addAll(c);
     }
 
+    @Nullable
     public Set<Feature> getFeatures() {
         if (features == null) {
             features = new HashSet<>();
@@ -557,6 +574,7 @@ public class Cache2kConfig<K, V> implements ConfigBean<Cache2kConfig<K, V>, Cach
         return features;
     }
 
+    @Nullable
     public boolean hasFeatures() {
         return features != null && !features.isEmpty();
     }

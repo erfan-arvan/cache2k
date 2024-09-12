@@ -21,7 +21,6 @@ package org.cache2k.processor;
  */
 
 import org.cache2k.CacheEntry;
-import org.cache2k.annotation.Nullable;
 import org.cache2k.io.CacheLoader;
 import org.cache2k.io.CacheLoaderException;
 import org.cache2k.io.LoadExceptionInfo;

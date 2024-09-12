@@ -23,7 +23,6 @@ package org.cache2k.config;
 import org.cache2k.Cache2kBuilder;
 import org.cache2k.Weigher;
 import org.cache2k.annotation.NonNull;
-import org.cache2k.annotation.Nullable;
 import org.cache2k.event.CacheEntryOperationListener;
 import org.cache2k.event.CacheLifecycleListener;
 import org.cache2k.expiry.ExpiryPolicy;
