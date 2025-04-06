@@ -36,6 +36,7 @@ index 953e6cd0..71420395 100644
    CompletableFuture<Void> reloadAll(Iterable<? extends K> keys);
    < R>  R invoke(K key, EntryProcessor<K, V, R> processor);
    default void mutate(K key, EntryMutator<K, V> mutator) {
+//C9: Return value modification
 -    invoke(key, entry -> { mutator.mutate(entry); return this; });
 +    invoke(key, new EntryProcessor<K, V, Void>() {
 //C7: Method/Constructor definition or Override
@@ -242,7 +243,7 @@ index 24256e91..9ab3c777 100644
    private  String className;
    public CustomizationSupplierByClassName() { }
    public CustomizationSupplierByClassName(String className) {
-//C1: Null Check Introduction ?
+//C1: Null Check Introduction
 -    if (className == null) {
 -      throw new NullPointerException("className");
 -    }
@@ -257,6 +258,7 @@ index 24256e91..9ab3c777 100644
 //C7:Method/Constructor definition or Override
 -  @Override
 -  public void validate() {
+//C1: Null Check Introduction
 +  private String checkNull( String className) {
      if (className == null) {
        throw new IllegalArgumentException("className not set");
@@ -506,7 +508,7 @@ index 9123ff06..f1bf3422 100644
 -                              LoadExceptionInfo<K> loadExceptionInfo,
 +                              LoadExceptionInfo<K, V> loadExceptionInfo,
                                CacheEntry<K, V> cachedEntry);
-//Related to an interface modification
+//C5: Method signature modification
 -  long retryLoadAfter(K key, LoadExceptionInfo<K> loadExceptionInfo);
 +  long retryLoadAfter(K key, LoadExceptionInfo<K, V> loadExceptionInfo);
  }
