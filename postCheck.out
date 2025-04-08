@@ -1,0 +1,73 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< org.cache2k:cache2k-api >-----------------------
+[INFO] Building cache2k API 2.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M2:enforce (enforce-versions) @ cache2k-api ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ cache2k-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/erfanarvan/Desktop/comparisonPaper/experiments/play/post_wpi_without_s_cache2k-nullaway/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ cache2k-api ---
+[INFO] Compiling 96 source files with javac [forked debug release 8] to target/classes
+[INFO] -------------------------------------------------------------
+[WARNING] COMPILATION WARNING : 
+[INFO] -------------------------------------------------------------
+[WARNING] [options] source value 8 is obsolete and will be removed in a future release
+[WARNING] [options] target value 8 is obsolete and will be removed in a future release
+[WARNING] [options] To suppress warnings about obsolete options, use -Xlint:-options.
+[INFO] 3 warnings 
+[INFO] -------------------------------------------------------------
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] java.lang.IllegalAccessError: class org.checkerframework.javacutil.AbstractTypeProcessor (in unnamed module @0x42dafa95) cannot access class com.sun.tools.javac.processing.JavacProcessingEnvironment (in module jdk.compiler) because module jdk.compiler does not export com.sun.tools.javac.processing to unnamed module @0x42dafa95
+	at org.checkerframework.javacutil.AbstractTypeProcessor.init(AbstractTypeProcessor.java:97)
+	at org.checkerframework.framework.source.SourceChecker.init(SourceChecker.java:609)
+	at jdk.compiler/com.sun.tools.javac.processing.JavacProcessingEnvironment$ProcessorState.<init>(JavacProcessingEnvironment.java:699)
+	at jdk.compiler/com.sun.tools.javac.processing.JavacProcessingEnvironment$DiscoveredProcessors$ProcessorStateIterator.next(JavacProcessingEnvironment.java:826)
+	at jdk.compiler/com.sun.tools.javac.processing.JavacProcessingEnvironment.discoverAndRunProcs(JavacProcessingEnvironment.java:922)
+	at jdk.compiler/com.sun.tools.javac.processing.JavacProcessingEnvironment$Round.run(JavacProcessingEnvironment.java:1265)
+	at jdk.compiler/com.sun.tools.javac.processing.JavacProcessingEnvironment.doProcessing(JavacProcessingEnvironment.java:1380)
+	at jdk.compiler/com.sun.tools.javac.main.JavaCompiler.processAnnotations(JavaCompiler.java:1272)
+	at jdk.compiler/com.sun.tools.javac.main.JavaCompiler.compile(JavaCompiler.java:946)
+	at jdk.compiler/com.sun.tools.javac.main.Main.compile(Main.java:319)
+	at jdk.compiler/com.sun.tools.javac.main.Main.compile(Main.java:178)
+	at jdk.compiler/com.sun.tools.javac.Main.compile(Main.java:64)
+	at jdk.compiler/com.sun.tools.javac.Main.main(Main.java:50)
+
+[INFO] 1 error
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.766 s
+[INFO] Finished at: 2025-04-08T17:30:00-04:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile (default-compile) on project cache2k-api: Compilation failure
+[ERROR] java.lang.IllegalAccessError: class org.checkerframework.javacutil.AbstractTypeProcessor (in unnamed module @0x42dafa95) cannot access class com.sun.tools.javac.processing.JavacProcessingEnvironment (in module jdk.compiler) because module jdk.compiler does not export com.sun.tools.javac.processing to unnamed module @0x42dafa95
+[ERROR] 	at org.checkerframework.javacutil.AbstractTypeProcessor.init(AbstractTypeProcessor.java:97)
+[ERROR] 	at org.checkerframework.framework.source.SourceChecker.init(SourceChecker.java:609)
+[ERROR] 	at jdk.compiler/com.sun.tools.javac.processing.JavacProcessingEnvironment$ProcessorState.<init>(JavacProcessingEnvironment.java:699)
+[ERROR] 	at jdk.compiler/com.sun.tools.javac.processing.JavacProcessingEnvironment$DiscoveredProcessors$ProcessorStateIterator.next(JavacProcessingEnvironment.java:826)
+[ERROR] 	at jdk.compiler/com.sun.tools.javac.processing.JavacProcessingEnvironment.discoverAndRunProcs(JavacProcessingEnvironment.java:922)
+[ERROR] 	at jdk.compiler/com.sun.tools.javac.processing.JavacProcessingEnvironment$Round.run(JavacProcessingEnvironment.java:1265)
+[ERROR] 	at jdk.compiler/com.sun.tools.javac.processing.JavacProcessingEnvironment.doProcessing(JavacProcessingEnvironment.java:1380)
+[ERROR] 	at jdk.compiler/com.sun.tools.javac.main.JavaCompiler.processAnnotations(JavaCompiler.java:1272)
+[ERROR] 	at jdk.compiler/com.sun.tools.javac.main.JavaCompiler.compile(JavaCompiler.java:946)
+[ERROR] 	at jdk.compiler/com.sun.tools.javac.main.Main.compile(Main.java:319)
+[ERROR] 	at jdk.compiler/com.sun.tools.javac.main.Main.compile(Main.java:178)
+[ERROR] 	at jdk.compiler/com.sun.tools.javac.Main.compile(Main.java:64)
+[ERROR] 	at jdk.compiler/com.sun.tools.javac.Main.main(Main.java:50)
+[ERROR] 
+[ERROR] 
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
