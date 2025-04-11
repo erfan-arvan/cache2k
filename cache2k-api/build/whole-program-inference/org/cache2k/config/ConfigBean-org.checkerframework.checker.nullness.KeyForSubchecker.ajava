@@ -32,6 +32,6 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 @org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.KeyForSubchecker")
 public interface ConfigBean<SELF extends ConfigBean<SELF, B>, B extends ConfigBuilder<B, SELF>> extends BeanMarker {
 
-    @org.checkerframework.dataflow.qual.Pure
+    @org.checkerframework.dataflow.qual.Impure
     B builder(ConfigBean<SELF, B> this);
 }

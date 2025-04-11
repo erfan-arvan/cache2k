@@ -33,7 +33,7 @@ public final class RefreshedTimeWrapper<V> extends LoadDetail<V> {
     /**
      * Use {@link Loaders#wrapRefreshedTime(Object, long)}
      */
-    @org.checkerframework.dataflow.qual.SideEffectFree
+    @org.checkerframework.dataflow.qual.Impure
     public RefreshedTimeWrapper(final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Object value, final  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull long refreshTime) {
         super(value);
         this.refreshTime = refreshTime;

@@ -46,7 +46,7 @@ public final class CustomizationSupplierByClassName<T> implements CustomizationS
      *                  via a {@link ClassLoader#loadClass(String)}. The class must have
      *                  a default constructor. Not null.
      */
-    @org.checkerframework.dataflow.qual.SideEffectFree
+    @org.checkerframework.dataflow.qual.Impure
     public CustomizationSupplierByClassName(String className) {
         checkNull(className);
         this.className = className;
@@ -70,7 +70,7 @@ public final class CustomizationSupplierByClassName<T> implements CustomizationS
         return className;
     }
 
-    @org.checkerframework.dataflow.qual.SideEffectFree
+    @org.checkerframework.dataflow.qual.Impure
     public void validate( CustomizationSupplierByClassName<T> this) {
         checkNull(className);
     }

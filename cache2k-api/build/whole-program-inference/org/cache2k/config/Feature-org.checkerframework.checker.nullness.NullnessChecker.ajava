@@ -34,6 +34,6 @@ public interface Feature {
      * Called when {@link org.cache2k.Cache2kBuilder#build} is called
      * before the actual cache creation.
      */
-    @org.checkerframework.dataflow.qual.SideEffectFree
+    @org.checkerframework.dataflow.qual.Impure
     void enlist(CacheBuildContext<?, ?> ctx);
 }

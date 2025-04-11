@@ -740,7 +740,8 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
     default void mutate( Cache<K, V> this, K key,  EntryMutator<K, V> mutator) {
         invoke(key, new EntryProcessor<K, V, Void>() {
 
-            public Void process(MutableCacheEntry<K, V> entry) throws Exception {
+            @org.checkerframework.dataflow.qual.Impure
+            public Void process( MutableCacheEntry<K, V> entry) throws Exception {
                 mutator.mutate(entry);
                 return null;
             }

@@ -35,6 +35,6 @@ public interface ValidatingConfigBean extends ConfigBean {
      *
      * @throws IllegalStateException if configuration is not valid
      */
-    @org.checkerframework.dataflow.qual.SideEffectFree
+    @org.checkerframework.dataflow.qual.Impure
     void validate();
 }

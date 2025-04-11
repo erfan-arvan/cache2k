@@ -67,7 +67,7 @@ public interface MutableCacheEntry<K, V> extends CacheEntry<K, V> {
     @org.checkerframework.dataflow.qual.Pure
     V getValue();
 
-    @org.checkerframework.dataflow.qual.Pure
+    @org.checkerframework.dataflow.qual.Impure
     default V getValueOrNull() {
         return getValue();
     }

@@ -31,7 +31,7 @@ import org.cache2k.CustomizationException;
 @org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.KeyForSubchecker")
 public class CacheWriterException extends CustomizationException {
 
-    @org.checkerframework.dataflow.qual.SideEffectFree
+    @org.checkerframework.dataflow.qual.Impure
     public CacheWriterException( Throwable cause) {
         super(cause);
     }

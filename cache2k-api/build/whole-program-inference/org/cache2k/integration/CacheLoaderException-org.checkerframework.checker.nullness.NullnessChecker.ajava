@@ -29,17 +29,17 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 @org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
 public class CacheLoaderException extends org.cache2k.io.CacheLoaderException {
 
-    @org.checkerframework.dataflow.qual.SideEffectFree
+    @org.checkerframework.dataflow.qual.Impure
     public CacheLoaderException(String message) {
         super(message);
     }
 
-    @org.checkerframework.dataflow.qual.SideEffectFree
+    @org.checkerframework.dataflow.qual.Impure
     public CacheLoaderException(String message, Throwable ex) {
         super(message, ex);
     }
 
-    @org.checkerframework.dataflow.qual.SideEffectFree
+    @org.checkerframework.dataflow.qual.Impure
     public CacheLoaderException(Throwable ex) {
         super(ex);
     }

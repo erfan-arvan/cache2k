@@ -804,7 +804,7 @@ public class Cache2kConfig<K, V> implements ConfigBean<Cache2kConfig<K, V>, Cach
     /**
      * Creates a cache builder from the configuration.
      */
-    @org.checkerframework.dataflow.qual.Pure
+    @org.checkerframework.dataflow.qual.Impure
     public  Cache2kBuilder<K, V> builder( Cache2kConfig<K, V> this) {
         return Cache2kBuilder.of(this);
     }

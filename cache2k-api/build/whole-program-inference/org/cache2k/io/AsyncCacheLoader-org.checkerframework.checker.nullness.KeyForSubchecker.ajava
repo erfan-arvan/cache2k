@@ -47,7 +47,7 @@ public interface AsyncCacheLoader<K, V> extends DataAwareCustomization<K, V> {
      * @param callback interface to notify for load completion
      * @throws Exception an exception, if the load operation cannot be started
      */
-    @org.checkerframework.dataflow.qual.SideEffectFree
+    @org.checkerframework.dataflow.qual.Impure
     void load(K key, Context<K, V> context, Callback<V> callback) throws Exception;
 
     /**

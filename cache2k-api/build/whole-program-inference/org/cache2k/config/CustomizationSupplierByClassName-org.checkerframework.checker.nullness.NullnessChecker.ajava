@@ -47,7 +47,7 @@ public final class CustomizationSupplierByClassName<T> implements CustomizationS
      *                  a default constructor. Not null.
      */
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.className" })
-    @org.checkerframework.dataflow.qual.SideEffectFree
+    @org.checkerframework.dataflow.qual.Impure
     public CustomizationSupplierByClassName(String className) {
         checkNull(className);
         this.className = className;
@@ -64,7 +64,6 @@ public final class CustomizationSupplierByClassName<T> implements CustomizationS
         className = v;
     }
 
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "#1" })
     @org.checkerframework.dataflow.qual.Pure
     private String checkNull(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable String className) {
         if (className == null) {
@@ -74,7 +73,7 @@ public final class CustomizationSupplierByClassName<T> implements CustomizationS
     }
 
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.className" })
-    @org.checkerframework.dataflow.qual.SideEffectFree
+    @org.checkerframework.dataflow.qual.Impure
     public void validate(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CustomizationSupplierByClassName<T> this) {
         checkNull(className);
     }
@@ -84,7 +83,6 @@ public final class CustomizationSupplierByClassName<T> implements CustomizationS
         throw new UnsupportedOperationException();
     }
 
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "#1" })
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.className" })
     @org.checkerframework.dataflow.qual.Impure
     public T supply(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CustomizationSupplierByClassName<T> this, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable CacheBuildContext<?, ?> ctx) {

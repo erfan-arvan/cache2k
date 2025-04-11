@@ -135,7 +135,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
 
     private CacheManager manager = null;
 
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.initialization.qual.FBCBottom.class)
     @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.initialization.qual.FBCBottom.class)
     @org.checkerframework.dataflow.qual.Impure
@@ -174,6 +173,8 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
         }
     }
 
+    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.keyType" })
+    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.valueType" })
     @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.config" }, qualifier = org.checkerframework.checker.initialization.qual.FBCBottom.class)
     @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.manager" }, qualifier = org.checkerframework.checker.initialization.qual.FBCBottom.class)
     @org.checkerframework.dataflow.qual.SideEffectFree
@@ -292,7 +293,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *                    May be {@code null}.
      * @see #name(String)
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> name(String uniqueName, Class<?> clazz, String fieldName) {
         if (fieldName == null) {
@@ -313,7 +313,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *
      * @see #name(String)
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> name(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Class<?> clazz, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String fieldName) {
         if (fieldName == null) {
@@ -330,7 +329,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *
      * @see #name(String)
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> name(Class<?> clazz) {
         cfg().setName(clazz.getName());
@@ -364,7 +362,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *
      * @see Cache#getName()
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> name(String v) {
         cfg().setName(v);
@@ -378,7 +375,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *
      * @see AdvancedCacheLoader
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> keepDataAfterExpired(boolean v) {
         cfg().setKeepDataAfterExpired(v);
@@ -395,7 +391,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * <p>The default value is 2000. The default value is conservative, so the application
      * will usually run stable without tuning or setting a reasonable size.
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> entryCapacity(long v) {
         cfg().setEntryCapacity(v);
@@ -416,7 +411,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *
      * @throws IllegalArgumentException in case a previous setting is reset
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> eternal(boolean v) {
         cfg().setEternal(v);
@@ -444,7 +438,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see <a href="https://cache2k.org/docs/latest/user-guide.html#expiry-and-refresh">
      *   cache2k user guide - Expiry and Refresh</a>
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> expireAfterWrite(long v, TimeUnit u) {
         cfg().setExpireAfterWrite(toDuration(v, u));
@@ -455,7 +448,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * Change the maximum lag time for timer events. Timer events are used for
      * expiry and refresh operations. The default is approximately one second.
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> timerLag(long v, TimeUnit u) {
         cfg().setTimerLag(toDuration(v, u));
@@ -471,7 +463,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * Sets customization for propagating loader exceptions. By default loader exceptions
      * are wrapped into a {@link CacheLoaderException}.
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> exceptionPropagator(final org.cache2k.integration.ExceptionPropagator<K> ep) {
         checkNull(ep);
@@ -515,7 +506,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * Sets customization for propagating loader exceptions. By default loader exceptions
      * are wrapped into a {@link CacheLoaderException}.
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> exceptionPropagator(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull ExceptionPropagator<K, V> ep) {
         cfg().setExceptionPropagator(wrapCustomizationInstance(ep));
@@ -530,7 +520,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
         return new CustomizationReferenceSupplier<T>(obj);
     }
 
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> loader(final org.cache2k.integration.AsyncCacheLoader<K, V> oldLoader) {
         checkNull(oldLoader);
@@ -582,7 +571,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *
      * @see CacheLoader for general discussion on cache loaders
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> loader(CacheLoader<K, V> l) {
         cfg().setLoader(wrapCustomizationInstance(l));
@@ -595,7 +583,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *
      * @see CacheLoader for general discussion on cache loaders
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> loader(AdvancedCacheLoader<K, V> l) {
         cfg().setAdvancedLoader(wrapCustomizationInstance(l));
@@ -609,7 +596,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *
      * @see CacheLoader for general discussion on cache loaders
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> loader(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull AsyncCacheLoader<K, V> l) {
         cfg().setAsyncLoader(wrapCustomizationInstance(l));
@@ -621,7 +607,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *
      * @see CacheLoader for general discussion on cache loaders
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> wrappingLoader(AdvancedCacheLoader<K, LoadDetail<V>> l) {
         cfg().setAdvancedLoader((CustomizationSupplier<AdvancedCacheLoader<K, V>>) (Object) wrapCustomizationInstance(l));
@@ -633,7 +618,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *
      * @see CacheLoader for general discussion on cache loaders
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> wrappingLoader(CacheLoader<K, LoadDetail<V>> l) {
         cfg().setAdvancedLoader((CustomizationSupplier<AdvancedCacheLoader<K, V>>) (Object) wrapCustomizationInstance(l));
@@ -644,7 +628,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * Enables write through operation and sets a writer customization that gets
      * called synchronously upon cache mutations. By default write through is not enabled.
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> writer(CacheWriter<K, V> w) {
         cfg().setWriter(wrapCustomizationInstance(w));
@@ -655,7 +638,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * Listener that is called after a cache is closed. This is mainly used for the JCache
      * integration.
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> addCacheClosedListener(CacheClosedListener listener) {
         cfg().getLifecycleListeners().add(wrapCustomizationInstance(listener));
@@ -670,7 +652,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @throws IllegalArgumentException if an identical listener is already added.
      * @param listener The listener to add
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> addListener(CacheEntryOperationListener<K, V> listener) {
         cfg().getListeners().add(wrapCustomizationInstance(listener));
@@ -684,7 +665,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @throws IllegalArgumentException if an identical listener is already added.
      * @param listener The listener to add
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> addAsyncListener(CacheEntryOperationListener<K, V> listener) {
         cfg().getAsyncListeners().add(wrapCustomizationInstance(listener));
@@ -698,7 +678,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * {@link #expireAfterWrite}. If {@link #expireAfterWrite(long, java.util.concurrent.TimeUnit)}
      * is set to 0 then expiry calculation is not used, all entries expire immediately.
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> expiryPolicy(ExpiryPolicy<K, V> c) {
         cfg().setExpiryPolicy(wrapCustomizationInstance(c));
@@ -726,7 +705,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see CacheLoader
      * @see #loaderThreadCount(int)
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> refreshAhead(boolean f) {
         cfg().setRefreshAhead(f);
@@ -740,7 +718,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * Switching to {@code true}, means that values will not be visible when the time is reached that
      * {@link ExpiryPolicy} returned. This has no effect on {@link #expireAfterWrite(long, TimeUnit)}.
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> sharpExpiry(boolean f) {
         cfg().setSharpExpiry(f);
@@ -758,7 +735,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see #loaderExecutor(Executor)
      * @see #refreshExecutor(Executor)
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> loaderThreadCount(int v) {
         cfg().setLoaderThreadCount(v);
@@ -775,7 +751,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * For cache2k version 1.0 this value has no effect. It should be
      * used by application developers to future proof the applications with upcoming versions.
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> storeByReference(boolean v) {
         cfg().setStoreByReference(v);
@@ -787,14 +762,12 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * of exceptions from the loader. A specified policy will be ignored if
      * {@link #expireAfterWrite} is set to 0.
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> resiliencePolicy(ResiliencePolicy<K, V> v) {
         cfg().setResiliencePolicy(wrapCustomizationInstance(v));
         return this;
     }
 
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> resiliencePolicy(CustomizationSupplier<? extends ResiliencePolicy<K, V>> v) {
         cfg().setResiliencePolicy(v);
@@ -807,7 +780,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * as soon as the capacity constraint is met. This is primarily used for
      * testing and evaluation purposes.
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> strictEviction(boolean flag) {
         cfg().setStrictEviction(flag);
@@ -825,7 +797,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see CacheLoader#load(Object)
      * @see ExpiryPolicy#calculateExpiryTime(Object, Object, long, CacheEntry)
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> permitNullValues(boolean flag) {
         cfg().setPermitNullValues(flag);
@@ -837,7 +808,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * statistics that have significant overhead. Whether the values become visible in monitoring
      * can be controlled via {@link #disableMonitoring(boolean)}
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> disableStatistics(boolean flag) {
         cfg().setDisableStatistics(flag);
@@ -850,7 +820,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *
      * @see MutableCacheEntry#getModificationTime()
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> recordModificationTime(boolean flag) {
         cfg().setRecordModificationTime(flag);
@@ -865,7 +834,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * <p>Typical interactive do not need to enable this. May improve concurrency for applications
      * that utilize all cores and cache operations account for most CPU cycles.
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> boostConcurrency(boolean f) {
         cfg().setBoostConcurrency(f);
@@ -878,7 +846,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * intended to be short lived. All extensions for monitoring or management
      * respect this parameter.
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> disableMonitoring(boolean f) {
         cfg().setDisableMonitoring(f);
@@ -891,7 +858,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *
      * @see #loaderThreadCount(int)
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> loaderExecutor(Executor v) {
         cfg().setLoaderExecutor(new CustomizationReferenceSupplier<Executor>(v));
@@ -909,7 +875,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @see #loaderThreadCount(int)
      * @see #loaderExecutor(Executor)
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> refreshExecutor(Executor v) {
         cfg().setRefreshExecutor(new CustomizationReferenceSupplier<Executor>(v));
@@ -921,7 +886,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * {@link ForkJoinPool#commonPool()} is used by default or an internal
      * executor is used that has unbounded thread capacity otherwise.
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> executor(Executor v) {
         cfg().setExecutor(new CustomizationReferenceSupplier<Executor>(v));
@@ -934,7 +898,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *
      * @see #addAsyncListener(CacheEntryOperationListener)
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> asyncListenerExecutor(Executor v) {
         cfg().setAsyncListenerExecutor(new CustomizationReferenceSupplier<Executor>(v));
@@ -946,7 +909,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * {@link #maximumWeight(long)} needs to be specified as well. Using a weigher has a slightly
      * performance impact on the update of existing entries.
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> weigher(Weigher<K, V> v) {
         cfg().setWeigher(new CustomizationReferenceSupplier<Weigher<K, V>>(v));
@@ -963,7 +925,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * <p>
      * The maximum weight setting cannot be used together with {@link #entryCapacity(long)}.
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> maximumWeight(long v) {
         cfg().setMaximumWeight(v);
@@ -1005,7 +966,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @param <B> type of the builder for the config section
      * @param <CFG> the type of the config section
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final <B extends SectionBuilder<B, CFG>, CFG extends ConfigSection<CFG, B>> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> with(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Class<CFG> configSectionClass, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Consumer<B> builderAction) {
         CFG section = cfg().getSections().getSection(configSectionClass);
@@ -1026,7 +986,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * set customization suppliers, like {@link Cache2kConfig#setExecutor(CustomizationSupplier)}
      * instead of instances.
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> set(Consumer<Cache2kConfig<K, V>> configAction) {
         configAction.accept(config());
@@ -1043,7 +1002,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @param <CFG> the configuration section
      * @param <SUP> the supplier for the customization
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public <B extends SectionBuilder<B, CFG>, CFG extends ConfigSection<CFG, B>, SUP extends WithSection<CFG, B> & CustomizationSupplier<?>> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> setupWith(Function<Cache2kBuilder<K, V>, SUP> setupAction, Consumer<B> builderAction) {
         with(setupAction.apply(this).getConfigClass(), builderAction);
@@ -1081,7 +1039,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * Be aware that a section might be existing and preconfigured already, the semantics
      * are identical to {@link #with(Class, Consumer)}
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public <B extends SectionBuilder<B, CFG>, T extends ToggleFeature & WithSection<CFG, B>, CFG extends ConfigSection<CFG, B>> @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> enableWith(Class<T> featureType, Consumer<B> builderAction) {
         T bean = ToggleFeature.enable(this, featureType);
@@ -1098,7 +1055,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      *
      * @return configuration objects with the parameters set in the builder.
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable Cache2kConfig<K, V> config(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache2kBuilder<K, V> this) {
         return cfg();
@@ -1127,8 +1083,6 @@ public class Cache2kBuilder<K, V> implements ConfigBuilder<Cache2kBuilder<K, V>,
      * @throws IllegalArgumentException if a configuration entry for the named cache is required but
      *         not present
      */
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.config" })
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.manager" })
     @org.checkerframework.dataflow.qual.Impure
     public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Cache<K, V> build() {
         return CacheManager.PROVIDER.createCache(getManager(), cfg());
