@@ -98,7 +98,7 @@ public abstract class ToggleFeature implements SingleFeature {
     /**
      * Check whether enabled and call implementations' doEnlist method.
      */
-    @org.checkerframework.dataflow.qual.SideEffectFree
+    @org.checkerframework.dataflow.qual.Impure
     public final void enlist( ToggleFeature this,  CacheBuildContext<?, ?> ctx) {
         if (enabled) {
             doEnlist(ctx);

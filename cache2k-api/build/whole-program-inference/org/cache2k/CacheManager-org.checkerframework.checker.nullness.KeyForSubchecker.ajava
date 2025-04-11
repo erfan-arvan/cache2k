@@ -71,7 +71,7 @@ public abstract class CacheManager implements Closeable {
      * Name of the default cache manager, which is "{@value STANDARD_DEFAULT_MANAGER_NAME}" by
      * default.
      */
-    @org.checkerframework.dataflow.qual.Pure
+    @org.checkerframework.dataflow.qual.Impure
     public static  String getDefaultName() {
         return PROVIDER.getDefaultManagerName(PROVIDER.getDefaultClassLoader());
     }
@@ -88,7 +88,7 @@ public abstract class CacheManager implements Closeable {
      *
      * @see Cache2kBuilder#name(String)
      */
-    @org.checkerframework.dataflow.qual.SideEffectFree
+    @org.checkerframework.dataflow.qual.Impure
     public static void setDefaultName(String managerName) {
         PROVIDER.setDefaultManagerName(PROVIDER.getDefaultClassLoader(), managerName);
     }
@@ -100,7 +100,7 @@ public abstract class CacheManager implements Closeable {
      * <p>The name of default cache manager is "{@value STANDARD_DEFAULT_MANAGER_NAME}".
      * This may be changed, by {@link #setDefaultName(String)}.
      */
-    @org.checkerframework.dataflow.qual.Pure
+    @org.checkerframework.dataflow.qual.Impure
     public static  CacheManager getInstance() {
         ClassLoader defaultClassLoader = PROVIDER.getDefaultClassLoader();
         return PROVIDER.getManager(defaultClassLoader, PROVIDER.getDefaultManagerName(defaultClassLoader));
@@ -109,7 +109,7 @@ public abstract class CacheManager implements Closeable {
     /**
      * Get the default cache manager for the specified class loader.
      */
-    @org.checkerframework.dataflow.qual.Pure
+    @org.checkerframework.dataflow.qual.Impure
     public static  CacheManager getInstance(ClassLoader cl) {
         return PROVIDER.getManager(cl, PROVIDER.getDefaultManagerName(cl));
     }
@@ -124,7 +124,7 @@ public abstract class CacheManager implements Closeable {
      *
      * @see Cache2kBuilder#name(String)
      */
-    @org.checkerframework.dataflow.qual.Pure
+    @org.checkerframework.dataflow.qual.Impure
     public static  CacheManager getInstance(String managerName) {
         return PROVIDER.getManager(PROVIDER.getDefaultClassLoader(), managerName);
     }
@@ -139,7 +139,7 @@ public abstract class CacheManager implements Closeable {
      *
      * @see Cache2kBuilder#name(String)
      */
-    @org.checkerframework.dataflow.qual.Pure
+    @org.checkerframework.dataflow.qual.Impure
     public static  CacheManager getInstance(ClassLoader cl, String managerName) {
         return PROVIDER.getManager(cl, managerName);
     }
@@ -147,7 +147,7 @@ public abstract class CacheManager implements Closeable {
     /**
      * Close all cache managers.
      */
-    @org.checkerframework.dataflow.qual.SideEffectFree
+    @org.checkerframework.dataflow.qual.Impure
     public static void closeAll() {
         PROVIDER.close();
     }
@@ -155,7 +155,7 @@ public abstract class CacheManager implements Closeable {
     /**
      * Close all cache manager associated with this class loader.
      */
-    @org.checkerframework.dataflow.qual.SideEffectFree
+    @org.checkerframework.dataflow.qual.Impure
     public static void closeAll(ClassLoader cl) {
         PROVIDER.close(cl);
     }
@@ -163,7 +163,7 @@ public abstract class CacheManager implements Closeable {
     /**
      * Close the named cache manager.
      */
-    @org.checkerframework.dataflow.qual.SideEffectFree
+    @org.checkerframework.dataflow.qual.Impure
     public static void close(ClassLoader cl, String name) {
         PROVIDER.close(cl, name);
     }

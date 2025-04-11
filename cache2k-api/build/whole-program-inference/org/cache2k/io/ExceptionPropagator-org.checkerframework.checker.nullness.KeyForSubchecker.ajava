@@ -61,6 +61,6 @@ public interface ExceptionPropagator<K> extends Customization<K, Void> {
      * @param loadExceptionInfo information of original exception and
      *                             when the original exception occurred.
      */
-    @org.checkerframework.dataflow.qual.Pure
+    @org.checkerframework.dataflow.qual.Impure
      RuntimeException propagateException( ExceptionPropagator<K> this,  LoadExceptionInfo<K> loadExceptionInfo);
 }

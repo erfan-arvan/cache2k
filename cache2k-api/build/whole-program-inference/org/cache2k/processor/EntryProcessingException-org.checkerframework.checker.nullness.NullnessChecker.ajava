@@ -30,7 +30,7 @@ import org.cache2k.CacheException;
 @org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
 public class EntryProcessingException extends CacheException {
 
-    @org.checkerframework.dataflow.qual.SideEffectFree
+    @org.checkerframework.dataflow.qual.Impure
     public EntryProcessingException(Throwable cause) {
         super(cause);
     }

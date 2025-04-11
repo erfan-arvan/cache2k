@@ -79,7 +79,6 @@ public final class CustomizationSupplierByClassName<T> implements CustomizationS
         throw new UnsupportedOperationException();
     }
 
-    @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "#1" })
     @org.checkerframework.checker.nullness.qual.EnsuresNonNull({ "this.className" })
     @org.checkerframework.dataflow.qual.Impure
     public T supply(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull CustomizationSupplierByClassName<T> this, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable CacheBuildContext<?, ?> ctx) {

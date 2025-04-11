@@ -37,7 +37,7 @@ public final class CustomizationReferenceSupplier<T> implements CustomizationSup
      *
      * @param obj reference to a customization. Not null.
      */
-    @org.checkerframework.dataflow.qual.SideEffectFree
+    @org.checkerframework.dataflow.qual.Impure
     public CustomizationReferenceSupplier(T obj) {
         Cache2kConfig.checkNull(obj);
         object = obj;

@@ -55,7 +55,7 @@ public interface LoadExceptionInfo<K> extends CacheEntry<K, Void> {
      * Always throws exception based on exception propagator semantics.
      * Inherited from {@link CacheEntry}
      */
-    @org.checkerframework.dataflow.qual.Pure
+    @org.checkerframework.dataflow.qual.Impure
     default Void getValue( LoadExceptionInfo<K> this) {
         throw generateExceptionToPropagate();
     }
@@ -78,7 +78,7 @@ public interface LoadExceptionInfo<K> extends CacheEntry<K, Void> {
     /**
      * Generate the exception to propagate with the exception propagator
      */
-    @org.checkerframework.dataflow.qual.Pure
+    @org.checkerframework.dataflow.qual.Impure
     default  RuntimeException generateExceptionToPropagate( LoadExceptionInfo<K> this) {
         return getExceptionPropagator().propagateException(this);
     }
